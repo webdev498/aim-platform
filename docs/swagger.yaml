@@ -1,0 +1,429 @@
+---
+swagger: "2.0"
+info:
+  version: "2016-11-23T10:41:00-05:00"
+  title: "AIM Platform API"
+  description: |
+    Here we will put together a full description of the API as well as 
+    instructions on how to use
+schemes:
+- "https"
+paths:
+  /:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+  /data:
+    get:
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+  /data/findByType/{typeid}:
+    get:
+      produces:
+      - "application/json"
+      parameters:
+      - name: "typeid"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+  /data/{dataId}:
+    get:
+      produces:
+      - "application/json"
+      parameters:
+      - name: "dataId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+  /dataTypes:
+    get:
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+  /dataTypes/findByPlatform/{platformId}:
+    get:
+      produces:
+      - "application/json"
+      parameters:
+      - name: "platformId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+  /dataTypes/{dataTypeId}:
+    get:
+      produces:
+      - "application/json"
+      parameters:
+      - name: "dataTypeId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+  /groups:
+    get:
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+  /groups/{groupId}:
+    get:
+      produces:
+      - "application/json"
+      parameters:
+      - name: "groupId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+  /platforms:
+    get:
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+  /platforms/findByDomain:
+    get:
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+  /platforms/{platformId}:
+    get:
+      produces:
+      - "application/json"
+      parameters:
+      - name: "platformId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+  /platforms/{platformId}/approvals:
+    get:
+      produces:
+      - "application/json"
+      parameters:
+      - name: "platformId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+  /platforms/{platformId}/boats:
+    get:
+      produces:
+      - "application/json"
+      parameters:
+      - name: "platformId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+  /platforms/{platformId}/clients:
+    get:
+      produces:
+      - "application/json"
+      parameters:
+      - name: "platformId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+  /platforms/{platformId}/dashboard:
+    get:
+      produces:
+      - "application/json"
+      parameters:
+      - name: "platformId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+  /platforms/{platformId}/dfa:
+    get:
+      produces:
+      - "application/json"
+      parameters:
+      - name: "platformId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+  /platforms/{platformId}/events:
+    get:
+      produces:
+      - "application/json"
+      parameters:
+      - name: "platformId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+  /platforms/{platformId}/forms:
+    get:
+      produces:
+      - "application/json"
+      parameters:
+      - name: "platformId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+  /platforms/{platformId}/maps:
+    get:
+      produces:
+      - "application/json"
+      parameters:
+      - name: "platformId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+  /platforms/{platformId}/media:
+    get:
+      produces:
+      - "application/json"
+      parameters:
+      - name: "platformId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+  /platforms/{platformId}/news:
+    get:
+      produces:
+      - "application/json"
+      parameters:
+      - name: "platformId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+  /platforms/{platformId}/pages:
+    get:
+      produces:
+      - "application/json"
+      parameters:
+      - name: "platformId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+  /platforms/{platformId}/products:
+    get:
+      produces:
+      - "application/json"
+      parameters:
+      - name: "platformId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+  /platforms/{platformId}/reports:
+    get:
+      produces:
+      - "application/json"
+      parameters:
+      - name: "platformId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+  /platforms/{platformId}/shows:
+    get:
+      produces:
+      - "application/json"
+      parameters:
+      - name: "platformId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+  /platforms/{platformId}/sites:
+    get:
+      produces:
+      - "application/json"
+      parameters:
+      - name: "platformId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+  /platforms/{platformId}/modules:
+    get:
+      produces:
+      - "application/json"
+      parameters:
+      - name: "platformId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+  /platforms/{platformId}/modules/{moduleId}:
+    get:
+      produces:
+      - "application/json"
+      parameters:
+      - name: "platformId"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "moduleId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+  /users:
+    get:
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+  /users/findByEmail:
+    get:
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+  /users/{userId}/profile:
+    get:
+      produces:
+      - "application/json"
+      parameters:
+      - name: "userId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+definitions:
+  Empty:
+    type: "object"
+    title: "Empty Schema"
