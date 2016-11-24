@@ -42,3 +42,4 @@ ng serve
 
 * Lerna - https://lernajs.io/
 * Angular CLI - https://cli.angular.io/
+* Swagger Editor - http://editor.swagger.io/ 
