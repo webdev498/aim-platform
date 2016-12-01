@@ -1,5 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import 'webpack-raphael';
 
+declare var Raphael: any;
 declare var jQuery: any;
 declare var Rickshaw: any;
 declare var d3: any;
@@ -58,7 +60,7 @@ export class Charts {
   ];
 
   applyRickshawData(): void {
-    console.log(Rickshaw);
+    Raphael.prototype.safari = function(): any { return; };
     this.random = new Rickshaw.Fixtures.RandomData(30);
     for (let i = 0; i < 30; i++) {
       this.random.addData(this.seriesData);

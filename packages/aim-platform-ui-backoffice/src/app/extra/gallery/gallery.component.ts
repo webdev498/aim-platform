@@ -153,7 +153,7 @@ export class Gallery {
     this.$gallery.magnificPopup(this.magnificOptions);
 
     setTimeout(() => {
-      this.shuffle = new Shuffle(this.$gallery, this.shuffleOptions);
+      this.shuffle = new shuffle(this.$gallery, this.shuffleOptions);
       setTimeout(() => {
         this.activeGroupSelected('all');
       });

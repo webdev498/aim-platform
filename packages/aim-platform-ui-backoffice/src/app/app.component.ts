@@ -1,10 +1,14 @@
-import { Component } from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
+import {AppState} from "./app.service";
 
 @Component({
-  selector: 'app-root',
+  selector: 'app',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css', './scss/application.scss']
+  encapsulation: ViewEncapsulation.None,
+  styleUrls: ['./scss/application.scss']
 })
 export class AppComponent {
-  title = 'app works!';
+  constructor(
+    public appState: AppState) {
+  }
 }

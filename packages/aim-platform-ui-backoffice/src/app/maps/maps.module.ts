@@ -1,5 +1,5 @@
-import 'jvectormap/jquery-jvectormap.min.js';
-import 'jvectormap-world/jquery-jvectormap-world-mill-en.js';
+// import 'jvectormap/jquery-jvectormap.min.js';
+// import 'jvectormap-world/jquery-jvectormap-world-mill-en.js';
 
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -36,6 +36,6 @@ export const routes = [
     })
   ]
 })
-export default class MapModule {
+export class MapModule {
   static routes = routes;
 }

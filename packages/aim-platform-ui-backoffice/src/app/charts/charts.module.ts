@@ -2,7 +2,6 @@ import { NgModule }      from '@angular/core';
 import { CommonModule }  from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-import 'webpack-raphael';
 import 'easy-pie-chart/dist/jquery.easypiechart.js';
 
 import { WidgetModule } from '../layout/widget/widget.module';
@@ -35,6 +34,6 @@ export const routes = [
     FlotChartAnimator
   ]
 })
-export default class ChartsModule {
+export class ChartsModule {
   static routes = routes;
 }

@@ -1,7 +1,7 @@
 import 'fullcalendar/dist/fullcalendar.js';
-import 'jquery-ui/ui/draggable.js';
-import 'magnific-popup/dist/jquery.magnific-popup.min.js';
-import 'shufflejs/dist/shuffle.js';
+// import 'jquery-ui/ui/draggable.js';
+// import 'magnific-popup/dist/jquery.magnific-popup.min.js';
+// import 'shufflejs/dist/shuffle.js';
 import 'moment/moment.js';
 
 import { CommonModule } from '@angular/common';
@@ -53,6 +53,6 @@ export const routes = [
   ],
   schemas:  [ CUSTOM_ELEMENTS_SCHEMA ]
 })
-export default class ExtraModule {
+export class ExtraModule {
   static routes = routes;
 }

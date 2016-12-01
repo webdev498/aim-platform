@@ -1,4 +1,4 @@
-import 'jquery-ui/ui/sortable.js';
+// import 'jquery-ui/ui/sortable.js';
 
 import { NgModule }      from '@angular/core';
 import { CommonModule }  from '@angular/common';
@@ -16,6 +16,6 @@ export const routes = [
   imports: [ CommonModule, RouterModule.forChild(routes) ],
   declarations: [ GridComponent, GridDemo ]
 })
-export default class GridModule {
+export class GridModule {
   static routes = routes;
 }

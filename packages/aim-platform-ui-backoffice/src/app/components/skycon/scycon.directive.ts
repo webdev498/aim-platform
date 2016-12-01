@@ -16,7 +16,7 @@ export class Skycon {
   }
 
   ngOnInit(): void {
-    let icons = new Skycons.Skycons({'color': this.color});
+    let icons = new Skycons({'color': this.color});
     icons.set(this.$el[0], this.weather);
     icons.play();
   }

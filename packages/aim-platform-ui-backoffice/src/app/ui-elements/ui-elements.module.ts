@@ -1,5 +1,5 @@
 import 'messenger/build/js/messenger.js';
-import 'jquery-ui/ui/sortable.js';
+// import 'jquery-ui/ui/sortable.js';
 import 'jquery.nestable/jquery.nestable.js';
 
 import { CommonModule } from '@angular/common';
@@ -58,6 +58,6 @@ export const routes = [
     AccordionModule
   ]
 })
-export default class UiElementsModule {
+export class UiElementsModule {
   static routes = routes;
 }
