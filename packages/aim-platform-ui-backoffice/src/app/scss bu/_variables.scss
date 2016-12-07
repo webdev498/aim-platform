@@ -51,7 +51,7 @@ $addition-bg: #f8f8f8 !default;
 
 
 $sidebar-bg-color: #242424 !default;
-$sidebar-color: #001750 !default;
+$sidebar-color: #aaa !default;
 $sidebar-item-border-color: #2d2d2d !default;
 $sidebar-item-active-color: #F2BE35 !default;
 $sidebar-item-hover-bg-color: #111 !default;
@@ -60,7 +60,6 @@ $sidebar-item-hover-bg-color: #111 !default;
 // -------------------------
 
 $text-color:            $gray !default;
-$text-color2:			#fff !default;
 //$text-color: #57534A; //a bit brown?
 
 $font-size-root: 14px;
@@ -112,10 +111,6 @@ $panel-body-padding:          15px !default;
 $panel-default-text:          $gray-dark !default;
 $panel-default-border:        transparent !default;
 $panel-default-heading-bg:    $gray-semi-lighter !default;
-$default-grad-top:			  #7CC3F2;
-$default-grad-bottom:		  #C0DDE7;
-$widget-grad-top:			  #9fceec;
-$widget-grad-bottom:		  #BDDFF1;
 
 // Screens
 // -------------------------
@@ -210,12 +205,12 @@ $nav-tabs-active-link-hover-border-color:   #ddd !default;
 $navbar-margin-bottom:             0 !default;
 $navbar-border-radius:             0 !default;
 
-$navbar-dashboard-bg:                #7CC3F2 !default;
+$navbar-dashboard-bg:                $white !default;
 $navbar-dashboard-color:             #777 !default;
 $navbar-dashboard-border:            darken($navbar-dashboard-bg, 6.5%) !default;
 
 // Navbar links
-$navbar-dashboard-link-color:                #fff !default;
+$navbar-dashboard-link-color:                #666 !default;
 
 // Navbar links
 $navbar-dashboard-link-hover-color:          #333 !default;
