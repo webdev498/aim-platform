@@ -5,7 +5,7 @@ declare var Hammer: any;
 
 @Component({
   selector: '[chat-sidebar]',
-  templateUrl: './chat-sidebar.template.html'
+  templateUrl: 'chat-sidebar.component.html'
 })
 export class ChatSidebar implements OnInit {
   conversations: ChatService;

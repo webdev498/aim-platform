@@ -3,8 +3,8 @@ import { AppConfig } from '../app.config';
 
 @Component({
   selector: 'dashboard',
-  templateUrl: './dashboard.template.html',
-  styleUrls: ['./dashboard.style.scss'],
+  templateUrl: 'dashboard.component.html',
+  styleUrls: ['dashboard.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class Dashboard {

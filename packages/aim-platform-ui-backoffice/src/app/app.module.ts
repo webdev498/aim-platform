@@ -10,6 +10,7 @@ import { ErrorComponent } from './error/error.component';
 import {AppConfig} from "./app.config";
 import { AppState, InteralStateType } from './app.service';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
+import {UsersService} from "./users.service";
 
 type StoreType = {
   state: InteralStateType,
@@ -31,7 +32,8 @@ type StoreType = {
   providers: [
     ...APP_RESOLVER_PROVIDERS,
     AppState,
-    AppConfig
+    AppConfig,
+    UsersService
   ],
   bootstrap: [AppComponent]
 })

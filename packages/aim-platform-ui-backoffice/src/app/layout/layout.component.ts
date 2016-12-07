@@ -8,7 +8,7 @@ declare var Hammer: any;
 @Component({
   selector: 'layout',
   encapsulation: ViewEncapsulation.None,
-  templateUrl: './layout.template.html',
+  templateUrl: 'layout.component.html',
   host: {
     '[class.nav-static]' : 'config.state["nav-static"]',
     '[class.chat-sidebar-opened]' : 'chatOpened',
