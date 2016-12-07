@@ -1,12 +1,14 @@
 @import "../../../node_modules/bootstrap/scss/variables";
 @import "../scss/variables";
+@import "../scss/mixins";
+
 
 /***********************************/
 /**             LOGIN             **/
 /***********************************/
 
 .login-page{
-  background-color: $gray-semi-lighter;
+  @include linear-gradient($default-grad-top, $default-grad-bottom);
 }
 
 .login-page .page-footer {

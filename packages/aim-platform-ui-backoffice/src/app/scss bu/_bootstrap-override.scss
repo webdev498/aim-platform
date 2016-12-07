@@ -26,19 +26,12 @@ h1, h2, h3, h4, h5, h6,
   .small {
     font-weight: $headings-font-weight;
     font-size: 75%;
-    color: $text-color;
-    opacity: .8
+    color: $text-muted;
   }
 }
 
 .h4, .h5, .h6, h4, h5, h6 {
   margin-top: 10px;
-}
-
-h1.page-title,
-h1.page-title small,
-.lead {
-	color: $text-color2
 }
 
 //
