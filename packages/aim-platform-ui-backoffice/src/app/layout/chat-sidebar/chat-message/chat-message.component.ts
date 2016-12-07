@@ -3,7 +3,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 @Component({
 
   selector: '[chat-message]',
-  templateUrl: './chat-message.template.html'
+  templateUrl: 'chat-message.component.html'
 })
 export class ChatMessage {
   @Input() conversation: any;

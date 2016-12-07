@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'error',
-  styleUrls: [ './error.style.scss' ],
-  templateUrl: './error.template.html',
+  styleUrls: [ 'error.component.scss' ],
+  templateUrl: 'error.component.html',
   encapsulation: ViewEncapsulation.None,
   host: {
     class: 'error-page app'

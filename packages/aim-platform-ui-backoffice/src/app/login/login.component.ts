@@ -2,8 +2,8 @@ import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'login',
-  styleUrls: [ './login.style.scss' ],
-  templateUrl: './login.template.html',
+  styleUrls: [ 'login.component.scss' ],
+  templateUrl: 'login.component.html',
   encapsulation: ViewEncapsulation.None,
   host: {
     class: 'login-page app'

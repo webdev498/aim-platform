@@ -13,6 +13,7 @@ Run the following Commands:
 # Install global tools
 npm install --global lerna@prerelease
 npm install --glabal angular-cli
+npm install --glabal napa
 
 # Clone, checkout, and install base dependencies, and refresh sub packages
 git clone git@scm.aimdevops.com:aim/aim-platform-ui.git

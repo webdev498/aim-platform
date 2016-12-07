@@ -1,23 +1,27 @@
 import { Component, EventEmitter, OnInit, ElementRef, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppConfig } from '../../app.config';
+import {UsersService} from "../../users.service";
 declare var jQuery: any;
 
 @Component({
   selector: '[navbar]',
-  templateUrl: './navbar.template.html'
+  templateUrl: 'navbar.component.html'
 })
 export class Navbar implements OnInit {
   @Output() toggleSidebarEvent: EventEmitter<any> = new EventEmitter();
   @Output() toggleChatEvent: EventEmitter<any> = new EventEmitter();
   $el: any;
   config: any;
-  router: Router;
 
-  constructor(el: ElementRef, config: AppConfig, router: Router) {
+  constructor(
+    el: ElementRef,
+    config: AppConfig,
+    public router: Router,
+    protected userService: UsersService
+  ) {
     this.$el = jQuery(el.nativeElement);
     this.config = config.getConfig();
-    this.router = router;
   }
 
   toggleSidebar(state): void {
