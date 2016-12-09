@@ -1,7 +1,7 @@
 ---
 swagger: "2.0"
 info:
-  version: "2016-11-23T10:41:00-05:00"
+  version: "2016-12-09T16:56:22Z"
   title: "AIM Platform API"
   description: |
     Here we will put together a full description of the API as well as 
@@ -20,58 +20,79 @@ paths:
           description: "200 response"
           schema:
             $ref: "#/definitions/Empty"
-  /data:
+  /apps:
     get:
-      produces:
+      consumes:
       - "application/json"
-      responses:
-        200:
-          description: "200 response"
-          schema:
-            $ref: "#/definitions/Empty"
-  /data/findByType/{typeid}:
-    get:
-      produces:
-      - "application/json"
-      parameters:
-      - name: "typeid"
-        in: "path"
-        required: true
-        type: "string"
-      responses:
-        200:
-          description: "200 response"
-          schema:
-            $ref: "#/definitions/Empty"
-  /data/{dataId}:
-    get:
-      produces:
-      - "application/json"
-      parameters:
-      - name: "dataId"
-        in: "path"
-        required: true
-        type: "string"
-      responses:
-        200:
-          description: "200 response"
-          schema:
-            $ref: "#/definitions/Empty"
-  /dataTypes:
-    get:
-      produces:
-      - "application/json"
-      responses:
-        200:
-          description: "200 response"
-          schema:
-            $ref: "#/definitions/Empty"
-  /dataTypes/findByPlatform/{platformId}:
-    get:
       produces:
       - "application/json"
       parameters:
       - name: "platformId"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "offset"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "limit"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Apps"
+          headers:
+            X-Total-Count:
+              type: "string"
+            Link:
+              type: "string"
+    post:
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "SaveApps"
+        required: true
+        schema:
+          $ref: "#/definitions/SaveApps"
+      responses:
+        200:
+          description: "200 response"
+    put:
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "SaveApps"
+        required: true
+        schema:
+          $ref: "#/definitions/SaveApps"
+      responses:
+        200:
+          description: "200 response"
+    delete:
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "DeleteApps"
+        required: true
+        schema:
+          $ref: "#/definitions/DeleteApps"
+      responses:
+        200:
+          description: "200 response"
+  /apps/findByDomain/{appDomain}:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "appDomain"
         in: "path"
         required: true
         type: "string"
@@ -79,9 +100,156 @@ paths:
         200:
           description: "200 response"
           schema:
-            $ref: "#/definitions/Empty"
-  /dataTypes/{dataTypeId}:
+            $ref: "#/definitions/AppsItem"
+  /apps/{appId}:
     get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "appId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/AppsItem"
+    put:
+      consumes:
+      - "application/json"
+      parameters:
+      - name: "appId"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "SaveAppsItem"
+        required: true
+        schema:
+          $ref: "#/definitions/SaveAppsItem"
+      responses:
+        200:
+          description: "200 response"
+    delete:
+      consumes:
+      - "application/json"
+      parameters:
+      - name: "appId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+  /apps/{appId}/auth/config:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "appId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/AuthConfig"
+  /auth/config:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          examples:
+            application/json:
+              authType: cognito
+              authConfig:
+                poolId: us-east-1_iFYpXMKEQ
+                clientId: 6ti7q7tdgq9gnbo9u05v5o0jq6
+          schema:
+            $ref: "#/definitions/AuthConfig"
+  /data:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "limit"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "dataTypeId"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "platformId"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "offset"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Data"
+          headers:
+            X-Total-Count:
+              type: "string"
+            Link:
+              type: "string"
+    post:
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "SaveData"
+        required: true
+        schema:
+          $ref: "#/definitions/SaveData"
+      responses:
+        200:
+          description: "200 response"
+    put:
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "SaveData"
+        required: true
+        schema:
+          $ref: "#/definitions/SaveData"
+      responses:
+        200:
+          description: "200 response"
+    delete:
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "DeleteData"
+        required: true
+        schema:
+          $ref: "#/definitions/DeleteData"
+      responses:
+        200:
+          description: "200 response"
+  /data/findByType/{dataTypeId}:
+    get:
+      consumes:
+      - "application/json"
       produces:
       - "application/json"
       parameters:
@@ -93,9 +261,132 @@ paths:
         200:
           description: "200 response"
           schema:
-            $ref: "#/definitions/Empty"
+            $ref: "#/definitions/Data"
+          headers:
+            X-Total-Count:
+              type: "string"
+            Link:
+              type: "string"
+  /data/{dataId}:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "dataId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/DataItem"
+    put:
+      consumes:
+      - "application/json"
+      parameters:
+      - name: "dataId"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "SaveDataItem"
+        required: true
+        schema:
+          $ref: "#/definitions/SaveDataItem"
+      responses:
+        200:
+          description: "200 response"
+    delete:
+      consumes:
+      - "application/json"
+      parameters:
+      - name: "dataId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+  /dataTypes:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/DataTypes"
+  /dataTypes/findByPlatform/{platformId}:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "platformId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/PlatformDataTypes"
+  /dataTypes/{dataTypeId}:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "dataTypeId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/PlatformDataTypeItem"
   /groups:
     get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+    post:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+    put:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+    delete:
+      consumes:
+      - "application/json"
       produces:
       - "application/json"
       responses:
@@ -105,6 +396,8 @@ paths:
             $ref: "#/definitions/Empty"
   /groups/{groupId}:
     get:
+      consumes:
+      - "application/json"
       produces:
       - "application/json"
       parameters:
@@ -119,6 +412,38 @@ paths:
             $ref: "#/definitions/Empty"
   /platforms:
     get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+    post:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+    put:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+    delete:
+      consumes:
+      - "application/json"
       produces:
       - "application/json"
       responses:
@@ -128,6 +453,8 @@ paths:
             $ref: "#/definitions/Empty"
   /platforms/findByDomain:
     get:
+      consumes:
+      - "application/json"
       produces:
       - "application/json"
       responses:
@@ -137,6 +464,8 @@ paths:
             $ref: "#/definitions/Empty"
   /platforms/{platformId}:
     get:
+      consumes:
+      - "application/json"
       produces:
       - "application/json"
       parameters:
@@ -151,6 +480,8 @@ paths:
             $ref: "#/definitions/Empty"
   /platforms/{platformId}/approvals:
     get:
+      consumes:
+      - "application/json"
       produces:
       - "application/json"
       parameters:
@@ -165,6 +496,8 @@ paths:
             $ref: "#/definitions/Empty"
   /platforms/{platformId}/boats:
     get:
+      consumes:
+      - "application/json"
       produces:
       - "application/json"
       parameters:
@@ -179,6 +512,8 @@ paths:
             $ref: "#/definitions/Empty"
   /platforms/{platformId}/clients:
     get:
+      consumes:
+      - "application/json"
       produces:
       - "application/json"
       parameters:
@@ -193,6 +528,8 @@ paths:
             $ref: "#/definitions/Empty"
   /platforms/{platformId}/dashboard:
     get:
+      consumes:
+      - "application/json"
       produces:
       - "application/json"
       parameters:
@@ -207,6 +544,8 @@ paths:
             $ref: "#/definitions/Empty"
   /platforms/{platformId}/dfa:
     get:
+      consumes:
+      - "application/json"
       produces:
       - "application/json"
       parameters:
@@ -221,6 +560,8 @@ paths:
             $ref: "#/definitions/Empty"
   /platforms/{platformId}/events:
     get:
+      consumes:
+      - "application/json"
       produces:
       - "application/json"
       parameters:
@@ -235,6 +576,8 @@ paths:
             $ref: "#/definitions/Empty"
   /platforms/{platformId}/forms:
     get:
+      consumes:
+      - "application/json"
       produces:
       - "application/json"
       parameters:
@@ -249,6 +592,8 @@ paths:
             $ref: "#/definitions/Empty"
   /platforms/{platformId}/maps:
     get:
+      consumes:
+      - "application/json"
       produces:
       - "application/json"
       parameters:
@@ -263,6 +608,8 @@ paths:
             $ref: "#/definitions/Empty"
   /platforms/{platformId}/media:
     get:
+      consumes:
+      - "application/json"
       produces:
       - "application/json"
       parameters:
@@ -277,6 +624,8 @@ paths:
             $ref: "#/definitions/Empty"
   /platforms/{platformId}/news:
     get:
+      consumes:
+      - "application/json"
       produces:
       - "application/json"
       parameters:
@@ -291,6 +640,8 @@ paths:
             $ref: "#/definitions/Empty"
   /platforms/{platformId}/pages:
     get:
+      consumes:
+      - "application/json"
       produces:
       - "application/json"
       parameters:
@@ -305,6 +656,8 @@ paths:
             $ref: "#/definitions/Empty"
   /platforms/{platformId}/products:
     get:
+      consumes:
+      - "application/json"
       produces:
       - "application/json"
       parameters:
@@ -319,6 +672,8 @@ paths:
             $ref: "#/definitions/Empty"
   /platforms/{platformId}/reports:
     get:
+      consumes:
+      - "application/json"
       produces:
       - "application/json"
       parameters:
@@ -333,6 +688,8 @@ paths:
             $ref: "#/definitions/Empty"
   /platforms/{platformId}/shows:
     get:
+      consumes:
+      - "application/json"
       produces:
       - "application/json"
       parameters:
@@ -347,42 +704,12 @@ paths:
             $ref: "#/definitions/Empty"
   /platforms/{platformId}/sites:
     get:
+      consumes:
+      - "application/json"
       produces:
       - "application/json"
       parameters:
       - name: "platformId"
-        in: "path"
-        required: true
-        type: "string"
-      responses:
-        200:
-          description: "200 response"
-          schema:
-            $ref: "#/definitions/Empty"
-  /platforms/{platformId}/modules:
-    get:
-      produces:
-      - "application/json"
-      parameters:
-      - name: "platformId"
-        in: "path"
-        required: true
-        type: "string"
-      responses:
-        200:
-          description: "200 response"
-          schema:
-            $ref: "#/definitions/Empty"
-  /platforms/{platformId}/modules/{moduleId}:
-    get:
-      produces:
-      - "application/json"
-      parameters:
-      - name: "platformId"
-        in: "path"
-        required: true
-        type: "string"
-      - name: "moduleId"
         in: "path"
         required: true
         type: "string"
@@ -393,6 +720,38 @@ paths:
             $ref: "#/definitions/Empty"
   /users:
     get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+    post:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+    put:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+    delete:
+      consumes:
+      - "application/json"
       produces:
       - "application/json"
       responses:
@@ -402,6 +761,8 @@ paths:
             $ref: "#/definitions/Empty"
   /users/findByEmail:
     get:
+      consumes:
+      - "application/json"
       produces:
       - "application/json"
       responses:
@@ -411,6 +772,23 @@ paths:
             $ref: "#/definitions/Empty"
   /users/{userId}/profile:
     get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "userId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+    put:
+      consumes:
+      - "application/json"
       produces:
       - "application/json"
       parameters:
@@ -424,6 +802,156 @@ paths:
           schema:
             $ref: "#/definitions/Empty"
 definitions:
+  DeleteData:
+    type: "array"
+    items:
+      $ref: "#/definitions/DeleteDataItem"
+  DataTypeValidation:
+    type: "object"
+    properties:
+      validationType:
+        type: "string"
+      validationRegEx:
+        type: "string"
+      validationError:
+        type: "string"
+  DataItem:
+    type: "object"
+    properties:
+      dataId:
+        type: "string"
+      dataType:
+        type: "string"
+      dataTypeId:
+        type: "string"
+      createAt:
+        type: "string"
+      modifiedAt:
+        type: "string"
+      deletedAt:
+        type: "string"
+      content:
+        type: "object"
+        properties: {}
+      relationships:
+        type: "array"
+        items:
+          type: "object"
+          properties:
+            dataId:
+              type: "string"
+            dataType:
+              type: "string"
+            dataTypeId:
+              type: "string"
+  DataTypeItem:
+    type: "object"
+    properties:
+      dataType:
+        type: "string"
+      title:
+        type: "string"
+      description:
+        type: "string"
+  DataTypeField:
+    type: "object"
+    properties:
+      fieldId:
+        type: "string"
+      fieldName:
+        type: "string"
+      fieldHint:
+        type: "string"
+      fieldValidation:
+        $ref: "#/definitions/DataTypeValidation"
+  SaveApps:
+    type: "array"
+    items:
+      $ref: "#/definitions/SaveAppsItem"
+  SaveDataItem:
+    type: "object"
+    properties:
+      dataId:
+        type: "string"
+      dataTypeId:
+        type: "string"
+      content:
+        type: "object"
+        properties: {}
+      relationships:
+        type: "array"
+        items:
+          type: "object"
+          properties:
+            dataId:
+              type: "string"
+            dataType:
+              type: "string"
+            dataTypeId:
+              type: "string"
+  Data:
+    type: "array"
+    items:
+      $ref: "#/definitions/DataItem"
+  AuthConfig:
+    type: "object"
+    properties:
+      authType:
+        type: "string"
+      authConfig:
+        type: "object"
+        properties: {}
+  DeleteApps:
+    type: "array"
+    items:
+      $ref: "#/definitions/DeleteAppsItem"
+  Apps:
+    type: "array"
+    items:
+      $ref: "#/definitions/AppsItem"
+  DeleteDataItem:
+    type: "string"
+  SaveData:
+    type: "array"
+    items:
+      $ref: "#/definitions/SaveDataItem"
   Empty:
     type: "object"
     title: "Empty Schema"
+  SaveAppsItem:
+    type: "object"
+    properties:
+      appId:
+        type: "string"
+  PlatformDataTypes:
+    type: "array"
+    items:
+      $ref: "#/definitions/PlatformDataTypeItem"
+  AppsItem:
+    type: "object"
+    properties:
+      appId:
+        type: "string"
+  DeleteAppsItem:
+    type: "string"
+  DataTypes:
+    type: "array"
+    items:
+      $ref: "#/definitions/DataTypeItem"
+  PlatformDataTypeItem:
+    type: "object"
+    properties:
+      platformId:
+        type: "string"
+      dataType:
+        type: "string"
+      dataTypeId:
+        type: "string"
+      title:
+        type: "string"
+      description:
+        type: "string"
+      fields:
+        type: "array"
+        items:
+          $ref: "#/definitions/DataTypeField"
