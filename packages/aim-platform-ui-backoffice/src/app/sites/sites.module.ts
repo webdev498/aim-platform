@@ -6,11 +6,13 @@ import { SiteComponent } from './site/site.component';
 import {SiteService} from "./site/site.service";
 import { TemplateComponent } from './site/template/template.component';
 import {TemplateService} from "./site/template/template.service";
+import {PageComponent} from "../pages/page/page.component";
 
 export const routes = [
   { path: '', component: SitesComponent, pathMatch: 'full' },
   { path: ':id', component: SiteComponent},
-  { path: ':id/template/:id', component: TemplateComponent }
+  { path: ':id/template/:id', component: TemplateComponent },
+  { path: ':id/page/:id', component: PageComponent }
 ];
 
 @NgModule({
@@ -19,6 +21,7 @@ export const routes = [
     RouterModule.forChild(routes)
   ],
   declarations: [
+    PageComponent,
     SitesComponent,
     SiteComponent,
     TemplateComponent

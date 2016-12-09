@@ -11,6 +11,8 @@ import {AppConfig} from "./app.config";
 import { AppState, InteralStateType } from './app.service';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import {UsersService} from "./users.service";
+import { PagesComponent } from './pages/pages.component';
+import { CompaniesComponent } from './companies/companies.component';
 
 type StoreType = {
   state: InteralStateType,
@@ -22,6 +24,8 @@ type StoreType = {
   declarations: [
     AppComponent,
     ErrorComponent,
+    PagesComponent,
+    CompaniesComponent
   ],
   imports: [
     BrowserModule,
