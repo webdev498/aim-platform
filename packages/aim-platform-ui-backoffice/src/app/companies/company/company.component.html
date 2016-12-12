@@ -1,17 +1,11 @@
 <h1 class="page-title">Company {{route.params.value.companyId}}</h1>
 <div class="row">
   <div class="col-md-12">
-    <section class="widget">
-      <header>
-        <h5>List of customers</h5>
-      </header>
-      <div class="widget-body">
-        <ol>
-          <li><a [routerLink]="['contacts/1']">Customer 1</a></li>
-          <li><a [routerLink]="['contacts/2']">Customer 2</a></li>
-          <li><a [routerLink]="['contacts/3']">Customer 3</a></li>
-        </ol>
-      </div>
-    </section>
+    <app-contacts></app-contacts>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <app-products></app-products>
   </div>
 </div>
