@@ -28,7 +28,6 @@ type StoreType = {
     AppComponent,
     ErrorComponent,
     PagesComponent,
-    CompaniesComponent
   ],
   imports: [
     BrowserModule,
