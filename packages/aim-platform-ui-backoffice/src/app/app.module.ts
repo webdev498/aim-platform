@@ -1,3 +1,5 @@
+import 'rxjs/Operator';
+
 import { BrowserModule } from '@angular/platform-browser';
 import {NgModule, ApplicationRef} from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -13,6 +15,7 @@ import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import {UsersService} from "./users.service";
 import { PagesComponent } from './pages/pages.component';
 import { CompaniesComponent } from './companies/companies.component';
+import {ApiService} from "./api.service";
 
 type StoreType = {
   state: InteralStateType,
@@ -35,6 +38,7 @@ type StoreType = {
   ],
   providers: [
     ...APP_RESOLVER_PROVIDERS,
+    ApiService,
     AppState,
     AppConfig,
     UsersService

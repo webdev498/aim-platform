@@ -6,16 +6,76 @@ var url = require('url');
 var Default = require('./DefaultService');
 
 
+module.exports.appsAppIdAuthConfigGET = function appsAppIdAuthConfigGET (req, res, next) {
+  Default.appsAppIdAuthConfigGET(req.swagger.params, res, next);
+};
+
+module.exports.appsAppIdDELETE = function appsAppIdDELETE (req, res, next) {
+  Default.appsAppIdDELETE(req.swagger.params, res, next);
+};
+
+module.exports.appsAppIdGET = function appsAppIdGET (req, res, next) {
+  Default.appsAppIdGET(req.swagger.params, res, next);
+};
+
+module.exports.appsAppIdPUT = function appsAppIdPUT (req, res, next) {
+  Default.appsAppIdPUT(req.swagger.params, res, next);
+};
+
+module.exports.appsDELETE = function appsDELETE (req, res, next) {
+  Default.appsDELETE(req.swagger.params, res, next);
+};
+
+module.exports.appsFindByDomainAppDomainGET = function appsFindByDomainAppDomainGET (req, res, next) {
+  Default.appsFindByDomainAppDomainGET(req.swagger.params, res, next);
+};
+
+module.exports.appsGET = function appsGET (req, res, next) {
+  Default.appsGET(req.swagger.params, res, next);
+};
+
+module.exports.appsPOST = function appsPOST (req, res, next) {
+  Default.appsPOST(req.swagger.params, res, next);
+};
+
+module.exports.appsPUT = function appsPUT (req, res, next) {
+  Default.appsPUT(req.swagger.params, res, next);
+};
+
+module.exports.authConfigGET = function authConfigGET (req, res, next) {
+  Default.authConfigGET(req.swagger.params, res, next);
+};
+
+module.exports.dataDELETE = function dataDELETE (req, res, next) {
+  Default.dataDELETE(req.swagger.params, res, next);
+};
+
+module.exports.dataDataIdDELETE = function dataDataIdDELETE (req, res, next) {
+  Default.dataDataIdDELETE(req.swagger.params, res, next);
+};
+
 module.exports.dataDataIdGET = function dataDataIdGET (req, res, next) {
   Default.dataDataIdGET(req.swagger.params, res, next);
 };
 
-module.exports.dataFindByTypeTypeidGET = function dataFindByTypeTypeidGET (req, res, next) {
-  Default.dataFindByTypeTypeidGET(req.swagger.params, res, next);
+module.exports.dataDataIdPUT = function dataDataIdPUT (req, res, next) {
+  Default.dataDataIdPUT(req.swagger.params, res, next);
+};
+
+module.exports.dataFindByTypeDataTypeIdGET = function dataFindByTypeDataTypeIdGET (req, res, next) {
+  Default.dataFindByTypeDataTypeIdGET(req.swagger.params, res, next);
 };
 
 module.exports.dataGET = function dataGET (req, res, next) {
   Default.dataGET(req.swagger.params, res, next);
+};
+
+module.exports.dataPOST = function dataPOST (req, res, next) {
+  Default.dataPOST(req.swagger.params, res, next);
+};
+
+module.exports.dataPUT = function dataPUT (req, res, next) {
+  Default.dataPUT(req.swagger.params, res, next);
 };
 
 module.exports.dataTypesDataTypeIdGET = function dataTypesDataTypeIdGET (req, res, next) {
@@ -30,6 +90,10 @@ module.exports.dataTypesGET = function dataTypesGET (req, res, next) {
   Default.dataTypesGET(req.swagger.params, res, next);
 };
 
+module.exports.groupsDELETE = function groupsDELETE (req, res, next) {
+  Default.groupsDELETE(req.swagger.params, res, next);
+};
+
 module.exports.groupsGET = function groupsGET (req, res, next) {
   Default.groupsGET(req.swagger.params, res, next);
 };
@@ -38,12 +102,32 @@ module.exports.groupsGroupIdGET = function groupsGroupIdGET (req, res, next) {
   Default.groupsGroupIdGET(req.swagger.params, res, next);
 };
 
+module.exports.groupsPOST = function groupsPOST (req, res, next) {
+  Default.groupsPOST(req.swagger.params, res, next);
+};
+
+module.exports.groupsPUT = function groupsPUT (req, res, next) {
+  Default.groupsPUT(req.swagger.params, res, next);
+};
+
+module.exports.platformsDELETE = function platformsDELETE (req, res, next) {
+  Default.platformsDELETE(req.swagger.params, res, next);
+};
+
 module.exports.platformsFindByDomainGET = function platformsFindByDomainGET (req, res, next) {
   Default.platformsFindByDomainGET(req.swagger.params, res, next);
 };
 
 module.exports.platformsGET = function platformsGET (req, res, next) {
   Default.platformsGET(req.swagger.params, res, next);
+};
+
+module.exports.platformsPOST = function platformsPOST (req, res, next) {
+  Default.platformsPOST(req.swagger.params, res, next);
+};
+
+module.exports.platformsPUT = function platformsPUT (req, res, next) {
+  Default.platformsPUT(req.swagger.params, res, next);
 };
 
 module.exports.platformsPlatformIdApprovalsGET = function platformsPlatformIdApprovalsGET (req, res, next) {
@@ -86,14 +170,6 @@ module.exports.platformsPlatformIdMediaGET = function platformsPlatformIdMediaGE
   Default.platformsPlatformIdMediaGET(req.swagger.params, res, next);
 };
 
-module.exports.platformsPlatformIdModulesGET = function platformsPlatformIdModulesGET (req, res, next) {
-  Default.platformsPlatformIdModulesGET(req.swagger.params, res, next);
-};
-
-module.exports.platformsPlatformIdModulesModuleIdGET = function platformsPlatformIdModulesModuleIdGET (req, res, next) {
-  Default.platformsPlatformIdModulesModuleIdGET(req.swagger.params, res, next);
-};
-
 module.exports.platformsPlatformIdNewsGET = function platformsPlatformIdNewsGET (req, res, next) {
   Default.platformsPlatformIdNewsGET(req.swagger.params, res, next);
 };
@@ -122,6 +198,10 @@ module.exports.rootGET = function rootGET (req, res, next) {
   Default.rootGET(req.swagger.params, res, next);
 };
 
+module.exports.usersDELETE = function usersDELETE (req, res, next) {
+  Default.usersDELETE(req.swagger.params, res, next);
+};
+
 module.exports.usersFindByEmailGET = function usersFindByEmailGET (req, res, next) {
   Default.usersFindByEmailGET(req.swagger.params, res, next);
 };
@@ -130,6 +210,18 @@ module.exports.usersGET = function usersGET (req, res, next) {
   Default.usersGET(req.swagger.params, res, next);
 };
 
+module.exports.usersPOST = function usersPOST (req, res, next) {
+  Default.usersPOST(req.swagger.params, res, next);
+};
+
+module.exports.usersPUT = function usersPUT (req, res, next) {
+  Default.usersPUT(req.swagger.params, res, next);
+};
+
 module.exports.usersUserIdProfileGET = function usersUserIdProfileGET (req, res, next) {
   Default.usersUserIdProfileGET(req.swagger.params, res, next);
+};
+
+module.exports.usersUserIdProfilePUT = function usersUserIdProfilePUT (req, res, next) {
+  Default.usersUserIdProfilePUT(req.swagger.params, res, next);
 };
