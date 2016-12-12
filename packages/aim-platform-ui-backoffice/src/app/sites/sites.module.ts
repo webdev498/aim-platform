@@ -10,9 +10,9 @@ import {PageComponent} from "../pages/page/page.component";
 
 export const routes = [
   { path: '', component: SitesComponent, pathMatch: 'full' },
-  { path: ':id', component: SiteComponent},
-  { path: ':id/template/:id', component: TemplateComponent },
-  { path: ':id/page/:id', component: PageComponent }
+  { path: ':siteId', component: SiteComponent},
+  { path: ':siteId/template/:templateId', component: TemplateComponent },
+  { path: ':siteId/page/:pageId', component: PageComponent }
 ];
 
 @NgModule({
