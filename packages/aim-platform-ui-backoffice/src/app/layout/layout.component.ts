@@ -1,5 +1,5 @@
-import { Component, ViewEncapsulation, ElementRef } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import {Component, ViewEncapsulation, ElementRef} from '@angular/core';
+import {Router, NavigationEnd, ActivatedRoute, Route} from '@angular/router';
 import { AppConfig } from '../app.config';
 
 declare var jQuery: any;
@@ -24,9 +24,11 @@ export class Layout {
   router: Router;
   chatOpened: boolean = false;
 
-  constructor(config: AppConfig,
-              el: ElementRef,
-              router: Router) {
+  constructor(
+    config: AppConfig,
+    el: ElementRef,
+    router: Router
+  ) {
     this.el = el;
     this.config = config.getConfig();
     this.configFn = config;
@@ -160,8 +162,7 @@ export class Layout {
   }
 
   ngOnInit(): void {
-
-    if (localStorage.getItem('nav-static') === 'true') {
+      if (localStorage.getItem('nav-static') === 'true') {
       this.config.state['nav-static'] = true;
     }
 
