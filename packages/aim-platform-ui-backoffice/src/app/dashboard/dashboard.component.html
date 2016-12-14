@@ -1,0 +1,75 @@
+<h1 class="page-title">Dashboard</h1>
+
+<div class="row widget-container">
+  <div class="col-lg-6 col-xs-12">
+    <section widget class="widget">
+      <!-- .widget>header is generally a place for widget title and widget controls. see .widget in _base.scss -->
+      <header>
+        <h6>
+          SITES
+        </h6>
+        <div class="widget-controls">
+          <a href="#"><i class="fa fa-refresh"></i></a>
+          <a href="#" data-widgster="close"><i class="glyphicon glyphicon-remove"></i></a>
+        </div>
+      </header>
+      <div class="widget-body">
+        <ol>
+          <li><a [routerLink]="['/app/sites/1']">Site 1</a></li>
+          <li><a [routerLink]="['/app/sites/2']">Site 2</a></li>
+          <li><a [routerLink]="['/app/sites/3']">Site 3</a></li>
+        </ol>
+      </div>
+    </section>
+    <section widget class="widget">
+      <header>
+        <h6>
+          REPORTS
+        </h6>
+        <div class="widget-controls">
+          <a href="#"><i class="fa fa-refresh"></i></a>
+          <a href="#" data-widgster="close"><i class="glyphicon glyphicon-remove"></i></a>
+        </div>
+      </header>
+      <div class="widget-body">
+        <ol>
+          <li><a [routerLink]="['/app/reports/1']">Report 1</a></li>
+          <li><a [routerLink]="['/app/reports/2']">Report 2</a></li>
+          <li><a [routerLink]="['/app/reports/3']">Report 3</a></li>
+        </ol>
+      </div>
+    </section>
+  </div>
+  <div class="col-lg-6 col-xs-12">
+    <section widget class="widget">
+      <header>
+        <h6>
+          SHOWS
+        </h6>
+        <div class="widget-controls">
+          <a href="#"><i class="fa fa-refresh"></i></a>
+          <a href="#" data-widgster="close"><i class="glyphicon glyphicon-remove"></i></a>
+        </div>
+      </header>
+      <div class="widget-body">
+        <ol>
+          <li><a [routerLink]="['/app/shows/1']">Show 1</a></li>
+          <li><a [routerLink]="['/app/shows/2']">Show 2</a></li>
+          <li><a [routerLink]="['/app/shows/3']">Show 3</a></li>
+        </ol>
+      </div>
+    </section>
+    <section widget class="widget">
+      <header>
+        <h6>APPROVALS</h6>
+        <div class="widget-controls">
+          <a href="#"><i class="fa fa-refresh"></i></a>
+          <a href="#" data-widgster="close"><i class="glyphicon glyphicon-remove"></i></a>
+        </div>
+      </header>
+      <div class="widget-body">
+        List of approvals
+      </div>
+    </section>
+  </div>
+</div>

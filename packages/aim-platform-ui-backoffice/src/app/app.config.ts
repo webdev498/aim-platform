@@ -5,7 +5,7 @@ declare let jQuery: any;
 @Injectable()
 export class AppConfig {
   config = {
-    name: 'Backoffice',
+    name: 'Admin',
     title: 'AIM Backoffice',
     version: '1.0.0',
     /**
