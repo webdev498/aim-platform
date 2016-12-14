@@ -16,15 +16,23 @@ app, .app {
   left: 0;
   top: 0;
   bottom: 0;
+  padding: 10px;
   width: $sidebar-width;
-  @include linear-gradient($default-grad-top, $default-grad-bottom);
+  background: $sidebar-bg-color;
   color: $sidebar-color;
 
   .slimScrollBar{
     @include border-radius(0 !important);
     background-color: $sidebar-color !important;
   }
+  .alt-1 & {
+	    @include linear-gradient($default-grad-top, $default-grad-bottom);
+  }
+  .alt-2 & {
+ 	 background: $sidebar-bg-color-alt-2;
+  }
 }
+
 
 .page-controls, .content-wrap, .loader-wrap{
   left: $sidebar-width;
@@ -146,6 +154,7 @@ app, .app {
 
     .input-group-addon {
       line-height: 1.5;
+      color: $navbar-dashboard-bg;
 
       .fa {
         vertical-align: -1px;
@@ -174,15 +183,25 @@ app, .app {
 .content{
   min-height: 100%;
   padding: $content-padding-top $content-padding-horizontal $content-padding-vertical;
-  @include linear-gradient($default-grad-top, $default-grad-bottom);
-   background-color: #C0DDE7;
+  background-color: $white;
 
   @include media-breakpoint-down(sm) {
     padding-left: 20px;
     padding-right: 20px;
   }
   
+  .alt-1 & {
+  	@include linear-gradient($default-grad-top, $default-grad-bottom);
+  	background-color: #C0DDE7;  
+  	}
+  .alt-2 & {
+  	background-color: $content-background-color-alt-2;  
+  	}  	
+  
 }
+
+
+
 
 .logo{
   margin: 11px 0 19px;
@@ -196,7 +215,7 @@ app, .app {
 
   @include transition(width .3s ease-in-out);
   a{
-    color: $white;
+    color: $sidebar-color;
     text-decoration: none;
   }
 
@@ -219,11 +238,19 @@ app, .app {
   @media (min-width: map_get($grid-breakpoints, lg)) and (min-height: $screen-lg-height), (max-width: map_get($grid-breakpoints, md) - 1px){
     font-size: 16px;
   }
+  .alt-2 & {
+  .open {
+	  background-color: lighten($sidebar-bg-color-alt-2, 10%);
+	  }
+  }
 
   li a{
     display: block;
     color: $sidebar-color;
     text-decoration: none;
+    border-radius: $border-radius-sm;
+    margin-bottom: 5px;
+
 
     .toggle{
       float: right;
@@ -252,12 +279,17 @@ app, .app {
 
   > li > a{
     position: relative;
-    border-top: 1px solid $sidebar-item-border-color;
+//     border-top: 1px solid $sidebar-item-border-color;
     padding-left: 50px;
     line-height: 35px;
 
     &:hover{
       background-color: $sidebar-item-hover-bg-color;
+      .alt-2 & {
+		@include alpha-attribute('background-color', rgba($sidebar-item-hover-bg-color-alt-2, 0.3), white);
+		
+      }
+      
     }
 
     @media (min-width: map_get($grid-breakpoints, lg)) and (min-height: $screen-lg-height), (max-width: map_get($grid-breakpoints, md) - 1px){
@@ -272,7 +304,7 @@ app, .app {
       display: block;
       position: absolute;
       top: 3px;
-      left: $sidebar-padding-horizontal;
+      left: $sidebar-padding-horizontal - 9px;
       width: 28px;
       height: 28px;
       line-height: 28px;
@@ -336,19 +368,32 @@ app, .app {
 
   > .open > a{
     background-color: lighten($sidebar-item-hover-bg-color, 2%);
+    .alt-2 & {
+    background-color: transparent;
+    }
   }
 
   > li:last-child > a{
-    border-bottom: 1px solid $sidebar-item-border-color;
+//     border-bottom: 1px solid $sidebar-item-border-color;
   }
 
   > .active > a{
-    color: $sidebar-item-active-color;
+//     color: $sidebar-item-active-color;
     background-color: $sidebar-bg-color;
+    .alt-1 & {
+   	 background-color: $sidebar-bg-color-alt-1;
+    }
+    .alt-2 & {
+   	 background-color: $sidebar-item-active-color-alt-2!important;
+   	 color: $white;
+    }    
 
     .icon{
       border-radius: 50%;
       background-color: $sidebar-item-active-color;
+      .alt-2 & {
+	      color: $white;
+      }
 
       .fa, .glyphicon{
         color: $sidebar-bg-color;
@@ -363,7 +408,7 @@ app, .app {
   > li ul{
     padding: 0;
     font-size: 13px;
-    background-color: lighten($sidebar-bg-color, 5%);
+//     background-color: lighten($sidebar-bg-color, 5%);
     list-style: none;
 
     @media (min-width: map_get($grid-breakpoints, lg)) and (min-height: $screen-lg-height), (max-width: map_get($grid-breakpoints, md) - 1px){
@@ -381,7 +426,7 @@ app, .app {
       &.active{
         > a{
           font-weight: normal;
-          color: $white;
+          color: lighten( $sidebar-color, 20% )
         }
       }
 
@@ -512,7 +557,7 @@ app, .app {
   font-size: $font-size-mini;
   > li{
     > a{
-      color: $gray-lighter;
+      color: $sidebar-color;
       text-decoration: none;
       font-weight: normal;
 
@@ -970,6 +1015,11 @@ app, .app {
   a.list-group-item {
     text-decoration: none;
     color: $gray;
+	.alt-2 {
+		&:hover {
+			background: #333;
+		}
+	}
   }
   
 
@@ -980,12 +1030,29 @@ app, .app {
 }
 
 .list-group-item:nth-child(even) {
-	background: $widget-grad-top
+	background: $widget-grad-top;
+	.alt-1 & { 
+		background: $widget-grad-top-alt-1;
+	}
+	.alt-2 & { 
+		background: lighten($list-group-item-alt-2, 20%);
+	}
 }
 
 .list-group-item:nth-child(odd) {
-	background: $widget-grad-bottom
+	background: $widget-grad-bottom;
+	.alt-1 & {
+		background: $widget-grad-bottom-alt-1
+
+	}
+	.alt-2 & { 
+		background: lighten($list-group-item-alt-2, 30%);
+
+	}
+	
 }
+
+
 
 /***********************/
 /*        Loader       */
@@ -1035,14 +1102,19 @@ app, .app {
   position: relative;
   margin-bottom: $grid-gutter-width;
   padding: $widget-padding-vertical $widget-padding-horizontal;
-  @include linear-gradient($widget-grad-top, $widget-grad-bottom);
-
+  background: $widget-bg-color;
   border-radius: $border-radius-sm;
+  box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.5);
+
   > header{
     margin: (-$widget-padding-vertical) (-$widget-padding-horizontal);
     padding: $widget-padding-vertical $widget-padding-horizontal;
     h1,h2,h3,h4,h5,h6{
       margin: 0;
+    }
+    .alt-2 & {
+	    background: $widget-header-bg-color;
+	    color: $white;
     }
 
     + .widget-body,
@@ -1133,7 +1205,18 @@ app, .app {
       padding-right: $widget-padding-horizontal;
     }
   }
+  .alt-1 & {
+	@include linear-gradient($widget-grad-top-alt-1, $widget-grad-bottom-alt-1);
+
+  }
+  .alt-2 & {
+	background: $white;
+	border: 1px solid #011936;
+	box-shadow: 0 0 0;
+
+  }
 }
+
 
 .widget-controls{
   position: absolute;
@@ -1159,6 +1242,9 @@ app, .app {
     padding: 1px 4px;
     border-radius: 4px;
     color: rgba($black, .4);
+    .alt-2 & {
+	    color: $white;
+    }
     @include transition(color .15s ease-in-out);
 
     &:hover{
