@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
 declare var jQuery: any;
-declare var Shuffle: any;
+declare var shuffle: any;
 
 @Component({
   selector: '[extra-gallery]',
