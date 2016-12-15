@@ -11,4 +11,7 @@ export class AppComponent {
   constructor(
     public appState: AppState) {
   }
+  ngOnInit() {
+    $('body').addClass(this.appState.get('app_style') || '');
+  }
 }

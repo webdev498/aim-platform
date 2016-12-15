@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import _ from 'lodash';
 
 export type InteralStateType = {
   [key: string]: any
@@ -9,7 +10,10 @@ export class AppState {
   _state: InteralStateType = { };
 
   constructor() {
-
+    // set sessionStorage to app state
+    _.forIn(window.sessionStorage, (value, key) => {
+      this.set(key, value);
+    });
   }
 
   // already return a clone of the current state
