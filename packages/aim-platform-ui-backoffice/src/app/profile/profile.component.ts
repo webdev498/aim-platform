@@ -2,9 +2,9 @@ import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: '[profile]',
-  templateUrl: './profile.template.html',
+  templateUrl: 'profile.template.html',
   encapsulation: ViewEncapsulation.None,
-  styleUrls: ['./profile.style.scss']
+  styleUrls: ['profile.style.scss']
 })
 export class Profile {
 }

@@ -12,7 +12,7 @@ const routes: Routes = [
     { path: 'sites', loadChildren: 'app/sites/sites.module#SitesModule' },
     { path: 'inbox', loadChildren: 'app/sing/inbox/inbox.module#InboxModule' },
     { path: 'charts', loadChildren: 'app/sing/charts/charts.module#ChartsModule' },
-    { path: 'profile', loadChildren: 'app/sing/profile/profile.module#ProfileModule' },
+    { path: 'profile', loadChildren: 'app/profile/profile.module#ProfileModule' },
     { path: 'forms', loadChildren: 'app/sing/forms/forms.module#FormModule' },
     { path: 'ui', loadChildren: 'app/sing/ui-elements/ui-elements.module#UiElementsModule' },
     { path: 'extra', loadChildren: 'app/sing/extra/extra.module#ExtraModule' },
