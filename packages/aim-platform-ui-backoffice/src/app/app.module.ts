@@ -15,6 +15,9 @@ import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import {UsersService} from "./users.service";
 import { PagesComponent } from './pages/pages.component';
 import {ApiService} from "./api.service";
+import {CognitoUtil} from "./services/cognito.service";
+import {AwsUtil} from "./services/aws.service";
+import {DynamoDBService} from "./services/ddb.service";
 
 type StoreType = {
   state: InteralStateType,
@@ -39,6 +42,9 @@ type StoreType = {
     ApiService,
     AppState,
     AppConfig,
+    AwsUtil,
+    CognitoUtil,
+    DynamoDBService,
     UsersService
   ],
   bootstrap: [AppComponent]

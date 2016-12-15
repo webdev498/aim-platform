@@ -7,6 +7,7 @@ export const ROUTES: Routes = [
   { path: 'app/:platformId', loadChildren: 'app/layout/layout.module#LayoutModule' },
   { path: 'platforms', loadChildren: 'app/platforms/platforms.module#PlatformsModule' },
   { path: 'login', loadChildren: 'app/login/login.module#LoginModule' },
+  { path: 'logout', loadChildren: 'app/login/login.module#LoginModule' },
   { path: 'error', component: ErrorComponent },
   { path: '**', component: ErrorComponent }
 ];
