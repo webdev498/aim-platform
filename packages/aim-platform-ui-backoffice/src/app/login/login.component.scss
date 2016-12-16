@@ -7,8 +7,15 @@
 /**             LOGIN             **/
 /***********************************/
 
+/*
 .login-page{
-  @include linear-gradient($default-grad-top, $default-grad-bottom);
+	background: $white;
+  .alt-1 & {
+	  @include linear-gradient($default-grad-top, $default-grad-bottom);
+	  }
+	.alt-2 & {
+		background: $login-backgound-color-alt-2;
+	}	  
 }
 
 .login-page .page-footer {
@@ -41,6 +48,10 @@
 
 .widget-login{
   padding: 30px;
+  border: 1px solid #fff;
+  .alt-2 & {
+	  background: $login-widget-backgound-color-alt-2;
+  }
 
   > header{
     h1,h2,h3,h4,h5,h6{
@@ -66,9 +77,10 @@
   .form-control{
     font-size: $font-size-mini;
     border: none;
-    background-color: $gray-lighter;
+    background-color: $white;
     &:focus{
       background-color: $gray-semi-lighter;
     }
   }
 }
+*/

@@ -50,17 +50,22 @@ $brand-danger-light:          #fff2ef !default;
 $addition-bg: #f8f8f8 !default;
 
 
-$sidebar-bg-color: #242424 !default;
+$sidebar-bg-color: #eee !default;
+$sidebar-bg-color-alt-1: #63a7db !default;
+$sidebar-bg-color-alt-2: #C0DFA1 !default;
 $sidebar-color: #001750 !default;
 $sidebar-item-border-color: #2d2d2d !default;
-$sidebar-item-active-color: #F2BE35 !default;
-$sidebar-item-hover-bg-color: #111 !default;
+$sidebar-item-active-color: #001750 !default;
+$sidebar-item-active-color-alt-2: #011936 !default;
+$sidebar-item-hover-bg-color: #63a7db !default;
+$sidebar-item-hover-bg-color-alt-2: #011936 !default;
 
 // Typography
 // -------------------------
 
 $text-color:            $gray !default;
 $text-color2:			#fff !default;
+$text-color3:			#333 !default;
 //$text-color: #57534A; //a bit brown?
 
 $font-size-root: 14px;
@@ -114,8 +119,12 @@ $panel-default-border:        transparent !default;
 $panel-default-heading-bg:    $gray-semi-lighter !default;
 $default-grad-top:			  #7CC3F2;
 $default-grad-bottom:		  #C0DDE7;
-$widget-grad-top:			  #9fceec;
-$widget-grad-bottom:		  #BDDFF1;
+$widget-grad-top:			  #F5F5F5;
+$widget-grad-bottom:		  #EFEFEF;
+$widget-grad-top-alt-1:		  #9fceec;
+$widget-grad-bottom-alt-1:	  #BDDFF1;
+$widget-header-bg-color:	  #011936;
+$content-background-color-alt-2: #82A3A1;
 
 // Screens
 // -------------------------
@@ -127,9 +136,11 @@ $screen-lg-height: 670px !default;
 
 $widget-padding-vertical: 15px !default;
 $widget-padding-horizontal: 20px !default;
-$widget-bg-color: $white;
-
+$widget-bg-color: #eee;
 $chart-spacer-y: 0.65rem !default;
+$list-group-item-alt-2: #82A3A1;
+$login-widget-backgound-color-alt-2:	#C0DFA1;
+$login-backgound-color-alt-2: #82A3A1;
 
 
 // Bootstrap variables
@@ -157,7 +168,7 @@ $border-radius-sm:       .2rem !default;
 
 //== Scaffolding
 //
-$body-bg: #eee !default;
+$body-bg: #fff !default;
 $body-bg-light: lighten($body-bg, 3%);
 
 // Typography
@@ -210,7 +221,9 @@ $nav-tabs-active-link-hover-border-color:   #ddd !default;
 $navbar-margin-bottom:             0 !default;
 $navbar-border-radius:             0 !default;
 
-$navbar-dashboard-bg:                #7CC3F2 !default;
+$navbar-dashboard-bg:                #333 !default;
+$navbar-dashboard-bg-alt-1:          #7CC3F2 !default;
+$navbar-dashboard-bg-alt-2:          #011229 !default;
 $navbar-dashboard-color:             #777 !default;
 $navbar-dashboard-border:            darken($navbar-dashboard-bg, 6.5%) !default;
 
@@ -333,3 +346,5 @@ $pagination-disabled-border:           transparent !default;
 // ------------------------
 
 $fa-font-path: "assets/fonts/font-awesome" !default;
+
+
