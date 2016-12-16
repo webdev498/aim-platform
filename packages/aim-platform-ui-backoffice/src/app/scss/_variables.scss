@@ -139,6 +139,8 @@ $widget-padding-horizontal: 20px !default;
 $widget-bg-color: #eee;
 $chart-spacer-y: 0.65rem !default;
 $list-group-item-alt-2: #82A3A1;
+$login-widget-backgound-color-alt-2:	#C0DFA1;
+$login-backgound-color-alt-2: #82A3A1;
 
 
 // Bootstrap variables
@@ -166,7 +168,7 @@ $border-radius-sm:       .2rem !default;
 
 //== Scaffolding
 //
-$body-bg: #eee !default;
+$body-bg: #fff !default;
 $body-bg-light: lighten($body-bg, 3%);
 
 // Typography

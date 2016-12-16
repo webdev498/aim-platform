@@ -1107,7 +1107,7 @@ app, .app {
   box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.5);
 
   > header{
-    margin: (-$widget-padding-vertical) (-$widget-padding-horizontal);
+    margin: (-$widget-padding-vertical) (-$widget-padding-horizontal) 0 (-$widget-padding-horizontal);
     padding: $widget-padding-vertical $widget-padding-horizontal;
     h1,h2,h3,h4,h5,h6{
       margin: 0;
@@ -1452,3 +1452,85 @@ app, .app {
   }
 }
 
+// Login/Profile Select Pages vvv
+.login-page, .platform-select-page{
+	background: $white;
+	height: 100vh;
+  .alt-1 & {
+	  @include linear-gradient($default-grad-top, $default-grad-bottom);
+	  }
+	.alt-2 & {
+		background: $login-backgound-color-alt-2;
+	}	  
+}
+
+.login-page .page-footer, .platform-select-page .page-footer {
+  margin-bottom: 25px;
+  font-size: $font-size-mini;
+  color: $text-muted;
+  .alt-2 &, .alt-1 & {
+	  color: $white;
+  }
+  text-align: center;
+  @media (min-height: 600px) {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+.widget-login-container{
+  padding-top: 10%;
+}
+
+.widget-login-logo{
+  margin-top: 15px;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: $font-weight-normal;
+  .fa-circle{
+    font-size: 13px;
+    margin: 0 20px;
+  }
+}
+
+.widget-login{
+  padding: 30px;
+  border: 1px solid #fff;
+  .alt-2 & {
+	  background: $login-widget-backgound-color-alt-2;
+  }
+
+  > header{
+    h1,h2,h3,h4,h5,h6{
+      font-weight: $font-weight-normal;
+      text-align: center;
+    }
+  }
+}
+
+.widget-login-info{
+  font-size: $font-size-mini;
+  color: #888;
+  margin-top: 1px;
+  margin-bottom: 0;
+  text-align: center;
+
+  &.abc-checkbox {
+    margin-left: -25px;
+  }
+}
+
+.login-form{
+  .form-control{
+    font-size: $font-size-mini;
+    border: none;
+    background-color: $white;
+    &:focus{
+      background-color: $gray-semi-lighter;
+    }
+  }
+}
+
+// Login/Profile Select Pages ^^^
