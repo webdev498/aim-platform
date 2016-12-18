@@ -5,7 +5,6 @@ import {
   UserLoginService,
   LoggedInCallback
 } from "../services/cognito.service";
-import {DynamoDBService} from "../services/ddb.service";
 
 @Component({
   selector: 'login',
@@ -13,26 +12,25 @@ import {DynamoDBService} from "../services/ddb.service";
   templateUrl: 'login.component.html',
   encapsulation: ViewEncapsulation.None,
   host: {
-    class: 'login-page app'
+    "class": 'login-page app'
   }
 })
-export class LoginComponent implements CognitoCallback, LoggedInCallback, OnInit {
+export class Login implements CognitoCallback, LoggedInCallback, OnInit {
   email:string;
   password:string;
   errorMessage:string;
 
-  constructor(public router:Router,
-              public ddb:DynamoDBService,
-              public userService:UserLoginService) {
-    console.log("LoginComponent constructor");
+  constructor(
+    public router:Router,
+    public userService:UserLoginService
+  ) {
+    // console.log("LoginComponent constructor");
   }
-
   ngOnInit() {
     this.errorMessage = null;
     console.log("Checking if the user is already authenticated. If so, then redirect to the secure site");
     this.userService.isAuthenticated(this);
   }
-
   onLogin() {
     if (this.email == null || this.password == null) {
       this.errorMessage = "All fields are required";
@@ -62,7 +60,7 @@ export class LoginComponent implements CognitoCallback, LoggedInCallback, OnInit
   selector: 'logout',
   template: ''
 })
-export class LogoutComponent implements LoggedInCallback {
+export class Logout implements LoggedInCallback {
 
   constructor(public router:Router,
               public userService:UserLoginService) {
