@@ -28,9 +28,9 @@ export class RegistrationUser {
 @Injectable()
 export class CognitoUtil {
   public static _REGION = "us-east-1";
-  public static _IDENTITY_POOL_ID = "us-east-1:fbe0340f-9ffc-4449-a935-bb6a6661fd53";
+  public static _IDENTITY_POOL_ID = "us-east-1:417d081c-d1b7-4cdf-a0f9-be5081383458";
   public static _USER_POOL_ID = "us-east-1_iFYpXMKEQ";
-  public static _CLIENT_ID = "6ti7q7tdgq9gnbo9u05v5o0jq6";
+  public static _CLIENT_ID = "688f6oh799cdip8g1r9dm6c9s5";
 
   public static _POOL_DATA = {
     UserPoolId: CognitoUtil._USER_POOL_ID,
@@ -191,7 +191,7 @@ export class UserLoginService {
   constructor(public cognitoUtil: CognitoUtil) {
   }
   authenticate(username: string, password: string, callback: CognitoCallback) {
-    console.log("UserLoginService: stgarting the authentication");
+    console.log("UserLoginService: starting the authentication");
     // Need to provide placeholder keys unless unauthorised user access is enabled for user pool
     // AWSCognito.config.update({accessKeyId: 'anything', secretAccessKey: 'anything'});
 
@@ -207,7 +207,7 @@ export class UserLoginService {
     };
     console.log("UserLoginService: Params set...Authenticating the user");
     let cognitoUser = new CognitoUser(userData);
-    console.log("UserLoginService: config is " + AWS.config);
+    console.log("UserLoginService: config is ", AWS.config);
     cognitoUser.authenticateUser(authenticationDetails, {
       onSuccess: function (result) {
 
@@ -282,7 +282,7 @@ export class UserLoginService {
           callback.isLoggedIn(err, false);
         }
         else {
-          console.log("UserLoginService: Session is " + session.isValid());
+          console.log("UserLoginService: Session is ", session.isValid());
           callback.isLoggedIn(err, session.isValid());
         }
       });
