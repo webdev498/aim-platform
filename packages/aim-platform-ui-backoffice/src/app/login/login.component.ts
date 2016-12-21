@@ -16,9 +16,13 @@ import {
   }
 })
 export class Login implements CognitoCallback, LoggedInCallback, OnInit {
+  cognitoUser: any;
   email:string;
+  newPassword: string;
   password:string;
+  passwordMatch: string;
   errorMessage:string;
+  requireNewPassword: boolean = false;
 
   constructor(
     public router:Router,
@@ -39,17 +43,34 @@ export class Login implements CognitoCallback, LoggedInCallback, OnInit {
     this.errorMessage = null;
     this.userService.authenticate(this.email, this.password, this);
   }
-
+  onNewPassword() {
+    if (this.newPassword == null || this.passwordMatch == null) {
+      this.errorMessage = "All fields are required";
+      return;
+    }
+    if (this.newPassword !== this.passwordMatch) {
+      this.errorMessage = "Passwords must match";
+      return;
+    }
+    this.errorMessage = null;
+    this.requireNewPassword = false;
+    this.cognitoUser.completeNewPasswordChallenge(this.newPassword, null, this);
+  }
   cognitoCallback(message:string, result:any) {
     if (message != null) { //error
-      this.errorMessage = message;
-      console.log("result: " + this.errorMessage);
+      if (message === 'newPassword') {
+        this.requireNewPassword = true;
+        // this.router.navigate(['/login/changePassword'])
+        this.cognitoUser = result;
+      } else {
+        this.errorMessage = message;
+        console.log("result: " + this.errorMessage);
+      }
     } else { //success
       // this.ddb.writeLogEntry("login");
       this.router.navigate(['/platforms']);
     }
   }
-
   isLoggedIn(message:string, isLoggedIn:boolean) {
     if (isLoggedIn)
       this.router.navigate(['/platforms']);

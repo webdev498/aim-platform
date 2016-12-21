@@ -37,15 +37,14 @@ export class CognitoUtil {
     ClientId: CognitoUtil._CLIENT_ID
   };
 
-  // public static getAwsCognito(): any {
-  //   return AWSCognito
-  // }
   getUserPool() {
     return new CognitoUserPool(CognitoUtil._POOL_DATA);
   }
+
   getCurrentUser() {
     return this.getUserPool().getCurrentUser();
   }
+
   // getCognitoIdentity(): string {
   //   return AWS.config.credentials.identityId;
   // }
@@ -67,6 +66,7 @@ export class CognitoUtil {
     else
       callback.callbackWithParam(null);
   }
+
   getIdToken(callback: Callback): void {
     if (callback == null) {
       throw("CognitoUtil: callback in getIdToken is null...returning");
@@ -88,6 +88,7 @@ export class CognitoUtil {
     else
       callback.callbackWithParam(null);
   }
+
   getRefreshToken(callback: Callback): void {
     if (callback == null) {
       throw("CognitoUtil: callback in getRefreshToken is null...returning");
@@ -108,6 +109,7 @@ export class CognitoUtil {
     else
       callback.callbackWithParam(null);
   }
+
   refresh(): void {
     this.getCurrentUser().getSession(function (err, session) {
       if (err) {
@@ -127,6 +129,7 @@ export class CognitoUtil {
 export class UserRegistrationService {
   constructor(@Inject(CognitoUtil) public cognitoUtil: CognitoUtil) {
   }
+
   register(user: RegistrationUser, callback: CognitoCallback): void {
     console.log("UserRegistrationService: user is " + user);
 
@@ -147,11 +150,12 @@ export class UserRegistrationService {
       if (err) {
         callback.cognitoCallback(err.message, null);
       } else {
-        console.log("UserRegistrationService: registered user is " + result);
+        console.log("UserRegistrationService: registered user is ", result);
         callback.cognitoCallback(null, result);
       }
     });
   }
+
   confirmRegistration(username: string, confirmationCode: string, callback: CognitoCallback): void {
     let userData = {
       Username: username,
@@ -168,6 +172,7 @@ export class UserRegistrationService {
       }
     });
   }
+
   resendCode(username: string, callback: CognitoCallback): void {
     let userData = {
       Username: username,
@@ -190,6 +195,7 @@ export class UserRegistrationService {
 export class UserLoginService {
   constructor(public cognitoUtil: CognitoUtil) {
   }
+
   authenticate(username: string, password: string, callback: CognitoCallback) {
     console.log("UserLoginService: starting the authentication");
     // Need to provide placeholder keys unless unauthorised user access is enabled for user pool
@@ -197,7 +203,7 @@ export class UserLoginService {
 
     let authenticationData = {
       Username: username,
-      Password: password,
+      Password: password
     };
     let authenticationDetails = new AuthenticationDetails(authenticationData);
 
@@ -209,25 +215,29 @@ export class UserLoginService {
     let cognitoUser = new CognitoUser(userData);
     console.log("UserLoginService: config is ", AWS.config);
     cognitoUser.authenticateUser(authenticationDetails, {
-      onSuccess: function (result) {
+      onSuccess: (result) => {
 
         // Add the User's Id Token to the Cognito credentials login map.
         AWS.config.credentials = new AWS.CognitoIdentityCredentials({
           IdentityPoolId: CognitoUtil._IDENTITY_POOL_ID,
           Logins: {
-            'cognito-idp.us-east-1.amazonaws.com/us-east-1_PGSbCVZ7S': result.getIdToken().getJwtToken()
+            [`cognito-idp.${CognitoUtil._REGION}.amazonaws.com/${CognitoUtil._USER_POOL_ID}`]: result.getIdToken().getJwtToken()
           }
         });
 
-        console.log("UserLoginService: set the AWS credentials - " + JSON.stringify(AWS.config.credentials));
+        console.log("UserLoginService: set the AWS credentials - ", JSON.stringify(AWS.config.credentials));
         // console.log("UserLoginService: set the AWSCognito credentials - " + JSON.stringify(AWSCognito.config.credentials));
         callback.cognitoCallback(null, result);
       },
       onFailure: function (err) {
         callback.cognitoCallback(err.message, null);
       },
+      newPasswordRequired: function () {
+        callback.cognitoCallback('newPassword', cognitoUser);
+      }
     });
   }
+
   forgotPassword(username: string, callback: CognitoCallback) {
     let userData = {
       Username: username,
@@ -248,6 +258,7 @@ export class UserLoginService {
       }
     });
   }
+
   confirmNewPassword(email: string, verificationCode: string, password: string, callback: CognitoCallback) {
     let userData = {
       Username: email,
@@ -265,10 +276,12 @@ export class UserLoginService {
       }
     });
   }
+
   logout() {
     console.log("UserLoginService: Logging out");
     this.cognitoUtil.getCurrentUser().signOut();
   }
+
   isAuthenticated(callback: LoggedInCallback) {
     if (callback == null)
       throw("UserLoginService: Callback in isAuthenticated() cannot be null");
@@ -280,8 +293,7 @@ export class UserLoginService {
         if (err) {
           console.log("UserLoginService: Couldn't get the session: " + err, err.stack);
           callback.isLoggedIn(err, false);
-        }
-        else {
+        } else {
           console.log("UserLoginService: Session is ", session.isValid());
           callback.isLoggedIn(err, session.isValid());
         }
@@ -297,6 +309,7 @@ export class UserLoginService {
 export class UserParametersService {
   constructor(public cognitoUtil: CognitoUtil) {
   }
+
   getParameters(callback: Callback) {
     let cognitoUser = this.cognitoUtil.getCurrentUser();
 
