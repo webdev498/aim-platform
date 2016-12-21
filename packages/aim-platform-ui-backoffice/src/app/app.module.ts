@@ -15,6 +15,10 @@ import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import {UsersService} from "./users.service";
 import { PagesComponent } from './pages/pages.component';
 import {ApiService} from "./api.service";
+import {CognitoUtil, UserLoginService} from "./services/cognito.service";
+import {AwsUtil} from "./services/aws.service";
+import {DynamoDBService} from "./services/ddb.service";
+import {Logout} from "./login/login.component";
 
 type StoreType = {
   state: InteralStateType,
@@ -27,6 +31,7 @@ type StoreType = {
     AppComponent,
     ErrorComponent,
     PagesComponent,
+    Logout
   ],
   imports: [
     BrowserModule,
@@ -39,6 +44,10 @@ type StoreType = {
     ApiService,
     AppState,
     AppConfig,
+    AwsUtil,
+    CognitoUtil,
+    DynamoDBService,
+    UserLoginService,
     UsersService
   ],
   bootstrap: [AppComponent]
