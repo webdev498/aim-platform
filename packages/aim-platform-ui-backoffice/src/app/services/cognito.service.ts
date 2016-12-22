@@ -1,10 +1,6 @@
 import {Injectable, Inject} from "@angular/core";
 import * as AWS from 'aws-sdk';
 import {CognitoUserPool, CognitoUserAttribute, CognitoUser, AuthenticationDetails} from 'amazon-cognito-identity-js';
-// import {AwsUtil} from "./aws.service";
-
-// declare var AWSCognito:any;
-// declare var AWS:any;
 
 export interface CognitoCallback {
   cognitoCallback(message: string, result: any): void;

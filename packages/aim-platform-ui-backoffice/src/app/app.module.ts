@@ -12,12 +12,10 @@ import { ErrorComponent } from './error/error.component';
 import {AppConfig} from "./app.config";
 import { AppState, InteralStateType } from './app.service';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
-import {UsersService} from "./users.service";
+import {UsersService} from "./services/users.service";
 import { PagesComponent } from './pages/pages.component';
 import {ApiService} from "./api.service";
 import {CognitoUtil, UserLoginService} from "./services/cognito.service";
-import {AwsUtil} from "./services/aws.service";
-import {DynamoDBService} from "./services/ddb.service";
 import {Logout} from "./login/login.component";
 import {PlatformsService} from "./platforms/platforms.service";
 
@@ -45,9 +43,7 @@ type StoreType = {
     ApiService,
     AppState,
     AppConfig,
-    AwsUtil,
     CognitoUtil,
-    DynamoDBService,
     PlatformsService,
     UserLoginService,
     UsersService

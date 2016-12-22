@@ -5,9 +5,10 @@ import {
   UserLoginService,
   LoggedInCallback
 } from "../services/cognito.service";
-import {UsersService} from "../users.service";
+import {UsersService} from "../services/users.service";
 import {ApiService} from "../api.service";
 import {AppState} from "../app.service";
+import {PlatformsService} from "../platforms/platforms.service";
 
 @Component({
   selector: 'login',
@@ -32,7 +33,8 @@ export class Login implements CognitoCallback, LoggedInCallback, OnInit {
     public userLoginService:UserLoginService,
     public usersService: UsersService,
     public api: ApiService,
-    public app: AppState
+    public app: AppState,
+    public platforms: PlatformsService
   ) {
     // console.log("LoginComponent constructor");
   }
@@ -73,13 +75,18 @@ export class Login implements CognitoCallback, LoggedInCallback, OnInit {
         console.log("result: " + this.errorMessage);
       }
     } else { //success
-      this.api.headers.set('Authorization', `Bearer ${result.accessToken.jwtToken}`);
       // console.log(result);
-      let idJwt = this.app.parseJwt(result.idToken.jwtToken);
+      this.api.headers.set('Authorization', `Bearer ${result.accessToken.jwtToken}`);
+      const idJwt = this.app.parseJwt(result.idToken.jwtToken);
       // console.log(idJwt);
-      let id = idJwt['cognito:username'];
+      const id = idJwt['cognito:username'];
       this.usersService.get(id); //TODO: real api call
-      this.router.navigate(['/platforms']);
+      if (this.platforms.data.length > 1) {
+        this.router.navigate(['/platforms']);
+      } else {
+        const platform = this.platforms.data[0];
+        this.router.navigate(['/app/' + platform.id, platform.landing]);
+      }
     }
   }
   isLoggedIn(message:string, isLoggedIn:boolean) {
