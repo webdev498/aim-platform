@@ -19,6 +19,7 @@ import {CognitoUtil, UserLoginService} from "./services/cognito.service";
 import {AwsUtil} from "./services/aws.service";
 import {DynamoDBService} from "./services/ddb.service";
 import {Logout} from "./login/login.component";
+import {PlatformsService} from "./platforms/platforms.service";
 
 type StoreType = {
   state: InteralStateType,
@@ -47,6 +48,7 @@ type StoreType = {
     AwsUtil,
     CognitoUtil,
     DynamoDBService,
+    PlatformsService,
     UserLoginService,
     UsersService
   ],
