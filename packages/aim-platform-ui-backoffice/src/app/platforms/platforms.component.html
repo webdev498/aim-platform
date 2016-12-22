@@ -14,9 +14,7 @@
 						</header>
 						<div class="widget-body">
 							<ol>
-								<li><a [routerLink]="['/app/1']">Platform 1</a></li>
-								<li><a [routerLink]="['/app/2']">Platform 2</a></li>
-								<li><a [routerLink]="['/app/3']">Platform 3</a></li>
+								<li *ngFor="let platform of platforms.data"><a [routerLink]="['/app/' + platform.id, platform.landing]">{{platform.id}} {{platform.default ? '(default)' : ''}}</a></li>
 							</ol>
 						</div>
 					</section>

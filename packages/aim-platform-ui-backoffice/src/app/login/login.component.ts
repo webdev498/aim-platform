@@ -5,6 +5,9 @@ import {
   UserLoginService,
   LoggedInCallback
 } from "../services/cognito.service";
+import {UsersService} from "../users.service";
+import {ApiService} from "../api.service";
+import {AppState} from "../app.service";
 
 @Component({
   selector: 'login',
@@ -26,14 +29,18 @@ export class Login implements CognitoCallback, LoggedInCallback, OnInit {
 
   constructor(
     public router:Router,
-    public userService:UserLoginService
+    public userLoginService:UserLoginService,
+    public usersService: UsersService,
+    public api: ApiService,
+    public app: AppState
   ) {
     // console.log("LoginComponent constructor");
   }
   ngOnInit() {
     this.errorMessage = null;
-    console.log("Checking if the user is already authenticated. If so, then redirect to the secure site");
-    this.userService.isAuthenticated(this);
+    this.errorMessage = 'mike.allison@vaxxe.com : Password2'; //TODO: Remove login details
+    // console.log("Checking if the user is already authenticated. If so, then redirect to the secure site");
+    this.userLoginService.isAuthenticated(this);
   }
   onLogin() {
     if (this.email == null || this.password == null) {
@@ -41,7 +48,7 @@ export class Login implements CognitoCallback, LoggedInCallback, OnInit {
       return;
     }
     this.errorMessage = null;
-    this.userService.authenticate(this.email, this.password, this);
+    this.userLoginService.authenticate(this.email, this.password, this);
   }
   onNewPassword() {
     if (this.newPassword == null || this.passwordMatch == null) {
@@ -60,14 +67,18 @@ export class Login implements CognitoCallback, LoggedInCallback, OnInit {
     if (message != null) { //error
       if (message === 'newPassword') {
         this.requireNewPassword = true;
-        // this.router.navigate(['/login/changePassword'])
         this.cognitoUser = result;
       } else {
         this.errorMessage = message;
         console.log("result: " + this.errorMessage);
       }
     } else { //success
-      // this.ddb.writeLogEntry("login");
+      this.api.headers.set('Authorization', `Bearer ${result.accessToken.jwtToken}`);
+      // console.log(result);
+      let idJwt = this.app.parseJwt(result.idToken.jwtToken);
+      // console.log(idJwt);
+      let id = idJwt['cognito:username'];
+      this.usersService.get(id); //TODO: real api call
       this.router.navigate(['/platforms']);
     }
   }

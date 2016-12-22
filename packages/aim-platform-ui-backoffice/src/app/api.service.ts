@@ -5,7 +5,7 @@ import {environment} from "../environments/environment";
 
 @Injectable()
 export class ApiService {
-  headers: Headers;
+  headers: Headers = new Headers();
   constructor(public http: Http) {
 
   }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {PlatformsService} from "./platforms.service";
 
 @Component({
   selector: 'app-platforms',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlatformsComponent implements OnInit {
 
-  constructor() { }
+  constructor(public platforms: PlatformsService) { }
 
   ngOnInit() {
   }

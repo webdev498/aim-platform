@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import _ from 'lodash';
+import * as sjcl from 'sjcl';
 
 export type InteralStateType = {
   [key: string]: any
@@ -41,5 +42,12 @@ export class AppState {
   private _clone(object: InteralStateType) {
     // simple object clone
     return JSON.parse(JSON.stringify( object ));
+  }
+
+  parseJwt(jwtToken) {
+    const payload = jwtToken.split('.')[1];
+    return JSON.parse(
+      sjcl.codec.utf8String.fromBits(sjcl.codec.base64url.toBits(payload))
+    );
   }
 }
