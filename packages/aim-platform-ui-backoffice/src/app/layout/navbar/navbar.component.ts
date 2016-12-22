@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, ElementRef, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppConfig } from '../../app.config';
-import {UsersService} from "../../users.service";
+import {UsersService} from "../../services/users.service";
 declare var jQuery: any;
 
 @Component({

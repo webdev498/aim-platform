@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {PlatformsService} from "./platforms/platforms.service";
+import {PlatformsService} from "../platforms/platforms.service";
 
 class  User {
   id: number;
