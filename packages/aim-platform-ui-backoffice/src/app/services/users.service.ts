@@ -28,12 +28,12 @@ export class UsersService {
         "platforms": [
           {
             "id": "f4263b97-da83-46cd-b581-bd675a94f742",
-            "landing": "",
+            "landing": "dashboard",
             "default": true
           },
           {
             "id": "7f936171-9f2c-45bc-813c-c01bb09c481b",
-            "landing": "/sites"
+            "landing": "sites"
           }
         ]
       }
