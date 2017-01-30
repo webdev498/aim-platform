@@ -15,7 +15,11 @@
 
         <h3>PrimeNg Basic</h3>
         <p-dataTable [value]="sites">
-          <p-column field="title" header="Title"></p-column>
+          <p-column field="title" header="Title">
+            <template let-col let-site="rowData" let-ri="rowIndex" pTemplate="body">
+              <a [routerLink]="[site.id]">{{site.title}}</a>
+            </template>
+          </p-column>
           <p-column field="content.url" header="URL"></p-column>
         </p-dataTable>
 
