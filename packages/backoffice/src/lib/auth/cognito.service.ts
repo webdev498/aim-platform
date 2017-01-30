@@ -18,19 +18,30 @@ export class CognitoService extends AuthService {
   private cognitoUtil: CognitoUtil;
   constructor(configResolver: any) {
     super(configResolver);
+    
     let self = this;
+
+    let configLoader = (authConfig: any) => {
+      self.config = {
+        type: authConfig.authType,
+        value: authConfig.authConfig,
+      }
+    };
+
     if(typeof configResolver.resolve === 'function') {
       let resolved = configResolver.resolve(null, null);
       if(resolved instanceof Observable) {
         resolved.subscribe(config => {
-          self.config = config;
+          configLoader(config);
         });
+      } else {
+        configLoader(resolved);
       }
     } else if(configResolver) {
-      self.config = configResolver;
+      configLoader(configResolver);
     }
 
-    console.log('CognitoService, loaded');
+    console.log('CognitoService, loaded', this);
     this.cognitoUtil = new CognitoUtil();
 
     // how do we wait until the AppConfig says it's finished loading?
