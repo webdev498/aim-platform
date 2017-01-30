@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
 import { environment } from "../../environments/environment";
 
 import * as AWS from 'aws-sdk';
-import * as AWSCognito from 'amazon-cognito-identity-js';
-
+import { CognitoUserPool, CognitoUser, CognitoUserAttribute, AuthenticationDetails } from 'amazon-cognito-identity-js';
+//declare var CognitoUser: any;
 /*
  * Authentication via Amazon Cognito Service
  */
@@ -80,7 +80,7 @@ export class CognitoService extends AuthService {
         Username: username,
         Password: password,
       };
-      let authenticationDetails = new AWSCognito.AuthenticationDetails(authenticationData);
+      let authenticationDetails = new AuthenticationDetails(authenticationData);
 
       let userData = {
         Username: username,
@@ -88,11 +88,11 @@ export class CognitoService extends AuthService {
       };
 
       console.log("CognitoService: Params set...Authenticating the user");
-      let cognitoUser = new AWSCognito.CognitoUser(userData);
+      let cognitoUser = new CognitoUser(userData);
       console.log("CognitoService: config is ", AWS.config);
-      cognitoUser.authenticateUser(authenticationDetails, {
+      // the <any> is a hack to fix an issue with the CognitoUser TypeScript typings in index.d.ts for the node_module
+      cognitoUser.authenticateUser(authenticationDetails, <any>{
         onSuccess: function (result) {
-
           var logins = {}
           logins['cognito-idp.' + CognitoUtil.config.region + '.amazonaws.com/' + CognitoUtil.config.userPoolId] = result.getIdToken().getJwtToken();
 
@@ -105,14 +105,26 @@ export class CognitoService extends AuthService {
           //console.log("CognitoService: set the AWS credentials - " + JSON.stringify(AWS.config.credentials));
           console.log("CognitoService: set the AWSCognito credentials - " + JSON.stringify(AWS.config.credentials));
           //callback.cognitoCallback(null, result);
+          console.log('CognitoService, login onSuccess: ', result);
           observer.next(true);
           observer.complete();
         },
         onFailure: function (err) {
+          console.log('CognitoService, login onFailure: ', err);
           //callback.cognitoCallback(err.message, null);
           observer.next(false);
           observer.complete();
         },
+        newPasswordRequired: function (userAttr:any, requiredAttr:any) {
+          debugger;
+          observer.error({
+            type: 'newPassword',
+            userAttr: userAttr,
+            requiredAttr: requiredAttr,
+            user: cognitoUser,
+          });
+          observer.complete();
+        }
       });
     });
   }
@@ -124,7 +136,7 @@ export class CognitoService extends AuthService {
         Pool: this.cognitoUtil.getUserPool()
       };
 
-      let cognitoUser = new AWSCognito.CognitoUser(userData);
+      let cognitoUser = new CognitoUser(userData);
 
       cognitoUser.forgotPassword({
         onSuccess: function (result) {
@@ -152,7 +164,7 @@ export class CognitoService extends AuthService {
         Pool: this.cognitoUtil.getUserPool()
       };
 
-      let cognitoUser = new AWSCognito.CognitoUser(userData);
+      let cognitoUser = new CognitoUser(userData);
 
       cognitoUser.confirmPassword(verificationCode, password, {
         onSuccess: function () {
@@ -217,6 +229,35 @@ export class CognitoService extends AuthService {
     return o;
   }
 
+  completeChallenge(cognitoUser:CognitoUser, newPassword:string):Observable<boolean> {
+    return new Observable<boolean>(observer => {
+      // the `as any` is a hack to fix an issue with the CognitoUser TypeScript typings in index.d.ts for the node_module
+      (cognitoUser as any).completeNewPasswordChallenge(newPassword, null, {
+        onSuccess: function (result) {
+          var logins = {}
+          logins['cognito-idp.' + CognitoUtil.config.region + '.amazonaws.com/' + CognitoUtil.config.userPoolId] = result.getIdToken().getJwtToken();
+
+          // Add the User's Id Token to the Cognito credentials login map.
+          AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+            IdentityPoolId: CognitoUtil.config.identityPoolId,
+            Logins: logins
+          });
+
+          //console.log("CognitoService: set the AWS credentials - " + JSON.stringify(AWS.config.credentials));
+          console.log("CognitoService: set the AWSCognito credentials - " + JSON.stringify(AWS.config.credentials));
+          //callback.cognitoCallback(null, result);
+          console.log('CognitoService, login onSuccess: ', result);
+          observer.next(true);
+          observer.complete();
+        },
+        onFailure: (err) => {
+          observer.error(err);
+          observer.complete();
+        }
+      });
+    });
+  }
+
   getAuthToken(): Observable<any> {
     return this.cognitoUtil.getAccessToken();
   }
@@ -255,12 +296,8 @@ export class CognitoUtil {
 
   constructor() {}
 
-  public static getAwsCognito(): any {
-    return AWSCognito
-  }
-
   getUserPool() {
-    return new AWSCognito.CognitoUserPool(CognitoUtil.poolData);
+    return new CognitoUserPool(CognitoUtil.poolData);
   }
 
   getCurrentUser() {

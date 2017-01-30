@@ -7,6 +7,7 @@ export abstract class AuthService {
   constructor(private configResolver: any) {}
   abstract login(user: string, password: string): Observable<boolean>;
   abstract logout();
+  abstract completeChallenge(user, response): Observable<boolean>;
   abstract isAuthenticated(): Observable<boolean>;
   abstract getAuthToken(): Observable<any>;
   public config: any;
