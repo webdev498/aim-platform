@@ -18,7 +18,7 @@
             <p class="widget-login-info">
               Don't have an account? Sign up now!
             </p>
-            <form class="login-form mt-lg" (ngSubmit)="onSubmit()">
+            <form class="login-form mt-lg" (ngSubmit)="onSubmit()" method="post">
               <div class="form-group">
                 <input type="text" class="form-control" id="credentials.username" placeholder="Username" name="username" [(ngModel)]="credentials.username">
               </div>
