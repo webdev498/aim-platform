@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, ElementRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewEncapsulation, ElementRef } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -24,7 +24,7 @@ declare var Hammer: any;
     id: 'app'
   }
 })
-export class LayoutComponent implements OnInit {
+export class LayoutComponent implements OnInit, OnDestroy {
   config: any;
   $sidebar: any;
   chatOpened: boolean = false;
@@ -230,5 +230,9 @@ export class LayoutComponent implements OnInit {
 
       jQuery(this).closest('li').removeClass('open');
     });
+  }
+
+  ngOnDestroy() {
+    this.appConfig.platform = null;
   }
 }

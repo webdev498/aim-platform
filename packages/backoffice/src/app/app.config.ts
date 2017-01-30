@@ -127,20 +127,24 @@ export class AppConfig {
   }
 
   set platform(v: Platform) {
-    let $menu = new Menu();
-    _.map(v.content.modules, ($module, $moduleName) => {
-      if(_.has(MODULE_CONFIGS, $moduleName)) {
-        let config = _.get(MODULE_CONFIGS, $moduleName) as ModuleConfig;
-        let menu = config.menu;
-        // get a copy of all the module menus
-        _.map(menu, (menuItem, sectionName) => {
-          if(!_.has($menu, sectionName)) _.set($menu, sectionName, []);
-          _.set($menu, sectionName, _.concat($menu[sectionName], menuItem));
-        });
-        console.log('AppConfig:set platform, parent: ', $menu);
-      }
-    });
-    this.menu = $menu;
+    if(v === null) {
+      this.menu = null;
+    } else {
+      let $menu = new Menu();
+      _.map(v.content.modules, ($module, $moduleName) => {
+        if(_.has(MODULE_CONFIGS, $moduleName)) {
+          let config = _.get(MODULE_CONFIGS, $moduleName) as ModuleConfig;
+          let menu = config.menu;
+          // get a copy of all the module menus
+          _.map(menu, (menuItem, sectionName) => {
+            if(!_.has($menu, sectionName)) _.set($menu, sectionName, []);
+            _.set($menu, sectionName, _.concat($menu[sectionName], menuItem));
+          });
+          console.log('AppConfig:set platform, parent: ', $menu);
+        }
+      });
+      this.menu = $menu;
+    }
     this._platform = v;
   }
 
