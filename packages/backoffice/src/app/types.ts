@@ -1,4 +1,4 @@
-export interface MenuItem {
+export class MenuItem {
   title: string;
   routerLink?: any[];
   iconClass?: string;
@@ -7,11 +7,11 @@ export interface MenuItem {
   children?: MenuItem[];
 }
 
-export interface Menu {
+export class Menu {
   [sectionName: string]: MenuItem[];
 }
 
-export interface ModuleConfig {
+export class ModuleConfig {
   position?: number;
   menu?: Menu;
 
@@ -22,7 +22,7 @@ export interface ModuleConfig {
   [propName: string]: any;
 }
 
-export interface Module {
+export class Module {
   active: boolean;
   id: string;
   title: string;
@@ -31,12 +31,12 @@ export interface Module {
   [propName: string]: any;
 }
 
-export interface ModuleDict {
+export class ModuleDict {
   // list of
   [moduleName: string]: Module;
 }
 
-export interface Platform {
+export class Platform {
   id: string;
   title?: string;
   content: {

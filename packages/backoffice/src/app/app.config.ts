@@ -127,7 +127,7 @@ export class AppConfig {
   }
 
   set platform(v: Platform) {
-    let $menu = _.clone(this.menu);
+    let $menu = new Menu();
     _.map(v.content.modules, ($module, $moduleName) => {
       if(_.has(MODULE_CONFIGS, $moduleName)) {
         let config = _.get(MODULE_CONFIGS, $moduleName) as ModuleConfig;
