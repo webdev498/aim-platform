@@ -29,7 +29,15 @@ export class MockApi extends DefaultApi {
 
       if(_.has(MOCK_API_DATA, path)) {
         data = _.get(MOCK_API_DATA, path);
+      } else {
+        if(path.startsWith('users')) {
+          data = _.get(MOCK_API_DATA, 'users.generic');
+          if(data) {
+            _.set(data, 'body.id', path.split('.')[1]);
+          }
+        }
       }
+
       if(_.has(data, 'delay')) delay = parseInt(_.get<string>(data, 'delay'));
 
       let body = this._getBody(data);
