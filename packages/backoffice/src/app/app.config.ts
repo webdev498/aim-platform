@@ -7,7 +7,8 @@ import * as _ from 'lodash';
 declare let jQuery: any;
 
 import { ApiService } from './api.service';
-import { AuthConfig, ModuleConfig, Platform, Menu, MenuItem } from 'app/types';
+import { ModuleConfig, Platform, Menu, MenuItem } from 'app/types';
+import { AuthConfig } from 'lib/api';
 
 import { Config as SitesConfig } from 'app/sites/config';
 import { Config as DashboardConfig } from 'app/dashboard/config';

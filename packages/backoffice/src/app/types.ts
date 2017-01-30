@@ -45,8 +45,3 @@ export interface Platform {
   }
   [propName: string]: any;
 }
-
-export interface AuthConfig {
-  type: string;
-  value: any;
-}

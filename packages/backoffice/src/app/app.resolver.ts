@@ -9,6 +9,8 @@ import { UserService } from './user.service';
 import { AuthService } from 'lib/auth';
 import { AppConfig } from './app.config';
 
+import { AuthConfig } from 'lib/api';
+
 @Injectable()
 export class DataResolver implements Resolve<any> {
   constructor(private apiService: ApiService) { }
@@ -18,16 +20,16 @@ export class DataResolver implements Resolve<any> {
 }
 
 @Injectable()
-export class AuthConfigResolver implements Resolve<any> {
+export class AuthConfigResolver implements Resolve<AuthConfig> {
   constructor(private appConfig: AppConfig, private apiService: ApiService) { }
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any>|any {
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<AuthConfig>|AuthConfig {
     let self = this;
     console.log('AuthConfigResolver', route, state);
     if(self.appConfig.auth) {
       return self.appConfig.auth;
     } else {
-      return new Observable<boolean>(observer => {
-        this.apiService.get('/auth/config').subscribe(
+      return new Observable<AuthConfig>(observer => {
+        this.apiService.getByType<AuthConfig>(AuthConfig, '/auth/config').subscribe(
           (authConfig) => {
             console.log('AuthConfigResolver auth: ', authConfig);
             self.appConfig.auth = authConfig;

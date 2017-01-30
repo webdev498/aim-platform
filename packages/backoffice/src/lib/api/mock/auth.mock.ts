@@ -7,8 +7,8 @@ export const MOCK_AUTH = {
     },
     //delay: 3500, // take 12 seconds to respond to the auth/config request ... cause, why not
     "body": {
-      type: "cognito",
-      value: {
+      authType: "cognito",
+      authConfig: {
         region: 'us-east-1',
         userPoolId: "us-east-1_iFYpXMKEQ",
         clientId: "688f6oh799cdip8g1r9dm6c9s5",
