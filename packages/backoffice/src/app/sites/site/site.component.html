@@ -1,0 +1,32 @@
+<div *ngIf="initialized">
+  <h1 class="page-title">{{ site.title }}</h1>
+  <dynamic-form [form]="form" [model]="site" (submit)="onSubmit($event)" (cancel)="onCancel($event)"></dynamic-form>
+  <div class="row">
+    <div class="col-md-12">
+      <section class="widget">
+        <header>
+          <h5>List of templates</h5>
+        </header>
+        <div class="widget-body">
+          <ol>
+            <li><a [routerLink]="['template/1']">Template 1</a></li>
+            <li><a [routerLink]="['template/2']">Template 2</a></li>
+            <li><a [routerLink]="['template/3']">Template 3</a></li>
+          </ol>
+        </div>
+      </section>
+      <section class="widget">
+        <header>
+          <h5>List of pages</h5>
+        </header>
+        <div class="widget-body">
+          <ol>
+            <li><a [routerLink]="['page/1']">Page 1</a></li>
+            <li><a [routerLink]="['page/2']">Page 2</a></li>
+            <li><a [routerLink]="['page/3']">Page 3</a></li>
+          </ol>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="js-sidebar-content">
+  <header class="logo hidden-sm-down">
+    <a href="index.html">{{config.name}}</a>
+  </header>
+  <div class="sidebar-status hidden-md-up">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+      <span *ngIf="userService.user.avatar" class="thumb-sm avatar pull-xs-right">
+        <img class="img-circle" [attr.src]="userService.user.avatar.image" alt="...">
+      </span>
+      <span *ngIf="userService.user.notifications" class="circle bg-warning fw-bold text-gray-dark">
+        {{userService.user.notifications.length}}
+      </span>
+      &nbsp;
+      {{userService.user.displayName}}
+      <b class="caret"></b>
+    </a>
+    <!-- #notifications-dropdown-menu goes here when screen collapsed to xs or sm -->
+  </div>
+  <!-- main notification links are placed inside of .sidebar-nav -->
+  <ul class="sidebar-nav" *ngFor="let section of appConfig.menu | keyMap:'name':'position'" [attr.id]="'sidebar-' + section.name">
+    <li *ngFor="let item of section.value; let menuIndex = index;">
+      <a *ngIf="item.routerLink" [routerLink]="item.routerLink" data-toggle="collapse" [attr.data-parent]="'#sidebar-' + section.name" [attr.data-target]="'#sidebar-' + section.name  + '-' + menuIndex">
+        <span class="icon">
+          <i ngClass="{{item.iconClass}}"></i>
+        </span>
+        {{item.title}}
+        <i *ngIf="item.children" class="toggle fa fa-angle-down"></i>
+      </a>
+      <a *ngIf="!item.routerLink"  data-toggle="collapse" [attr.data-parent]="'#sidebar-' + section.name" [attr.data-target]="'#sidebar-' + section.name  + '-' + menuIndex">
+        <span class="icon">
+          <i ngClass="{{item.iconClass}}"></i>
+        </span>
+        {{item.title}}
+        <i *ngIf="item.children" class="toggle fa fa-angle-down"></i>
+      </a>
+      <ul *ngIf="item.children" [attr.id]="'sidebar-' + section.name  + '-' + menuIndex" class="collapse" [class.in]="!item.collapsed" [attr.aria-expanded]="!item.collapsed?'true':'false'">
+        <li *ngFor="let child of item.children">
+          <a [routerLink]="child.routerLink">{{child.title}}</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>

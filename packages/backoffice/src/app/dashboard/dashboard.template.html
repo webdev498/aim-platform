@@ -1,0 +1,24 @@
+<h1 class="page-title">Dashboard <small><small>The Lucky One</small></small></h1>
+
+<div class="row">
+  <div class="col-md-6">
+    <section widget class="widget">
+      <header>
+        <h4>
+          User <span class="fw-semi-bold">Debug Widget</span>
+        </h4>
+        <div class="widget-controls">
+          <a data-widgster="expand" title="Expand" href="#"><i class="glyphicon glyphicon-chevron-up"></i></a>
+          <a data-widgster="collapse" title="Collapse" href="#"><i class="glyphicon glyphicon-chevron-down"></i></a>
+          <a href="#" data-widgster="close"><i class="glyphicon glyphicon-remove"></i></a>
+        </div>
+      </header>
+      <div class="widget-body">
+      Display Name: {{ userService.user.displayName }}<br />
+      FIrst Name: {{ userService.user.firstName }}<br />
+      Last Name: {{ userService.user.lastName }}<br />
+      Object: <pre>{{ userService.user | json }}</pre><br />
+      </div>
+    </section>
+  </div>
+</div>

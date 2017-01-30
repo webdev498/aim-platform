@@ -1,0 +1,61 @@
+<section class="card notifications">
+  <header class="card-header">
+    <div class="text-xs-center mb-sm">
+      <strong>You have {{ userService.user.notifications.length }} notifications</strong>
+    </div>
+    <div *ngIf="false" class="btn-group btn-group-sm btn-group-justified" id="notifications-toggle" data-toggle="buttons">
+      <!-- ajax-load plugin in action. setting data-ajax-load & data-ajax-target is the only requirement for async reloading -->
+      <label class="btn btn-secondary active">
+        <input type="radio"
+               notification-load
+               data-ajax-trigger="change"
+               data-ajax-load="assets/demo/notifications/notifications.html"
+               data-ajax-target="#notifications-list"> Notifications
+      </label>
+      <label class="btn btn-secondary">
+        <input type="radio"
+               notification-load
+               data-ajax-trigger="change"
+               data-ajax-load="assets/demo/notifications/messages.html"
+               data-ajax-target="#notifications-list"> Messages
+      </label>
+      <label class="btn btn-secondary">
+        <input type="radio"
+               notification-load
+               data-ajax-trigger="change"
+               data-ajax-load="assets/demo/notifications/progress.html"
+               data-ajax-target="#notifications-list"> Progress
+      </label>
+    </div>
+  </header>
+  <!-- notification list with .thin-scroll which styles scrollbar for webkit -->
+  <div id="notifications-list" class="list-group thin-scroll">
+    <div *ngFor="let n of userService.user.notifications" class="list-group-item">
+      <span *ngIf="n.image" class="thumb-sm pull-xs-left mr clearfix">
+        <img class="img-circle" [attr.src]="n.image" alt="...">
+      </span>
+      <span *ngIf="n.icon" class="thumb-sm pull-xs-left mr">
+        <i [attr.class]="n.icon"></i>
+      </span>
+      <p class="no-margin overflow-hidden">
+        <span [innerHTML]="n.message"></span>
+        <time class="help-block no-margin">
+          {{ n.created | timeAgo }}
+        </time>
+      </p>
+    </div>
+  </div>
+  <footer class="card-footer text-sm">
+    <!-- ajax-load button. loads assets/demo/notifications/notifications.php to #notifications-list
+         when clicked -->
+    <button class="btn btn-xs btn-link pull-xs-right btn-notifications-reload"
+            id="load-notifications-btn"
+            notification-load
+            data-ajax-load="assets/demo/notifications/notifications.php"
+            data-ajax-target="#notifications-list"
+            data-loading-text="<i class='fa fa-refresh fa-spin mr-xs'></i> Loading...">
+      <i class="fa fa-refresh"></i>
+    </button>
+    <span *ngIf="false" class="fs-mini">Synced at: 21 Apr 2014 18:36</span>
+  </footer>
+</section>

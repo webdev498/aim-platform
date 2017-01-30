@@ -1,0 +1,29 @@
+<h1 class="page-title">Sites</h1>
+<p-messages [value]="messages"></p-messages>
+<div class="row">
+  <div class="col-md-12">
+    <section class="widget">
+      <header>
+        <h5>List of sites</h5>
+      </header>
+      <div class="widget-body">
+
+        <button (click)="postMessage('error')">Post Error</button>
+        <button (click)="postMessage('warn')">Post Warning</button>
+        <button (click)="postMessage('info')">Post Info</button>
+        <button (click)="postMessage('success')">Post Success</button>
+
+        <h3>PrimeNg Basic</h3>
+        <p-dataTable [value]="sites">
+          <p-column field="title" header="Title"></p-column>
+          <p-column field="content.url" header="URL"></p-column>
+        </p-dataTable>
+
+        <h3>PrimeNg Dynamic Columns</h3>
+        <p-dataTable [value]="sites">
+          <p-column *ngFor="let col of columns" [field]="col.field" [header]="col.header"></p-column>
+        </p-dataTable>
+      </div>
+    </section>
+  </div>
+</div>
