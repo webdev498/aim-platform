@@ -23,6 +23,13 @@ export class BasicAuth extends AuthService {
     });
   }
 
+  completeChallenge(user, response): Observable<boolean> {
+    return new Observable<boolean>(observer => {
+      observer.next(true);
+      observer.complete();
+    });
+  }
+
   logout() {
     this._authenticated = false;
   }
