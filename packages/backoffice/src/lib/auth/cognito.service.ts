@@ -70,11 +70,14 @@ export class CognitoService extends AuthService {
     CognitoUtil.config = this._config.value;
   }
 
-  login(username: string, password: string): Observable<boolean> {
+  login(username: string, password: string, remember?: boolean): Observable<boolean> {
+    if(undefined === remember) remember = false;
     return new Observable<boolean>(observer => {
       console.log("CognitoService: starting the authentication")
       // Need to provide placeholder keys unless unauthorised user access is enabled for user pool
       AWS.config.update({accessKeyId: 'anything', secretAccessKey: 'anything'})
+
+      localStorage.setItem('CognitoService.rememberUser', remember ? 'true' : 'false');
 
       let authenticationData = {
         Username: username,
@@ -92,7 +95,7 @@ export class CognitoService extends AuthService {
       console.log("CognitoService: config is ", AWS.config);
       // the <any> is a hack to fix an issue with the CognitoUser TypeScript typings in index.d.ts for the node_module
       cognitoUser.authenticateUser(authenticationDetails, <any>{
-        onSuccess: function (result) {
+        onSuccess: function (result, userConfirmationNecessary) {
           var logins = {}
           logins['cognito-idp.' + CognitoUtil.config.region + '.amazonaws.com/' + CognitoUtil.config.userPoolId] = result.getIdToken().getJwtToken();
 
@@ -105,7 +108,28 @@ export class CognitoService extends AuthService {
           //console.log("CognitoService: set the AWS credentials - " + JSON.stringify(AWS.config.credentials));
           console.log("CognitoService: set the AWSCognito credentials - " + JSON.stringify(AWS.config.credentials));
           //callback.cognitoCallback(null, result);
-          console.log('CognitoService, login onSuccess: ', result);
+          console.log('CognitoService, login onSuccess: ', result, userConfirmationNecessary);
+
+          if(remember && userConfirmationNecessary !== false) {
+            (cognitoUser as any).setDeviceStatusRemembered({
+              onSuccess: (status) => {
+                console.log('CognitoService, setDeviceStatusRemember ', status);
+              },
+              onFailure: (err) => {
+                console.warn('CognitoService, setDeviceStatusRemember ', err);
+              }
+            })
+          } else {
+            (cognitoUser as any).setDeviceStatusNotRemembered({
+              onSuccess: (status) => {
+                console.log('CognitoService, setDeviceStatusRemember ', status);
+              },
+              onFailure: (err) => {
+                console.warn('CognitoService, setDeviceStatusRemember ', err);
+              }
+            });
+          }
+
           observer.next(true);
           observer.complete();
         },
@@ -185,10 +209,9 @@ export class CognitoService extends AuthService {
     let user = this.cognitoUtil.getCurrentUser();
     console.log("CognitoService: Logging out: ", user);
 
-    // TODO: Property 'signOut' does not exist on type 'CognitoUser'. (according to compiler)
-    if(typeof user['signOut'] === 'function') {
-      // this is done to prevent compiler errors
-      user['signOut']();
+    // this is done to prevent compiler errors
+    if(user) {
+      (user as any).signOut();
     }
   }
 
@@ -261,6 +284,14 @@ export class CognitoService extends AuthService {
   getAuthToken(): Observable<any> {
     return this.cognitoUtil.getAccessToken();
   }
+
+  destroy() {
+    let remember: string|boolean = localStorage.getItem('CognitoService.rememberUser');
+    if(undefined === remember) remember = true;
+    if(remember !== 'true') remember = false;
+    if(!remember)
+      this.logout();
+  }
 }
 
 export interface LoggedInCallback {
@@ -275,7 +306,14 @@ export interface Callback {
 @Injectable()
 export class CognitoUtil {
 
-  // TODO: these values should probably be coming from some sort of AppConfig injection?
+  private static _rememberUser: boolean = true;
+  static set rememberUser(remember: boolean) {
+    CognitoUtil._rememberUser = remember;
+  }
+  static get rememberUser() {
+    return CognitoUtil._rememberUser;
+  }
+
   private static _config: { region: string, identityPoolId: string, userPoolId: string, clientId: string } = null;
   static get config(): { region: string, identityPoolId: string, userPoolId: string, clientId: string } {
     return CognitoUtil._config;

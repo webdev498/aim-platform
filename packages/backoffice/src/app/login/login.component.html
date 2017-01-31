@@ -12,12 +12,7 @@
             <h3>Login</h3>
           </header>
           <div class="widget-body">
-            <p class="widget-login-info">
-              Use Facebook, Twitter or your email to sign in.
-            </p>
-            <p class="widget-login-info">
-              Don't have an account? Sign up now!
-            </p>
+            <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
             <form class="login-form mt-lg" (ngSubmit)="onSubmit()" method="post">
               <div class="form-group">
                 <input type="text" class="form-control" id="credentials.username" placeholder="Username" name="username" [(ngModel)]="credentials.username">
@@ -35,8 +30,8 @@
                 <div class="col-md-6 push-md-6">
                   <div class="clearfix">
                     <div class="abc-checkbox widget-login-info pull-xs-right">
-                      <input type="checkbox" id="checkbox1" value="1">
-                      <label for="checkbox1">Keep me signed in </label>
+                      <input type="checkbox" id="credentials.remember" name="rememberMe" [(ngModel)]="credentials.remember">
+                      <label for="credentials.remember">Keep me signed in </label>
                     </div>
                   </div>
                 </div>
@@ -61,7 +56,7 @@
                 <input class="form-control" id="passwordMatch" type="password" placeholder="Confirm Password" name="passwordMatch" [(ngModel)]="passwordMatch">
               </div>
               <div class="clearfix">
-                {{errorMessage}}
+                <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
                 <div class="btn-toolbar pull-xs-right m-t-1">
                   <a class="btn btn-inverse btn-sm" (click)="onNewPassword()">Change Password</a>
                 </div>
@@ -73,6 +68,7 @@
     </div>
   </main>
   <footer class="page-footer">
+    {{ credentials | json }}
     {{ appConfig.config.copyright }}
   </footer>
 </div>

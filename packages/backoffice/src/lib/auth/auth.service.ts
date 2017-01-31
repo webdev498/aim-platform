@@ -5,10 +5,11 @@ import { Observable } from 'rxjs';
  */
 export abstract class AuthService {
   constructor(private configResolver: any) {}
-  abstract login(user: string, password: string): Observable<boolean>;
-  abstract logout();
+  abstract login(user: string, password: string, remember?: boolean): Observable<boolean>;
+  abstract logout(): void;
   abstract completeChallenge(user, response): Observable<boolean>;
   abstract isAuthenticated(): Observable<boolean>;
   abstract getAuthToken(): Observable<any>;
+  abstract destroy(): void;
   public config: any;
 }

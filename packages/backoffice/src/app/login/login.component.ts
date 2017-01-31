@@ -18,9 +18,11 @@ export class LoginComponent {
   private credentials: {
     username: string,
     password: string,
+    remember: boolean
   } = {
     username: null,
     password: null,
+    remember: true,
   };
 
   user: any;
@@ -40,13 +42,13 @@ export class LoginComponent {
       if(!redirectTo) redirectTo = '/platforms';
       this.router.navigate([redirectTo]);
     } else {
-      alert('Failed to Login');
+      this.errorMessage = "Failed to Login: bad username/password?";
     }
   }
 
   onSubmit() {
     let self = this;
-    this.authService.login(this.credentials.username, this.credentials.password).subscribe(
+    this.authService.login(this.credentials.username, this.credentials.password, this.credentials.remember).subscribe(
       (loggedIn) => self._loggedIn(loggedIn),
       (err) => {
         debugger;
@@ -58,7 +60,9 @@ export class LoginComponent {
             self.user = err.user;
             self.requireNewPassword = true;
           } break;
-          default: throw err;
+          default: 
+            self.errorMessage = err; 
+            // throw err;
         }
       }
     );

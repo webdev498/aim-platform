@@ -5,6 +5,9 @@ import { Observable } from 'rxjs';
  * BasicAuth that just toggles state
  */
 export class BasicAuth extends AuthService {
+
+  public config: any;
+
   private _authenticated: boolean = false;
   isAuthenticated(): Observable<boolean>  {
     return new Observable<boolean>(observer => {
@@ -14,7 +17,8 @@ export class BasicAuth extends AuthService {
     });
   }
 
-  login(user: string, password: string): Observable<boolean> {
+  login(user: string, password: string, remember?: boolean): Observable<boolean> {
+    if(undefined === remember) remember = false;
     console.log('BasicAuth:login user: ', user, ', password: ', password);
     return new Observable<boolean>(observer => {
       this._authenticated = true;
@@ -41,5 +45,5 @@ export class BasicAuth extends AuthService {
     });
   }
 
-  public config: any;
+  destroy() { }
 }
