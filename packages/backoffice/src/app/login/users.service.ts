@@ -34,6 +34,10 @@ export class UsersService {
           {
             "id": "7f936171-9f2c-45bc-813c-c01bb09c481b",
             "landing": "sites"
+          },
+          {
+            "id": "7f936171-9f2c-45bc-813c-c01bb09c481b-comp",
+            "landing": "companies"
           }
         ]
       }

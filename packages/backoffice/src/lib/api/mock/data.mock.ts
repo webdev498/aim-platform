@@ -1,4 +1,5 @@
 import { MOCK_SITES } from './data/sites.mock';
+import { MOCK_COMPANIES } from './data/companies.mock';
 import { MOCK_FORMS } from './data/forms.mock';
 import * as _ from 'lodash';
 
@@ -32,6 +33,10 @@ let DATA = {
 }
 
 _.map(MOCK_SITES, (value, key, collection) => {
+  DATA[key] = value;
+});
+
+_.map(MOCK_COMPANIES, (value, key, collection) => {
   DATA[key] = value;
 });
 

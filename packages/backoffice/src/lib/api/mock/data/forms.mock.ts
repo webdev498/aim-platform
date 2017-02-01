@@ -521,6 +521,120 @@ export const MOCK_FORMS = {
       }
     }
   },
+
+
+
+
+
+  'DAF02ED4-22DA-4225-A9E2-1881D03DC98D-COMP': {
+    "statusCode": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      id: 'DAF02ED4-22DA-4225-A9E2-1881D03DC98D',
+      platformId: "af818b70-c8db-11e6-9d9d-cec0c932ce01",
+      type: 'company',
+      content: {
+        schema: {
+          type: "company",
+          properties: {
+            url: {
+              type: 'string',
+            },
+            description: {
+              type: 'string',
+            },
+            address: {
+              type: 'string',
+            },
+            aliases: {
+              type: 'array',
+            },
+          },
+          required: [ 'url' ]
+        },
+        fieldDisplay: {
+          type: 'panel',
+          options: {
+            columns: 3,
+          },
+        },
+        fieldGroups: [
+          {
+            id: 'fieldGroup-1',
+            title: 'Company Details',
+            options: {
+              columns: 3,
+              layout: 'vertical',
+            },
+            actions: {
+              save: true,
+              cancel: true,
+            },
+            description: "Configure your site",
+            fields: [
+              {
+                id: 'fieldset-1',
+                type: 'fieldset',
+                //title: 'Name',
+                options: {
+                  columns: 1,
+                  //description: 'Suspendisse sed urna ante. Vestibulum tincidunt nunc nunc, ac blandit tellus tincidunt non.',
+                  fields: [
+                    {
+                      id: 'title',
+                      type: 'text',
+                      required: true,
+                      title: 'Company Title',
+                    },
+                    {
+                      id: 'content.url',
+                      type: 'text',
+                      required: true,
+                      title: 'URL',
+                      hint: 'The fully qualifed URL, http://www.example.com',
+                      attributes: {
+                        //minlength: 5,
+                        //maxlength: 20,
+                      },
+                      options: {
+                        placeholder: 'http://www.example.com',
+                      }
+                    },
+                    {
+                      id: 'content.description',
+                      type: 'text',
+                      title: 'Company Description',
+                      //tooltip: 'Only accepts one character',
+                      attributes: {
+                        //maxlength: 1,
+                      },
+                      options: {
+                        placeholder: 'Company Description',
+                      },
+                    },
+                    {
+                      id: 'content.address',
+                      type: 'text',
+                      title: 'Company Address',
+                      //tooltip: 'Only accepts one character',
+                      attributes: {
+                        //maxlength: 1,
+                      },
+                      options: {
+                        placeholder: 'Company Address',
+                      }
+                    },
+                  ]
+                },
+              },
+            ]
+          },
+        ],
+      }
+    }
+  },
 };
 
 export const MOCK_FORMS_OPTIONS = {

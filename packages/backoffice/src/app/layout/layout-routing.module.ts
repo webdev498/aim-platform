@@ -19,6 +19,7 @@ const routes: Routes = [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', loadChildren: 'app/dashboard/dashboard.module#DashboardModule' },
       { path: 'sites', loadChildren: 'app/sites/sites.module#SitesModule' },
+      { path: 'companies', loadChildren: 'app/companies/companies.module#CompaniesModule' },
       //{ path: 'shows', loadChildren: () => 'app/shows/shows.module#ShowsModule' },
       //{ path: 'reports', loadChildren: () => 'app/reports/reports.module#ReportsModule' },
       //{ path: 'approvals', loadChildren: () => 'app/approvals/approvals.module#ApprovalsModule' },

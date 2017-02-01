@@ -7,6 +7,7 @@ import { MOCK_DATA } from './data.mock';
 import * as _ from 'lodash';
 
 import { MOCK_SITES } from './data/sites.mock';
+import { MOCK_COMPANIES } from './data/companies.mock';
 import { MOCK_FORMS } from './data/forms.mock';
 
 export const MOCK_API_DATA = {
@@ -24,6 +25,11 @@ export const MOCK_API_DATA = {
 MOCK_API_DATA['sites'] = {};
 _.map(MOCK_SITES, (value, key, collection) => {
   MOCK_API_DATA['sites'][key] = _.set(value, '____root', 'sites');
+});
+
+MOCK_API_DATA['companies'] = {};
+_.map(MOCK_COMPANIES, (value, key, collection) => {
+  MOCK_API_DATA['companies'][key] = _.set(value, '____root', 'companies');
 });
 
 MOCK_API_DATA['forms'] = {};
