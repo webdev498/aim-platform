@@ -1,0 +1,34 @@
+<h1 class="page-title">Companies</h1>
+<p-messages [value]="messages"></p-messages>
+<div class="row">
+  <div class="col-md-12">
+    <section class="widget">
+      <header>
+        <h5>List of companies</h5>
+      </header>
+      <div class="widget-body">
+
+        <button (click)="postMessage('error')">Post Error</button>
+        <button (click)="postMessage('warn')">Post Warning</button>
+        <button (click)="postMessage('info')">Post Info</button>
+        <button (click)="postMessage('success')">Post Success</button>
+
+        <h3>PrimeNg Basic</h3>
+        <!--<ul>
+          <li *ngFor ="let company of companies">
+            <span>{{company.id}}</span> | <span>{{company.title}}</span>
+          </li>
+        </ul>-->
+        <p-dataTable [value]="companies">
+          <p-column field="title" header="Title">
+            <template let-col let-company="rowData" let-ri="rowIndex" pTemplate="body">
+              <a [routerLink]="[company.id]">{{company.title}}</a>
+            </template>
+          </p-column>
+          <!--<p-column field="content.url" header="URL"></p-column>-->
+        </p-dataTable>
+
+      </div>
+    </section>
+  </div>
+</div>
