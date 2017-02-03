@@ -20,3 +20,4 @@ export * from './SaveDataItem';
 export * from './SaveDataItemRelationships';
 export * from './SaveDataTypeItem';
 export * from './SaveDataTypes';
+export * from './Address';

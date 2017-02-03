@@ -444,7 +444,7 @@ export const MOCK_FORMS = {
             last_name: {
               type: 'string',
             },
-            /*address: {
+            address: {
               type: 'object',
               properties: {
                 street1: {
@@ -466,55 +466,7 @@ export const MOCK_FORMS = {
                 }
               },
               required: ['postalCode'],
-            }*/"GeoLocation": {
-              "type": "object",
-              "properties": {
-                "latitude": {
-                  "type": "string"
-                },
-                "longitude": {
-                  "type": "string"
-                },
-              },
-              "required": ["latitude", "longitude"]
-            },
-            "Address": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string",
-                  "description": "Optional user-defined name of the Address, for example 'Home' or 'Work'"
-                },
-                "line1": {
-                  "type": "string"
-                },
-                "line2": {
-                  "type": "string"
-                },
-                "line3": {
-                  "type": "string"
-                },
-                "city": {
-                  "type": "string"
-                },
-                "stateOrProvince" :{
-                  "type": "string"
-                },
-                "postalCode": {
-                  "type": "string"
-                },
-                "country": {
-                  "type": "string"
-                },
-                "geoLocation": {
-                  "type": "object",
-                  "items": {
-                    "$ref": "#/definitions/GeoLocation"
-                  }
-                }
-              }
             }
-
           },
           required: [ 'first_name', 'last_name', 'address', 'employer' ]
         },
@@ -1138,81 +1090,81 @@ export const MOCK_FORMS = {
 
                   },
                   {
-                    id: 'fieldset-11',
-                    type: 'fieldsetarray',
-                    title: 'Company Address',
+                    id: 'fieldset-1',
+                    type: 'fieldset',
+                    //title: 'Company FieldSet Title',
                     options: {
-                      columns: 3,
-                      fields: [
-                        {
-                          id: 'content.address',
-                          type: 'text',
-                          title: 'Address',
-                          //tooltip: 'Onlyacceptsonecharacter',
-                          attributes: {
-                            //maxlength: 1,
-
-                          },
-                          options: {
-                            placeholder: 'Company Address',
-
-                          }
-                        },
-                        {
-                          id: 'content.city',
-                          type: 'text',
-                          title: 'City',
-                          //tooltip: 'Onlyacceptsonecharacter',
-                          attributes: {
-                            //maxlength: 1,
-
-                          },
-                          options: {
-                            placeholder: 'City',
-
-                          },
-
-                        },
-                        {
-                          id: "content.state",
-                          title: "State",
-                          type: "SelectComponent",
-                          options: {
-                            placeholder: "Select your State",
-                            values: MOCK_FORMS_OPTIONS.state
-                          }
-                        },
-                        {
-                          id: 'content.zip',
-                          type: 'text',
-                          title: 'Zip',
-                          //tooltip: 'Onlyacceptsonecharacter',
-                          attributes: {
-                            //maxlength: 1,
-
-                          },
-                          options: {
-                            placeholder: 'Zip'
-                          },
-
-                        },
-                        {
-                          id: 'content.country',
-                          type: 'text',
-                          title: 'Country',
-                          //tooltip: 'Onlyacceptsonecharacter',
-                          attributes: {
-                            //maxlength: 1,
-
-                          },
-                          options: {
-                            placeholder: 'Country',
-
-                          },
-
-                        }
-                      ]
+                      columns: 1,
+                      fields: []
                     }
+                  },
+
+                  {
+                    id: 'content.address',
+                      type: 'text',
+                    title: 'Address',
+                    //tooltip: 'Onlyacceptsonecharacter',
+                    attributes: {
+                    //maxlength: 1,
+
+                  },
+                    options: {
+                      placeholder: 'Company Address',
+
+                    }
+                  },
+                  {
+                    id: 'content.city',
+                      type: 'text',
+                    title: 'City',
+                    //tooltip: 'Onlyacceptsonecharacter',
+                    attributes: {
+                    //maxlength: 1,
+
+                  },
+                    options: {
+                      placeholder: 'City',
+
+                    },
+
+                  },
+                  {
+                    id: "content.state",
+                    title: "State",
+                    type: "SelectComponent",
+                    options: {
+                      placeholder: "Select your State",
+                      values: MOCK_FORMS_OPTIONS.state
+                    }
+                  },
+                  {
+                    id: 'content.zip',
+                      type: 'text',
+                    title: 'Zip',
+                    //tooltip: 'Onlyacceptsonecharacter',
+                    attributes: {
+                    //maxlength: 1,
+
+                  },
+                    options: {
+                      placeholder: 'Zip'
+                    },
+
+                  },
+                  {
+                    id: 'content.country',
+                      type: 'text',
+                    title: 'Country',
+                    //tooltip: 'Onlyacceptsonecharacter',
+                    attributes: {
+                    //maxlength: 1,
+
+                  },
+                    options: {
+                      placeholder: 'Country',
+
+                    },
+
                   },
                   {
                     id: 'content.phone',
