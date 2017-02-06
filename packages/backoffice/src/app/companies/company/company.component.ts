@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
 
-import { DynamicFormComponent, Form } from 'lib/dynamic-forms';
+import { DynamicFormComponent, DynamicForm } from 'lib/dynamic-forms';
 
 import { CompaniesService} from '../companies.service';
-import { Data, DataType, Company } from 'lib/api';
+import { Data, Company } from 'lib/api';
 
 
 @Component({
@@ -15,8 +15,7 @@ import { Data, DataType, Company } from 'lib/api';
 export class CompanyComponent implements OnInit {
 
   company: Data<Company>;
-  dataType: Data<DataType>;
-  form: Form;
+  form: DynamicForm;
 
   initialized: boolean = false;
 
@@ -31,38 +30,20 @@ export class CompanyComponent implements OnInit {
         console.log('CompanyComponent:ngOnInit, companyId: ', companyId);
         this.companiesService.getCompany(companyId).subscribe(company => {
           console.log('CompanyComponent:ngOnInit, company: ', company);
-          if(company.dataTypeId) {
-            this.companiesService.getDataType(company).subscribe(dataType => {
-                console.log('ComapnyComponent:ngOnInit, dataType: ', dataType);
-                if(dataType['form']) {
-                  this.form = dataType['form'];
-                }
-                this.dataType = dataType;
-                this.company = company;
-                //this.form.model = this.company;
-                this.initialized = true;
-              },
-              (err) => {
-                // TODO: Display an error to the user
-                console.warn(err);
-              });
-          }
+          this.companiesService.getForm(company).subscribe(form => {
+            this.company = company;
+            this.form = form;
+            this.initialized = true;
+          });
         });
       } else {
         // create new company
         let company = new Data<Company>();
-        this.companiesService.getDataType(company).subscribe(dataType => {
-            if(dataType['form']) {
-              this.form = dataType['form'];
-            }
-            this.dataType = dataType;
-            this.company = company;
-            this.initialized = true;
-          },
-          (err) => {
-            // TODO: Display an error to the user
-            console.warn(err);
-          });
+        this.companiesService.getForm(company).subscribe(form => {
+          this.company = company;
+          this.form = form;
+          this.initialized = true;
+        });
       }
     });
   }

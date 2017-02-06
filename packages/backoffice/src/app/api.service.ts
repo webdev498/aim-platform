@@ -3,9 +3,11 @@ import { Http, BaseRequestOptions, Response, ResponseOptions, Headers, RequestMe
 import { MockBackend } from '@angular/http/testing';
 import { Observable } from "rxjs";
 import { environment } from "../environments/environment";
+import * as _ from 'lodash';
 
 import { AppConfig } from './app.config';
-import { DefaultApi } from 'lib/api';
+import { DefaultApi, Data, DataType, Form } from 'lib/api';
+import { DynamicForm } from 'lib/dynamic-forms';
 
 @Injectable()
 export class ApiService {
@@ -66,6 +68,46 @@ export class ApiService {
       }
       console.log('ApiService:getArrayByType, return: ', ret);
       return ret;
+    });
+  }
+
+
+  getDataType(model: Data<any>): Observable<DataType> {
+    return new Observable<DataType>(observer => {
+      if(!_.isEmpty(model.dataTypeId)) {
+        this.getByType<DataType>(DataType, '/dataTypes/' + model.dataTypeId).subscribe(dataType => {
+          if(dataType) {
+            observer.next(dataType);
+            observer.complete();
+          } else {
+            observer.error('DataType not found');
+          }
+        });
+      } else {
+        observer.error('Object does not have a dataTypeId');
+      }
+    });
+  }
+
+
+  getForm(model: Data<any>): Observable<DynamicForm> {
+    return new Observable<DynamicForm>(observer => {
+      if(!_.isEmpty(model.dataTypeId)) {
+        this.getDataType(model).subscribe(dataType => {
+          if(!_.isEmpty(dataType.formId)) {
+            this.getByType<Data<Form>>(Data, '/data/' + dataType['formId']).subscribe(form => {
+              let f = new DynamicForm();
+              Object.assign(f, form);
+              observer.next(f);
+              observer.complete();
+            });
+          } else {
+            observer.error('No form associated with this DataType');
+          }
+        });
+      } else {
+        observer.error('Model does not have a dataTypeId');
+      }
     });
   }
 

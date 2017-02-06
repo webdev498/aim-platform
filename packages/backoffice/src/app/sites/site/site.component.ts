@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
 
-import { DynamicFormComponent, Form } from 'lib/dynamic-forms';
+import { DynamicFormComponent, DynamicForm } from 'lib/dynamic-forms';
 
 import { SitesService } from '../sites.service';
 
@@ -16,7 +16,7 @@ export class SiteComponent implements OnInit, OnDestroy {
 
   site: Data<Site>;
   dataType: Data<DataType>;
-  form: Form;
+  form: DynamicForm;
 
   initialized: boolean = false;
 
@@ -31,37 +31,19 @@ export class SiteComponent implements OnInit, OnDestroy {
         console.log('SiteComponent:ngOnInit, siteId: ', siteId);
         this.sitesService.getSite(siteId).subscribe(site => {
           console.log('SiteComponent:ngOnInit, site: ', site);
-          if(site.dataTypeId) {
-            this.sitesService.getDataType(site).subscribe(dataType => {
-              console.log('SiteComponent:ngOnInit, dataType: ', dataType);
-              if(dataType['form']) {
-                this.form = dataType['form'];
-              }
-              this.dataType = dataType;
-              this.site = site;
-              //this.form.model = this.site;
-              this.initialized = true;
-            },
-            (err) => {
-              // TODO: Display an error to the user
-              console.warn(err);
-            });
-          }
+          this.sitesService.getForm(site).subscribe(form => {
+            this.site = site;
+            this.form = form;
+            this.initialized = true;
+          });
         });
       } else {
-        // create new site
+        // create new company
         let site = new Data<Site>();
-        this.sitesService.getDataType(site).subscribe(dataType => {
-          if(dataType['form']) {
-            this.form = dataType['form'];
-          }
-          this.dataType = dataType;
+        this.sitesService.getForm(site).subscribe(form => {
           this.site = site;
+          this.form = form;
           this.initialized = true;
-        },
-        (err) => {
-          // TODO: Display an error to the user
-          console.warn(err);
         });
       }
     });
