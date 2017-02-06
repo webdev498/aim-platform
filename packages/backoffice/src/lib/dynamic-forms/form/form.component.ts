@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
 
-import { FormsService, Form, DynamicComponentDef } from '../';
+import { FormsService, DynamicForm, DynamicComponentDef } from '../';
 
 import * as _ from 'lodash';
 
@@ -17,14 +17,14 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   @Input()
   title: string;
 
-  private _form: Form;
-  @Input() set form(f: Form) {
+  private _form: DynamicForm;
+  @Input() set form(f: DynamicForm) {
     this._form = f;
     if(this._model) {
       this._form.load(this._model);
     }
   }
-  get form(): Form {
+  get form(): DynamicForm {
     return this._form;
   }
 

@@ -1,7 +1,6 @@
 import { EventEmitter, Output, Injectable } from '@angular/core';
 import { DynamicComponentDef } from './models';
 import { Observable } from 'rxjs';
-import { Form } from './models';
 
 @Injectable()
 export class FormsService {

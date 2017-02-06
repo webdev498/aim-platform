@@ -1,5 +1,5 @@
 import { ComponentRef } from '@angular/core';
-import { Form, FieldGroupOptions } from './form.model';
+import { FieldGroupOptions } from './form.model';
 
 /*export class DynamicComponentDef {
   id: string;
