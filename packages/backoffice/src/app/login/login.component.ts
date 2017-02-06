@@ -51,7 +51,6 @@ export class LoginComponent {
     this.authService.login(this.credentials.username, this.credentials.password, this.credentials.remember).subscribe(
       (loggedIn) => self._loggedIn(loggedIn),
       (err) => {
-        debugger;
         console.warn('Login Error', err)
         
         if(!('type' in err)) throw err;

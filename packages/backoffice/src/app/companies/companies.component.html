@@ -22,7 +22,8 @@
         <p-dataTable [value]="companies">
           <p-column field="title" header="Title">
             <template let-col let-company="rowData" let-ri="rowIndex" pTemplate="body">
-              <a [routerLink]="[company.id]">{{company.title}}</a>
+              <a [routerLink]="[company.id]">{{company.content.title}}</a>
+              {{ company | json }}
             </template>
           </p-column>
           <!--<p-column field="content.url" header="URL"></p-column>-->

@@ -31,7 +31,7 @@ export class SiteComponent implements OnInit, OnDestroy {
         console.log('SiteComponent:ngOnInit, siteId: ', siteId);
         this.sitesService.getSite(siteId).subscribe(site => {
           console.log('SiteComponent:ngOnInit, site: ', site);
-          if(site.typeId) {
+          if(site.dataTypeId) {
             this.sitesService.getDataType(site).subscribe(dataType => {
               console.log('SiteComponent:ngOnInit, dataType: ', dataType);
               if(dataType['form']) {

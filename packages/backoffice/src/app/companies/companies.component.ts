@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Message } from 'primeng/primeng';
 import { AppConfig } from 'app/app.config';
-import { CompaniesService, Company } from './companies.service';
+import { CompaniesService, Data, Company } from './companies.service';
 
 @Component({
   selector: 'app-companies',
@@ -11,7 +11,7 @@ import { CompaniesService, Company } from './companies.service';
 export class CompaniesComponent implements OnInit {
 
   @Input()
-  companies: Company[];
+  companies: Data<Company>[];
 
   columns: any[];
 
@@ -41,8 +41,8 @@ export class CompaniesComponent implements OnInit {
 
   ngOnInit() {
     this.companiesService.getCompanies().subscribe(companies => {
-      debugger
-      this.companies = companies as Company[];
+      this.companies = companies as Data<Company>[];
+      console.log('CompaniesComponent:ngOnInit, companies: ', this.companies);
     });
   }
 

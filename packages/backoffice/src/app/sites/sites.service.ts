@@ -8,8 +8,8 @@ import { Form } from 'lib/dynamic-forms';
 export class Site {
   id: string;
   title: string;
-  type: string;
-  typeId: string;
+  dataType: string;
+  dataTypeId: string;
   content: {
     url: string;
     description: string;

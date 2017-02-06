@@ -32,15 +32,17 @@ let DATA = {
   }
 }
 
-_.map(MOCK_SITES, (value, key, collection) => {
+_.map(MOCK_SITES, (value, key) => {
   DATA[key] = value;
 });
 
-_.map(MOCK_COMPANIES, (value, key, collection) => {
+console.log('data.mock, companies', MOCK_COMPANIES);
+_.each(MOCK_COMPANIES, (value, key) => {
+  console.log('data.mock, map companies', key, value);
   DATA[key] = value;
 });
 
-_.map(MOCK_FORMS, (value, key, collection) => {
+_.map(MOCK_FORMS, (value, key) => {
   DATA[key] = value;
 });
 

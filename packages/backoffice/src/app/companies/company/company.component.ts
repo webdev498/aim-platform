@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 
 import { DynamicFormComponent, Form } from 'lib/dynamic-forms';
 
-import { CompaniesService, Company } from '../companies.service';
+import { CompaniesService, Data, Company } from '../companies.service';
 
 import { DataTypeItem } from 'lib/api';
 
@@ -14,7 +14,7 @@ import { DataTypeItem } from 'lib/api';
 })
 export class CompanyComponent implements OnInit {
 
-  company: Company;
+  company: Data<Company>;
   dataType: DataTypeItem;
   form: Form;
 
@@ -31,9 +31,8 @@ export class CompanyComponent implements OnInit {
         console.log('CompanyComponent:ngOnInit, companyId: ', companyId);
         this.companiesService.getCompany(companyId).subscribe(company => {
           console.log('CompanyComponent:ngOnInit, company: ', company);
-          if(company.typeId) {
+          if(company.dataTypeId) {
             this.companiesService.getDataType(company).subscribe(dataType => {
-              debugger
                 console.log('ComapnyComponent:ngOnInit, dataType: ', dataType);
                 if(dataType['form']) {
                   this.form = dataType['form'];
@@ -51,7 +50,7 @@ export class CompanyComponent implements OnInit {
         });
       } else {
         // create new company
-        let company = new Company();
+        let company = new Data<Company>();
         this.dataType = this.companiesService.getDataType(company).subscribe(dataType => {
             if(dataType['form']) {
               this.form = dataType['form'];
