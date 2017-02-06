@@ -2,45 +2,33 @@ import { EventEmitter, Output, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { ApiService } from '../api.service';
-import { DataTypeItem } from 'lib/api';
+import { Data, DataType, Site } from 'lib/api';
 import { Form } from 'lib/dynamic-forms';
 
-export class Site {
-  id: string;
-  title: string;
-  dataType: string;
-  dataTypeId: string;
-  content: {
-    url: string;
-    description: string;
-    aliases: string[];
-  };
-  [propName: string]: any;
-}
 
 @Injectable()
 export class SitesService {
   constructor(private apiService: ApiService) { }
 
-  getSite(siteId: string): Observable<Site> {
-    return this.apiService.getByType<Site>(Site, '/data/' + siteId);
+  getSite(siteId: string): Observable<Data<Site>> {
+    return this.apiService.getByType<Data<Site>>(Data, '/data/' + siteId);
   }
 
-  saveSite(site: Site) {
+  saveSite(site: Data<Site>) {
     this.apiService.put('/data/' + site.id, site);
   }
 
-  getSites(): Observable<Site[]> {
-    return this.apiService.getArrayByType<Site>(Site, '/sites');
+  getSites(): Observable<Data<Site>[]> {
+    return this.apiService.getArrayByType<Data<Site>>(Data, '/sites');
   }
 
-  getDataType(o: any): Observable<DataTypeItem> {
-    return new Observable<DataTypeItem>(observer => {
+  getDataType(o: any): Observable<Data<DataType>> {
+    return new Observable<Data<DataType>>(observer => {
       if('typeId' in o) {
-        this.apiService.getByType<DataTypeItem>(DataTypeItem, '/dataTypes/' + o['typeId']).subscribe(dataType => {
+        this.apiService.getByType<Data<DataType>>(Data, '/dataTypes/' + o['typeId']).subscribe(dataType => {
           if(dataType) {
             if(dataType['formId']) {
-              this.apiService.getByType<Form>(Form, '/data/' + dataType['formId']).subscribe(form => {
+              this.apiService.getByType<Data<Form>>(Data, '/data/' + dataType['formId']).subscribe(form => {
                 dataType['form'] = form;
                 observer.next(dataType);
                 observer.complete();
@@ -58,12 +46,12 @@ export class SitesService {
     });
   }
 
-  getForms(): Observable<Form[]> {
-    return this.apiService.getArrayByType<Form>(Form, '/forms');;
+  getForms(): Observable<Data<Form>[]> {
+    return this.apiService.getArrayByType<Data<Form>>(Data, '/forms');;
   }
 
-  getForm(formId: any): Observable<Form> {
-    return this.apiService.getByType<Form>(Form, '/forms/' + formId);
+  getForm(formId: any): Observable<Data<Form>> {
+    return this.apiService.getByType<Data<Form>>(Data, '/forms/' + formId);
   }
 
   // TODO: this is a dummy method that won't actually reside here

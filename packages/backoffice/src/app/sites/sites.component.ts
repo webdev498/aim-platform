@@ -4,7 +4,9 @@ import { ActivatedRoute } from "@angular/router";
 import { Message } from 'primeng/primeng';
 
 import { AppConfig } from 'app/app.config';
-import { SitesService, Site } from './sites.service';
+import { SitesService } from './sites.service';
+
+import { Data, Site } from 'lib/api';
 
 @Component({
   selector: 'app-site',
@@ -14,7 +16,7 @@ import { SitesService, Site } from './sites.service';
 export class SitesComponent implements OnInit {
 
   @Input()
-  sites: Site[];
+  sites: Data<Site>[];
 
   columns: any[];
 
@@ -24,7 +26,7 @@ export class SitesComponent implements OnInit {
 
   constructor(private appConfig: AppConfig, public sitesService: SitesService) {
     this.messages = [];
-    let s = new Site();
+    let s = new Data<Site>();
     this.columns = [
       {
         header: 'Title',
@@ -48,7 +50,7 @@ export class SitesComponent implements OnInit {
 
   ngOnInit() {
     this.sitesService.getSites().subscribe(sites => {
-      this.sites = sites as Site[];
+      this.sites = sites as Data<Site>[];
     });
   }
 

@@ -3,9 +3,9 @@ import { Router, ActivatedRoute } from "@angular/router";
 
 import { DynamicFormComponent, Form } from 'lib/dynamic-forms';
 
-import { SitesService, Site } from '../sites.service';
+import { SitesService } from '../sites.service';
 
-import { DataTypeItem } from 'lib/api';
+import { Data, DataType, Site } from 'lib/api';
 
 @Component({
   selector: 'app-site',
@@ -14,8 +14,8 @@ import { DataTypeItem } from 'lib/api';
 })
 export class SiteComponent implements OnInit, OnDestroy {
 
-  site: Site;
-  dataType: DataTypeItem;
+  site: Data<Site>;
+  dataType: Data<DataType>;
   form: Form;
 
   initialized: boolean = false;
@@ -50,8 +50,8 @@ export class SiteComponent implements OnInit, OnDestroy {
         });
       } else {
         // create new site
-        let site = new Site();
-        this.dataType = this.sitesService.getDataType(site).subscribe(dataType => {
+        let site = new Data<Site>();
+        this.sitesService.getDataType(site).subscribe(dataType => {
           if(dataType['form']) {
             this.form = dataType['form'];
           }
@@ -71,12 +71,12 @@ export class SiteComponent implements OnInit, OnDestroy {
     this.routeParamSubscription.unsubscribe();
   }
 
-  onSubmit(formData: {model: Site}) {
+  onSubmit(formData: {model: Data<Site>}) {
     console.log('SiteComponent, onSubmit, model: ', formData.model);
     this.sitesService.saveSite(this.site);
   }
 
-  onCancel(formData: {model: Site}) {
+  onCancel(formData: {model: Data<Site>}) {
     console.log('SiteComponent, onCancel, model: ', formData.model);
   }
 

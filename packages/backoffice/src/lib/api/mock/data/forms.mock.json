@@ -50,12 +50,12 @@
               "fields": [{
                 "id": "title",
                 "type": "text",
-                "required": true,
+                "required": false,
                 "title": "Site Title"
               }, {
                 "id": "content.url",
                 "type": "text",
-                "required": true,
+                "required": false,
                 "title": "URL",
                 "hint": "The fully qualifed URL, http://www.example.com",
                 "attributes": {},
@@ -144,9 +144,7 @@
           "type": "panel",
           "options": {
             "columns": 3
-
           }
-
         },
         "fieldGroups": [{
             "id": "fieldGroup-1",
@@ -154,12 +152,10 @@
             "options": {
               "columns": 3,
               "layout": "vertical"
-
             },
             "actions": {
               "save": true,
               "cancel": true
-
             },
             "description": "Configure your company",
             "fields": [{
@@ -168,308 +164,176 @@
                 "options": {
                   "columns": 1,
                   "fields": [{
-                      "id": "title",
+                      "id": "content.title",
                       "type": "text",
-                      "required": true,
+                      "required": false,
                       "title": "Name"
 
                     }, {
-                      "id": "content.url",
-                      "type": "text",
-                      "required": true,
-                      "title": "Website Address",
-                      "hint": "ThefullyqualifedURL",
-                      "attributes": {
-
-                      },
+                      "id": "content.status",
+                      "type": "radio",
+                      "required": false,
+                      "title": "Status",
                       "options": {
-                        "placeholder": "http: //www.example.com"
-
-                      }
-                    }, {
-                      "id": "content.description",
-                      "type": "text",
-                      "title": "Description",
-                      "attributes": {
-
-
-                      },
-                      "options": {
-                        "placeholder": "Company Description"
-
-                      }
-
-                    }, {
-                      "id": "fieldset-11",
-                      "type": "fieldsetarray",
-                      "title": "Company Address",
-                      "options": {
-                        "columns": 3,
-                        "fields": [{
-                          "id": "content.address",
-                          "type": "text",
-                          "title": "Address",
-                          "options": {
-                            "placeholder": "Company Address"
-
+                        "values": [
+                          {
+                            "value": "pending",
+                            "title": "Pending"
+                          }, {
+                            "value": "active",
+                            "title": "Active"
+                          }, {
+                            "value": "inactive",
+                            "title": "Inactive"
+                          }, {
+                            "value": "unknown",
+                            "title": "Unknown"
                           }
-                        }, {
-                          "id": "content.city",
-                          "type": "text",
-                          "title": "City",
-                          "options": {
-                            "placeholder": "City"
-
-                          }
-
-                        }, {
-                          "id": "content.state",
-                          "title": "State",
-                          "type": "SelectComponent",
-                          "options": {
-                            "placeholder": "Select your State",
-                            "values": [{
-                              "value": "AL",
-                              "title": "Alabama"
-                            }, {
-                              "value": "AK",
-                              "title": "Alaska"
-                            }, {
-                              "value": "AZ",
-                              "title": "Arizona"
-                            }, {
-                              "value": "AR",
-                              "title": "Arkansas"
-                            }, {
-                              "value": "CA",
-                              "title": "California"
-                            }, {
-                              "value": "CO",
-                              "title": "Colorado"
-                            }, {
-                              "value": "CT",
-                              "title": "Connecticut"
-                            }, {
-                              "value": "DE",
-                              "title": "Delaware"
-                            }, {
-                              "value": "DC",
-                              "title": "District Of Columbia"
-                            }, {
-                              "value": "FL",
-                              "title": "Florida"
-                            }, {
-                              "value": "GA",
-                              "title": "Georgia"
-                            }, {
-                              "value": "HI",
-                              "title": "Hawaii"
-                            }, {
-                              "value": "ID",
-                              "title": "Idaho"
-                            }, {
-                              "value": "IL",
-                              "title": "Illinois"
-                            }, {
-                              "value": "IN",
-                              "title": "Indiana"
-                            }, {
-                              "value": "IA",
-                              "title": "Iowa"
-                            }, {
-                              "value": "KS",
-                              "title": "Kansas"
-                            }, {
-                              "value": "KY",
-                              "title": "Kentucky"
-                            }, {
-                              "value": "LA",
-                              "title": "Louisiana"
-                            }, {
-                              "value": "ME",
-                              "title": "Maine"
-                            }, {
-                              "value": "MD",
-                              "title": "Maryland"
-                            }, {
-                              "value": "MA",
-                              "title": "Massachusetts"
-                            }, {
-                              "value": "MI",
-                              "title": "Michigan"
-                            }, {
-                              "value": "MN",
-                              "title": "Minnesota"
-                            }, {
-                              "value": "MS",
-                              "title": "Mississippi"
-                            }, {
-                              "value": "MO",
-                              "title": "Missouri"
-                            }, {
-                              "value": "MT",
-                              "title": "Montana"
-                            }, {
-                              "value": "NE",
-                              "title": "Nebraska"
-                            }, {
-                              "value": "NV",
-                              "title": "Nevada"
-                            }, {
-                              "value": "NH",
-                              "title": "New Hampshire"
-                            }, {
-                              "value": "NJ",
-                              "title": "New Jersey"
-                            }, {
-                              "value": "NM",
-                              "title": "New Mexico"
-                            }, {
-                              "value": "NY",
-                              "title": "New York"
-                            }, {
-                              "value": "NC",
-                              "title": "North Carolina"
-                            }, {
-                              "value": "ND",
-                              "title": "North Dakota"
-                            }, {
-                              "value": "OH",
-                              "title": "Ohio"
-                            }, {
-                              "value": "OK",
-                              "title": "Oklahoma"
-                            }, {
-                              "value": "OR",
-                              "title": "Oregon"
-                            }, {
-                              "value": "PA",
-                              "title": "Pennsylvania"
-                            }, {
-                              "value": "RI",
-                              "title": "Rhode Island"
-                            }, {
-                              "value": "SC",
-                              "title": "South Carolina"
-                            }, {
-                              "value": "SD",
-                              "title": "South Dakota"
-                            }, {
-                              "value": "TN",
-                              "title": "Tennessee"
-                            }, {
-                              "value": "TX",
-                              "title": "Texas"
-                            }, {
-                              "value": "UT",
-                              "title": "Utah"
-                            }, {
-                              "value": "VT",
-                              "title": "Vermont"
-                            }, {
-                              "value": "VA",
-                              "title": "Virginia"
-                            }, {
-                              "value": "WA",
-                              "title": "Washington"
-                            }, {
-                              "value": "WV",
-                              "title": "West Virginia"
-                            }, {
-                              "value": "WI",
-                              "title": "Wisconsin"
-                            }, {
-                              "value": "WY",
-                              "title": "Wyoming"
-                            }]
-                          }
-                        }, {
-                          "id": "content.zip",
-                          "type": "text",
-                          "title": "Zip",
-                          "options": {
-                            "placeholder": "Zip"
-                          }
-
-                        }, {
-                          "id": "content.country",
-                          "type": "text",
-                          "title": "Country",
-                          "attributes": {
-
-                          },
-                          "options": {
-                            "placeholder": "Country"
-
-                          }
-
-                        }]
-                      }
-                    }, {
-                      "id": "content.phone",
-                      "type": "text",
-                      "title": "Phone",
-                      "attributes": {
-
-                      },
-                      "options": {
-                        "placeholder": "Phone"
-
-                      }
-                    }, {
-                      "id": "content.fax",
-                      "type": "text",
-                      "title": "Fax",
-                      "attributes": {
-
-                      },
-                      "options": {
-                        "placeholder": "Fax"
-
-                      }
-                    }, {
-                      "id": "content.twitterURL",
-                      "type": "text",
-                      "title": "Twiiter URL",
-                      "attributes": {
-
-                      },
-                      "options": {
-                        "placeholder": "TwitterURL"
-
-                      }
-                    }, {
-                      "id": "content.facebookURL",
-                      "type": "text",
-                      "title": "Facebook URL",
-                      "attributes": {
-
-                      },
-                      "options": {
-                        "placeholder": "FacebookURL"
-                      }
-                    }, {
-                      "id": "content.linkedInURL",
-                      "type": "text",
-                      "title": "LinkedIn URL",
-                      "attributes": {
-
-                      },
-                      "options": {
-                        "placeholder": "LinkedInURL"
+                        ]
                       }
                     }
-
                   ]
                 }
-
               }
-
+            ]
+          },
+          {
+            "id": "fieldgroup-primaryContact",
+            "title": "Primary Contact",
+            "fields": [
+              {
+                "id": "fieldset-primaryContact",
+                "type": "fieldset",
+                "options": {
+                  "columns": 3,
+                  "fields": [
+                    {
+                      "id": "content.primaryContact.status",
+                      "type": "radio",
+                      "required": false,
+                      "title": "Status",
+                      "options": {
+                        "values": [
+                          {
+                            "value": "pending",
+                            "title": "Pending"
+                          }, {
+                            "value": "active",
+                            "title": "Active"
+                          }, {
+                            "value": "inactive",
+                            "title": "Inactive"
+                          }, {
+                            "value": "unknown",
+                            "title": "Unknown"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "id": "content.primaryContact.displayName",
+                      "type": "text",
+                      "required": false,
+                      "title": "Display Name"
+                    },
+                    {
+                      "id": "content.primaryContact.firstName",
+                      "type": "text",
+                      "required": false,
+                      "title": "First Name"
+                    },
+                    {
+                      "id": "content.primaryContact.lastName",
+                      "type": "text",
+                      "required": false,
+                      "title": "Last Name"
+                    },
+                    {
+                      "id": "content.primaryContact.prefix",
+                      "type": "text",
+                      "required": false,
+                      "title": "Prefix"
+                    },
+                    {
+                      "id": "content.primaryContact.suffix",
+                      "type": "text",
+                      "required": false,
+                      "title": "Suffix"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "id": "fieldgroup-contacts",
+            "title": "Additional Contacts",
+            "fields": [
+              {
+                "id": "fieldset-11",
+                "type": "fieldsetarray",
+                "options": {
+                  "columns": 3,
+                  "fields": [
+                    {
+                      "id": "content.primaryContact.status",
+                      "type": "radio",
+                      "required": false,
+                      "title": "Status",
+                      "options": {
+                        "values": [
+                          {
+                            "value": "pending",
+                            "title": "Pending"
+                          }, {
+                            "value": "active",
+                            "title": "Active"
+                          }, {
+                            "value": "inactive",
+                            "title": "Inactive"
+                          }, {
+                            "value": "unknown",
+                            "title": "Unknown"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "id": "content.primaryContact.displayName",
+                      "type": "text",
+                      "required": false,
+                      "title": "Display Name"
+                    },
+                    {
+                      "id": "content.primaryContact.firstName",
+                      "type": "text",
+                      "required": false,
+                      "title": "First Name"
+                    },
+                    {
+                      "id": "content.primaryContact.lastName",
+                      "type": "text",
+                      "required": false,
+                      "title": "Last Name"
+                    },
+                    {
+                      "id": "content.primaryContact.prefix",
+                      "type": "text",
+                      "required": false,
+                      "title": "Prefix"
+                    },
+                    {
+                      "id": "content.primaryContact.suffix",
+                      "type": "text",
+                      "required": false,
+                      "title": "Suffix"
+                    }
+                  ]
+                }
+              }
             ]
           }
-
         ]
-
       }
     }
   }

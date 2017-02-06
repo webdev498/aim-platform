@@ -14,19 +14,27 @@
         <button (click)="postMessage('success')">Post Success</button>
 
         <h3>PrimeNg Basic</h3>
-        <!--<ul>
-          <li *ngFor ="let company of companies">
-            <span>{{company.id}}</span> | <span>{{company.title}}</span>
-          </li>
-        </ul>-->
         <p-dataTable [value]="companies">
-          <p-column field="title" header="Title">
+          <p-column field="company.content.status" header="Status">
             <template let-col let-company="rowData" let-ri="rowIndex" pTemplate="body">
-              <a [routerLink]="[company.id]">{{company.content.title}}</a>
-              {{ company | json }}
+              {{ company.content.status }}
             </template>
           </p-column>
-          <!--<p-column field="content.url" header="URL"></p-column>-->
+          <p-column field="company.content.title" header="Title">
+            <template let-col let-company="rowData" let-ri="rowIndex" pTemplate="body">
+              <a [routerLink]="[company.id]">{{company.content.title}}</a>
+            </template>
+          </p-column>
+          <p-column field="company.content.offices" header="Offices">
+            <template let-col let-company="rowData" let-ri="rowIndex" pTemplate="body">
+              <a [routerLink]="[company.id]">{{company.content.offices?.length}}</a>
+            </template>
+          </p-column>
+          <p-column field="company.content.contacts" header="Contacts">
+            <template let-col let-company="rowData" let-ri="rowIndex" pTemplate="body">
+              <a [routerLink]="[company.id]">{{company.content.contacts?.length}}</a>
+            </template>
+          </p-column>
         </p-dataTable>
 
       </div>

@@ -34,14 +34,13 @@ export class ApiService {
   getArray(...params): Observable<any[]> {
     console.log('ApiService:getArray, params: ', params);
     return this.request('get', params).map( (response):any[] => {
-      console.log('ApiService:getArray, response: ', response);
       let arr = response.json();
       let ret = [];
       for(var i = 0; i < arr.length; i++) {
         let o = {};
-        console.log('ApiService.getArray, o:', o);
         ret.push(Object.assign(o, arr[i]));
       }
+      console.log('ApiService:getArray, return: ', ret);
       return ret;
     });
   }
@@ -50,22 +49,22 @@ export class ApiService {
     console.log('ApiService:getByType, params: ', objectType, params);
     return this.request('get', params).map( response => {
       let o = (undefined !== objectType) ? new objectType() : {};
+      o = Object.assign(o, response.json()) as T;
       console.log('ApiService:getByType, o: ', o);
-      return Object.assign(o, response.json()) as T;
+      return o;
     });
   }
 
   getArrayByType<T>(objectType: { new(): T }, ...params): Observable<T[]> {
     console.log('ApiService:getArrayByType, params: ', objectType, params);
     return this.request('get', params).map( (response):T[] => {
-      console.log('ApiService:getArrayByType, response: ', response);
       let arr = response.json();
       let ret: Array<T> = [];
       for(var i = 0; i < arr.length; i++) {
         let o = (undefined !== objectType) ? new objectType() : {};
-        console.log('ApiService:getArrayByType, o: ' , o);
         ret.push(Object.assign(o, arr[i]) as T);
       }
+      console.log('ApiService:getArrayByType, return: ', ret);
       return ret;
     });
   }

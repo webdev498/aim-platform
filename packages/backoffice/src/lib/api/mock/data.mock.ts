@@ -36,9 +36,7 @@ _.map(MOCK_SITES, (value, key) => {
   DATA[key] = value;
 });
 
-console.log('data.mock, companies', MOCK_COMPANIES);
 _.each(MOCK_COMPANIES, (value, key) => {
-  console.log('data.mock, map companies', key, value);
   DATA[key] = value;
 });
 

@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Message } from 'primeng/primeng';
 import { AppConfig } from 'app/app.config';
-import { CompaniesService, Data, Company } from './companies.service';
+import { CompaniesService } from './companies.service';
+import { Data, Company } from 'lib/api';
 
 @Component({
   selector: 'app-companies',
