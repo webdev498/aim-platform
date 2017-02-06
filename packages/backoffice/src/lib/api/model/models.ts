@@ -1,87 +1,95 @@
 export class DataType {
-    id?: string | null;
-    versionId?: string | null;
-    platformId?: string | null;
-    module?: string | null;
-    moduleId?: string | null;
-    type?: string | null;
-    createdAt?: number | null;
-    createBy?: string | null;
-    modifiedAt?: number | null;
-    modifiedBy?: string | null;
-    deletedAt?: number | null;
-    deletedBy?: string | null;
+    id?: string;
+    versionId?: string;
+    platformId?: string;
+    module?: string;
+    moduleId?: string;
+    type?: string;
+    formId?: string;
+    createdAt?: number;
+    createBy?: string;
+    modifiedAt?: number;
+    modifiedBy?: string;
+    deletedAt?: number;
+    deletedBy?: string;
     content?: {
-    } | null;
+        [key: string]: any
+    };
 }
 export class Module {
-    id?: string | null;
-    versionId?: string | null;
-    platformId?: string | null;
-    module?: string | null;
-    createdAt?: number | null;
-    createBy?: string | null;
-    modifiedAt?: number | null;
-    modifiedBy?: string | null;
-    deletedAt?: number | null;
-    deletedBy?: string | null;
+    id?: string;
+    versionId?: string;
+    platformId?: string;
+    module?: string;
+    createdAt?: number
+    createBy?: string
+    modifiedAt?: number;
+    modifiedBy?: string;
+    deletedAt?: number
+    deletedBy?: string;
     content?: {
-    } | null;
+        [key: string]: any
+    };
 }
 export class ModulesItemValue {
-    id: string | null;
-    active: boolean | null;
-    title?: string | null;
+    id: string;
+    active: boolean;
+    title?: string;
 }
 export class Platform {
-    id?: string | null;
-    versionId?: string | null;
-    createdAt?: number | null;
-    createBy?: string | null;
-    modifiedAt?: number | null;
-    modifiedBy?: string | null;
-    deletedAt?: number | null;
-    deletedBy?: string | null;
+    id?: string;
+    versionId?: string;
+    createdAt?: number;
+    createBy?: string;
+    modifiedAt?: number;
+    modifiedBy?: string
+    deletedAt?: number;
+    deletedBy?: string;
     content?: {
         modules?: {
-        };
+        [key: string]: any
+    };
     };
 }
 export class User {
-    id?: string | null;
-    versionId?: string | null;
-    createdAt?: number | null;
-    createBy?: string | null;
-    modifiedAt?: number | null;
-    modifiedBy?: string | null;
-    deletedAt?: number | null;
-    deletedBy?: string | null;
+    id?: string;
+    versionId?: string;
+    createdAt?: number;
+    createBy?: string;
+    modifiedAt?: number;
+    modifiedBy?: string;
+    deletedAt?: number
+    deletedBy?: string;
     content: {
-        email: string | null;
-        firstName?: string | null;
-        lastName?: string | null;
+        email: string;
+        firstName?: string;
+        lastName?: string;
         defaults?: {
+            [key: string]: any
         };
-        notifications?: any[];
+        notifications?: {
+            [key: string]: any
+        }[];
         platforms?: {
-        };
+        [key: string]: any
+    };
     };
 }
 
 export class Data<T> {
-    id: string | null;
-    versionId: string | null;
-    platformId: string | null;
-    module: string | null;
-    moduleId: string | null;
-    dataType: string | null;
-    dataTypeId: string | null;
-    createdAt: number | null; // date-time
-    createdBy: string | null;
-    modifiedAt: number | null;
-    modifiedBy: string | null;
-    deletedAt?: number | null;
-    deletedBy?: string | null;
+    id: string;
+    versionId: string;
+    platformId: string;
+    module: string;
+    moduleId: string;
+    dataType: string
+    dataTypeId: string
+    createdAt: number; // date-time
+    createdBy: string;
+    modifiedAt: number;
+    modifiedBy: string;
+    deletedAt?: number;
+    deletedBy?: string;
     content: T;
 }
 
@@ -126,6 +134,7 @@ export class FormField {
      * This is a key/value list of field specific attributes
      */
     attributes?: {
+        [key: string]: any
     };
     /**
      * This is a key/value list of field specific options
@@ -155,8 +164,7 @@ export class GeoLocation {
 }
 export type KeyValueList = {
     key: string;
-    value: null | boolean | {
-    } | any[] | number | string;
+    value: any;
 }[];
 export class Measurement {
     type?: "length" | "weight" | "volume";
@@ -275,41 +283,41 @@ export class Show {
 export class Venue {
 }
 export class Domain {
-    title?: string | null;
-    description?: string | null;
+    title?: string;
+    description?: string;
     fqdn?: string;
     siteDataId?: string;
     siteDataTypeId?: string;
 }
 export class Path {
-    title?: string | null;
-    description?: string | null;
+    title?: string;
+    description?: string;
     path: string;
     redirect?: {
         code?: number;
         url?: string;
-    } | null;
+    };
     handler?: {
         module?: {
             id?: string;
             title?: string;
-        } | null;
+        };
         /**
          * The action that needs to be run
          */
-        action?: string | null;
+        action?: string;
         /**
          * Can be a single string value or an encoded json object
          */
-        value?: string | null;
-    } | null;
+        value?: string;
+    };
 }
 export class Site {
-    title?: string | null;
-    description?: string | null;
+    title?: string;
+    description?: string;
     domain?: {
-        id?: string | null;
-        fqdn?: string | null;
+        id?: string;
+        fqdn?: string;
     };
     routing?: {
         pattern?: string;
@@ -325,6 +333,7 @@ export class Site {
          * Used for the creating forward routing urls
          */
         reverseRoutes?: {
+            [key: string]: any
         };
         /**
          * Used to store the checkSum of the routing array, check to see if we need to rebuild cache
@@ -337,8 +346,8 @@ export class Site {
     };
 }
 export class Template {
-    title?: string | null;
-    description?: string | null;
+    title?: string;
+    description?: string;
     path?: string;
     engine?: string;
     content?: string;
