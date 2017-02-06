@@ -1,0 +1,9 @@
+<h1 *ngIf="title" class="page-title">
+  {{title}} ({{route.params.value.formId}})
+</h1>
+<form *ngIf="form" class="form row">
+  <div field-group-component *ngFor="let group of form.content.fieldGroups;" [fieldGroup]="group" [class.form-horizontal]="group.horizontal" (submit)="onSubmit()" (cancel)="onCancel()">
+    <div dynamic-component *ngFor="let c of group.fields" [componentData]="c" [fieldGroupOptions]="group.options"></div>
+  </div>
+</form>
+
