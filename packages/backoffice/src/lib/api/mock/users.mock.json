@@ -1,5 +1,5 @@
-export const MOCK_USERS = {
-  'generic': {
+{
+  "generic": {
     "statusCode": 200,
     "headers": {
       "Content-Type": "application/json"
@@ -18,23 +18,20 @@ export const MOCK_USERS = {
         "firstName": "Generic",
         "lastName": "User",
         "defaults": {
-          "platform": "91da1820-e335-11e6-98d0-818de223eef9"
+          "platform": "b2671fea-6eec-5acd-a788-326c210588f4"
         },
-        "notifications": [
-          {
-            icon: 'glyphicon glyphicon-download fa-lg',
-            created: '2017-01-21',
-            message: "1 new user just signed up! Check out<a href=\"#\">Monica Smith</a>'s account.",
-          },
-          {
-            icon: 'glyphicon glyphicon-upload fa-lg',
-            created: '2017-01-19',
-            message: "2.1.0-pre-alpha just released.",
-          }
-        ],
+        "notifications": [{
+          "icon": "glyphicon glyphicon-download fa-lg",
+          "created": "2017-01-21",
+          "message": "1 new user just signed up! Check out<a href=\"#\">Monica Smith</a>'s account."
+        }, {
+          "icon": "glyphicon glyphicon-upload fa-lg",
+          "created": "2017-01-19",
+          "message": "2.1.0-pre-alpha just released."
+        }],
         "platforms": {
-          "af818b70-c8db-11e6-9d9d-cec0c932ce01": {
-            "id": "91da1820-e335-11e6-98d0-818de223eef9",
+          "b2671fea-6eec-5acd-a788-326c210588f4": {
+            "id": "b2671fea-6eec-5acd-a788-326c210588f4",
             "title": "Show Management",
             "defaults": {
               "module": "sites"
@@ -44,7 +41,7 @@ export const MOCK_USERS = {
       }
     }
   },
-  'dhiggins': {
+  "dhiggins": {
     "statusCode": 200,
     "headers": {
       "Content-Type": "application/json"
@@ -63,23 +60,20 @@ export const MOCK_USERS = {
         "firstName": "David",
         "lastName": "Higgins",
         "defaults": {
-          "platform": "91da1820-e335-11e6-98d0-818de223eef9"
+          "platform": "b2671fea-6eec-5acd-a788-326c210588f4"
         },
-        "notifications": [
-          {
-            icon: 'glyphicon glyphicon-download fa-lg',
-            created: '2017-01-21',
-            message: "1 new user just signed up! Check out<a href=\"#\">Monica Smith</a>'s account.",
-          },
-          {
-            icon: 'glyphicon glyphicon-upload fa-lg',
-            created: '2017-01-19',
-            message: "2.1.0-pre-alpha just released.",
-          }
-        ],
+        "notifications": [{
+          "icon": "glyphicon glyphicon-download fa-lg",
+          "created": "2017-01-21",
+          "message": "1 new user just signed up! Check out<a href=\"#\">Monica Smith</a>'s account."
+        }, {
+          "icon": "glyphicon glyphicon-upload fa-lg",
+          "created": "2017-01-19",
+          "message": "2.1.0-pre-alpha just released."
+        }],
         "platforms": {
-          "af818b70-c8db-11e6-9d9d-cec0c932ce01": {
-            "id": "91da1820-e335-11e6-98d0-818de223eef9",
+          "b2671fea-6eec-5acd-a788-326c210588f4": {
+            "id": "b2671fea-6eec-5acd-a788-326c210588f4",
             "title": "Show Management",
             "defaults": {
               "module": "sites"

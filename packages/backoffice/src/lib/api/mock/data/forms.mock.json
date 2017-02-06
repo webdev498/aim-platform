@@ -77,13 +77,13 @@
       }
     }
   },
-  "DAF02ED4-22DA-4225-A9E2-1881D03DC98D-COMP": {
+  "2320c28b-4ed9-48f1-9b62-56458922fc04": {
     "statusCode": 200,
     "headers": {
       "Content-Type": "application/json"
     },
     "body": {
-      "id": "DAF02ED4-22DA-4225-A9E2-1881D03DC98D",
+      "id": "2320c28b-4ed9-48f1-9b62-56458922fc04",
       "platformId": "af818b70-c8db-11e6-9d9d-cec0c932ce01",
       "type": "company",
       "content": {
@@ -270,11 +270,10 @@
             "title": "Additional Contacts",
             "fields": [
               {
-                "id": "fieldset-11",
+                "id": "content.contacts",
                 "type": "fieldsetarray",
                 "options": {
                   "columns": 3,
-                  "bind": "content.contacts",
                   "fields": [
                     {
                       "id": "status",

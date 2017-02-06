@@ -1,7 +1,7 @@
-import { MOCK_AUTH } from './auth.mock';
-import { MOCK_USERS } from './users.mock';
-import { MOCK_PLATFORMS }  from './platforms.mock';
-import { MOCK_DATA_TYPES } from './data-types';
+export const MOCK_AUTH = require('./auth.mock.json');
+export const MOCK_USERS = require('./users.mock.json');
+export const MOCK_PLATFORMS = require('./platforms.mock.json');
+export const MOCK_DATA_TYPES =  require('./data-types.json');
 import { MOCK_DATA } from './data.mock';
 
 import * as _ from 'lodash';
