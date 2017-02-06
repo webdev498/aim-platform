@@ -6,9 +6,19 @@ import {Pipe, PipeTransform, NgZone, ChangeDetectorRef, OnDestroy} from "@angula
 export class TimeAgoPipe implements PipeTransform, OnDestroy {
   private timer: number;
   constructor(private changeDetectorRef: ChangeDetectorRef, private ngZone: NgZone) {}
+
+  private isNumeric(value) {
+    return !isNaN(parseFloat(value)) && isFinite(value);
+  }
+
   transform(value:string) {
     this.removeTimer();
-    let d = new Date(value);
+    let d = null;
+    if(this.isNumeric(value)) {
+      d = new Date(parseInt(value) * 1000);
+    } else {
+      d = new Date(value);
+    }
     let now = new Date();
     let seconds = Math.round(Math.abs((now.getTime() - d.getTime())/1000));
     let timeToUpdate = this.getSecondsUntilUpdate(seconds) *1000;
