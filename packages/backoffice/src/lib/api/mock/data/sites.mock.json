@@ -1,5 +1,5 @@
-export const MOCK_SITES = {
-  'E3E8FE19-F183-4AD9-9308-09F4ED833966': {
+{
+  "E3E8FE19-F183-4AD9-9308-09F4ED833966": {
     "statusCode": 200,
     "headers": {
       "Content-Type": "application/json"
@@ -21,12 +21,12 @@ export const MOCK_SITES = {
         "aliases": [
           "http://showmanagement.com",
           "http://www.flibs.com",
-          "http://flibs.com",
+          "http://flibs.com"
         ]
       }
     }
   },
-  '0893EA59-E4AF-4DC6-A68E-8257BDAB867C': {
+  "0893EA59-E4AF-4DC6-A68E-8257BDAB867C": {
     "statusCode": 200,
     "headers": {
       "Content-Type": "application/json"
@@ -48,12 +48,12 @@ export const MOCK_SITES = {
         "aliases": [
           "http://showmanagement.com",
           "http://www.flibs.com",
-          "http://flibs.com",
+          "http://flibs.com"
         ]
       }
     }
   },
-  '7CB37B6E-8157-4316-A1FD-3E0324D7023C': {
+  "7CB37B6E-8157-4316-A1FD-3E0324D7023C": {
     "statusCode": 200,
     "headers": {
       "Content-Type": "application/json"
@@ -75,12 +75,12 @@ export const MOCK_SITES = {
         "aliases": [
           "http://showmanagement.com",
           "http://www.flibs.com",
-          "http://flibs.com",
+          "http://flibs.com"
         ]
       }
     }
   },
-  '23B9F2FE-7AFB-416C-AB78-63D024A8E586': {
+  "23B9F2FE-7AFB-416C-AB78-63D024A8E586": {
     "statusCode": 200,
     "headers": {
       "Content-Type": "application/json"
@@ -102,12 +102,12 @@ export const MOCK_SITES = {
         "aliases": [
           "http://showmanagement.com",
           "http://www.flibs.com",
-          "http://flibs.com",
+          "http://flibs.com"
         ]
       }
     }
   },
-  'CB454E52-2F36-47EA-8239-5BECCEE524F3': {
+  "CB454E52-2F36-47EA-8239-5BECCEE524F3": {
     "statusCode": 200,
     "headers": {
       "Content-Type": "application/json"
@@ -129,7 +129,7 @@ export const MOCK_SITES = {
         "aliases": [
           "http://showmanagement.com",
           "http://www.flibs.com",
-          "http://flibs.com",
+          "http://flibs.com"
         ]
       }
     }

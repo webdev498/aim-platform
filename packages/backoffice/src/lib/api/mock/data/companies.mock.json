@@ -1,4 +1,4 @@
-export const MOCK_COMPANIES = {
+{
   "42daf19b-f617-54ae-921c-dd43f78941e1": {
     "statusCode": 200,
     "headers": {
