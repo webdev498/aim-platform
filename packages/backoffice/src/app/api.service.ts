@@ -71,7 +71,6 @@ export class ApiService {
     });
   }
 
-
   getDataType(model: Data<any>): Observable<DataType> {
     return new Observable<DataType>(observer => {
       if(!_.isEmpty(model.dataTypeId)) {
@@ -88,7 +87,6 @@ export class ApiService {
       }
     });
   }
-
 
   getForm(model: Data<any>): Observable<DynamicForm> {
     return new Observable<DynamicForm>(observer => {
