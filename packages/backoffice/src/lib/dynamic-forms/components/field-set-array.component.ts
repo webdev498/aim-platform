@@ -21,7 +21,7 @@ const defaultOptions = {
     }
   `],
   template: `
-<legend *ngIf="title">{{title}} <i class="pull-right glyphicon glyphicon-plus-sign" (click)="onAddNewItem()"></i></legend>
+<legend>{{title}}&nbsp;<i class="pull-right glyphicon glyphicon-plus-sign" (click)="onAddNewItem()"></i></legend>
 <p *ngIf="description">{{description}}</p>
 <div [formGroup]="myForm">
    <div formArrayName="addresses" >

@@ -274,9 +274,10 @@
                 "type": "fieldsetarray",
                 "options": {
                   "columns": 3,
+                  "bind": "content.contacts",
                   "fields": [
                     {
-                      "id": "content.primaryContact.status",
+                      "id": "status",
                       "type": "radio",
                       "required": false,
                       "title": "Status",
@@ -299,31 +300,31 @@
                       }
                     },
                     {
-                      "id": "content.primaryContact.displayName",
+                      "id": "displayName",
                       "type": "text",
                       "required": false,
                       "title": "Display Name"
                     },
                     {
-                      "id": "content.primaryContact.firstName",
+                      "id": "firstName",
                       "type": "text",
                       "required": false,
                       "title": "First Name"
                     },
                     {
-                      "id": "content.primaryContact.lastName",
+                      "id": "lastName",
                       "type": "text",
                       "required": false,
                       "title": "Last Name"
                     },
                     {
-                      "id": "content.primaryContact.prefix",
+                      "id": "prefix",
                       "type": "text",
                       "required": false,
                       "title": "Prefix"
                     },
                     {
-                      "id": "content.primaryContact.suffix",
+                      "id": "suffix",
                       "type": "text",
                       "required": false,
                       "title": "Suffix"
