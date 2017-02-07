@@ -27,20 +27,14 @@
           </p-column>
           <p-column field="company.content.title" header="Created">
             <template let-col let-company="rowData" let-ri="rowIndex" pTemplate="body">
-              {{ company.createdAt }} 
-              |
+              <a *ngIf="company.createdBy" [routerLink]="['/users/' + company.createdById ]">{{ company.createdBy.content.username }}</a> 
               {{ company.createdAt | timeAgo }}
-              |
-              {{ company.createdBy }}
             </template>
           </p-column>
           <p-column field="company.content.title" header="Modified">
             <template let-col let-company="rowData" let-ri="rowIndex" pTemplate="body">
-              {{ company.modifiedAt }}
-              |
+              <a *ngIf="company.modifiedBy" [routerLink]="['/users/' + company.modifiedById ]">{{ company.modifiedBy.content.username }}</a> 
               {{ company.modifiedAt | timeAgo }}
-              |
-              {{ company.modifiedBy }}
             </template>
           </p-column>
           <p-column field="company.content.offices" header="Offices">

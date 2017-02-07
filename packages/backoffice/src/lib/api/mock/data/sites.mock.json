@@ -37,7 +37,7 @@
       "dataType": "site",
       "dataTypeId": "b552c079-b7bb-4f0c-8fbd-6af6283e2391",
       "createAt": 1482185419,
-      "createBy": null,
+      "createdById": null,
       "modifiedAt": 1482185419,
       "modifiedBy": "dhiggins",
       "deletedAt": null,

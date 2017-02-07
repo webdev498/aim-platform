@@ -12,9 +12,9 @@
       "type": "site",
       "formId": "DAF02ED4-22DA-4225-A9E2-1881D03DC98D",
       "createdAt": 1481407969,
-      "createdBy": "33fdf8da-3e40-5ad0-ae24-20e96b392231",
+      "createdById": "33fdf8da-3e40-5ad0-ae24-20e96b392231",
       "modifiedAt": 1483144666,
-      "modifiedBy": "4eb0cbde-6aef-5fac-9089-1cfc58dcad1f",
+      "modifiedById": "4eb0cbde-6aef-5fac-9089-1cfc58dcad1f",
       "content": {
         "$schema": "http://json-schema.org/draft-04/schema#",
         "id": "http://platform.aimmedia.com/sites/#Site",
@@ -94,9 +94,9 @@
       "type": "company",
       "formId": "2320c28b-4ed9-48f1-9b62-56458922fc04",
       "createdAt": 1481407969,
-      "createdBy": "33fdf8da-3e40-5ad0-ae24-20e96b392231",
+      "createdById": "33fdf8da-3e40-5ad0-ae24-20e96b392231",
       "modifiedAt": 1483144666,
-      "modifiedBy": "4eb0cbde-6aef-5fac-9089-1cfc58dcad1f",
+      "modifiedById": "4eb0cbde-6aef-5fac-9089-1cfc58dcad1f",
       "content": {
         "$schema": "http://json-schema.org/draft-04/schema#",
         "id": "http://platform.aimmedia.com/companies/#Company",

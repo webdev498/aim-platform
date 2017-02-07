@@ -9,7 +9,7 @@ export class DataType {
     createdAt?: number;
     createBy?: string;
     modifiedAt?: number;
-    modifiedBy?: string;
+    modifiedById?: string;
     deletedAt?: number;
     deletedBy?: string;
     content?: {
@@ -24,7 +24,7 @@ export class Module {
     createdAt?: number
     createBy?: string
     modifiedAt?: number;
-    modifiedBy?: string;
+    modifiedById?: string;
     deletedAt?: number
     deletedBy?: string;
     content?: {
@@ -42,7 +42,7 @@ export class Platform {
     createdAt?: number;
     createBy?: string;
     modifiedAt?: number;
-    modifiedBy?: string
+    modifiedById?: string
     deletedAt?: number;
     deletedBy?: string;
     content?: {
@@ -57,7 +57,7 @@ export class User {
     createdAt?: number;
     createBy?: string;
     modifiedAt?: number;
-    modifiedBy?: string;
+    modifiedById?: string;
     deletedAt?: number
     deletedBy?: string;
     content: {
@@ -85,12 +85,13 @@ export class Data<T> {
     dataType: string
     dataTypeId: string
     createdAt: number; // date-time
-    createdBy: string;
+    createdById: string;
     modifiedAt: number;
-    modifiedBy: string;
+    modifiedById: string;
     deletedAt?: number;
     deletedBy?: string;
     content: T;
+    autoloaded: any[];
 }
 
 export class Address {

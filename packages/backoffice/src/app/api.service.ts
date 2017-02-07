@@ -16,6 +16,23 @@ export class ApiService {
   constructor(private appConfig: AppConfig, private apiGateway: DefaultApi, protected http: Http) {
   }
 
+  private _autoload(model: any): any {
+    if(model instanceof Data) {
+      if(!_.isEmpty(model.autoloaded)) {
+        _.each(model.autoloaded, function(loader, key) {
+          if(!_.isEmpty(loader.paths)) {
+            _.each(loader['paths'], function(path) {
+              console.warn('ApiService, autoload key:', key, 'path: ', path);
+              _.set(model, _.replace(path, 'Id', ''), loader.value);
+            });
+          } 
+        });
+        console.warn('ApiService, autoload model:', model);
+      }
+    }
+    return model;
+  }
+
   request(method, params): Observable<any> {
     return this.http.request(environment.api.basePath + params[0], {
       method: method,
@@ -29,7 +46,7 @@ export class ApiService {
     return this.request('get', params).map( response => {
       let o = Object.assign({}, response.json());
       console.log('ApiService:getByType, o: ', o);
-      return o;
+      return this._autoload(o);
     });
   }
 
@@ -40,7 +57,8 @@ export class ApiService {
       let ret = [];
       for(var i = 0; i < arr.length; i++) {
         let o = {};
-        ret.push(Object.assign(o, arr[i]));
+        Object.assign(o, arr[i])
+        ret.push(this._autoload(o));
       }
       console.log('ApiService:getArray, return: ', ret);
       return ret;
@@ -51,9 +69,9 @@ export class ApiService {
     console.log('ApiService:getByType, params: ', objectType, params);
     return this.request('get', params).map( response => {
       let o = (undefined !== objectType) ? new objectType() : {};
-      o = Object.assign(o, response.json()) as T;
+      o = Object.assign(o, response.json());
       console.log('ApiService:getByType, o: ', o);
-      return o;
+      return this._autoload(o as T);
     });
   }
 
@@ -64,7 +82,8 @@ export class ApiService {
       let ret: Array<T> = [];
       for(var i = 0; i < arr.length; i++) {
         let o = (undefined !== objectType) ? new objectType() : {};
-        ret.push(Object.assign(o, arr[i]) as T);
+        Object.assign(o, arr[i]);
+        ret.push(this._autoload(o as T));
       }
       console.log('ApiService:getArrayByType, return: ', ret);
       return ret;
@@ -112,9 +131,11 @@ export class ApiService {
   post(...params): Observable<any> {
     return this.request('post', params);
   }
+
   put(...params): Observable<any> {
     return this.request('put', params);
   }
+
   delete(...params): Observable<any> {
     return this.http.delete('delete', params);
   }
