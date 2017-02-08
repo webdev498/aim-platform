@@ -1,10 +1,10 @@
-import { AngularCliPage } from './app.po';
+import { BackofficePage } from './app.po';
 
-describe('angular-cli App', function() {
-  let page: AngularCliPage;
+describe('backoffice App', function() {
+  let page: BackofficePage;
 
   beforeEach(() => {
-    page = new AngularCliPage();
+    page = new BackofficePage();
   });
 
   it('should display message saying app works', () => {

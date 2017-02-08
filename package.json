@@ -1,5 +1,5 @@
 {
-  "name": "aim-platform-ui",
+  "name": "@ap-ui/root",
   "version": "0.1.0",
   "description": "AIM Platform - User Interfaces",
   "main": "index.js",
@@ -10,11 +10,19 @@
     "type": "git",
     "url": "git@scm.aimdevops.com:aim/aim-platform-ui.git"
   },
-  "author": "Michael Stutz <mstutz@aimmedia.com>",
+  "author": {
+    "name": "Active Interest Media",
+    "url": "http://www.aimmedia.com"
+  },
+  "contributors": [
+    {
+      "name": "Michael Stutz",
+      "email": "mstutz@aimmedia.com"
+    }
+  ],
   "license": "UNLICENSED",
+  "private": true,
   "devDependencies": {
-    "exports-loader": "^0.6.3",
-    "imports-loader": "^0.6.5",
-    "lerna": "2.0.0-beta.30"
+    "gulp": "^3.9.1"
   }
 }
