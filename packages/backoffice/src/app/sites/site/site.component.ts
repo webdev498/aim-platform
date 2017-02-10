@@ -5,7 +5,7 @@ import { DynamicFormComponent, DynamicForm } from 'lib/dynamic-forms';
 
 import { SitesService } from '../sites.service';
 
-import { Data, DataType, Site } from 'lib/api';
+import { Data, DataType, Sites } from 'lib/api';
 
 @Component({
   selector: 'app-site',
@@ -14,7 +14,7 @@ import { Data, DataType, Site } from 'lib/api';
 })
 export class SiteComponent implements OnInit, OnDestroy {
 
-  site: Data<Site>;
+  site: Data<Sites.Site>;
   dataType: Data<DataType>;
   form: DynamicForm;
 
@@ -39,7 +39,7 @@ export class SiteComponent implements OnInit, OnDestroy {
         });
       } else {
         // create new company
-        let site = new Data<Site>();
+        let site = new Data<Sites.Site>();
         this.sitesService.getForm(site).subscribe(form => {
           this.site = site;
           this.form = form;
@@ -53,12 +53,12 @@ export class SiteComponent implements OnInit, OnDestroy {
     this.routeParamSubscription.unsubscribe();
   }
 
-  onSubmit(formData: {model: Data<Site>}) {
+  onSubmit(formData: {model: Data<Sites.Site>}) {
     console.log('SiteComponent, onSubmit, model: ', formData.model);
     this.sitesService.saveSite(this.site);
   }
 
-  onCancel(formData: {model: Data<Site>}) {
+  onCancel(formData: {model: Data<Sites.Site>}) {
     console.log('SiteComponent, onCancel, model: ', formData.model);
   }
 

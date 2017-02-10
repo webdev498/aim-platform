@@ -6,7 +6,8 @@ import { environment } from "../environments/environment";
 import * as _ from 'lodash';
 
 import { AppConfig } from './app.config';
-import { DefaultApi, Data, DataType, Form } from 'lib/api';
+import { DefaultApi } from 'lib/api';
+import { Data, DataType, Forms } from 'lib/api';
 import { DynamicForm } from 'lib/dynamic-forms';
 
 @Injectable()
@@ -111,8 +112,8 @@ export class ApiService {
     return new Observable<DynamicForm>(observer => {
       if(!_.isEmpty(model.dataTypeId)) {
         this.getDataType(model).subscribe(dataType => {
-          if(!_.isEmpty(dataType.formId)) {
-            this.getByType<Data<Form>>(Data, '/data/' + dataType['formId']).subscribe(form => {
+          if(!_.isEmpty(dataType.content.formId)) {
+            this.getByType<Data<Forms.Form>>(Data, '/data/' + dataType.content.formId).subscribe(form => {
               let f = new DynamicForm();
               Object.assign(f, form);
               observer.next(f);

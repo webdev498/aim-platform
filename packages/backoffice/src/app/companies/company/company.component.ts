@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { DynamicFormComponent, DynamicForm } from 'lib/dynamic-forms';
 
 import { CompaniesService} from '../companies.service';
-import { Data, Company } from 'lib/api';
+import { Data, Companies } from 'lib/api';
 
 
 @Component({
@@ -14,7 +14,7 @@ import { Data, Company } from 'lib/api';
 })
 export class CompanyComponent implements OnInit {
 
-  company: Data<Company>;
+  company: Data<Companies.Company>;
   form: DynamicForm;
 
   initialized: boolean = false;
@@ -38,7 +38,7 @@ export class CompanyComponent implements OnInit {
         });
       } else {
         // create new company
-        let company = new Data<Company>();
+        let company = new Data<Companies.Company>();
         this.companiesService.getForm(company).subscribe(form => {
           this.company = company;
           this.form = form;
@@ -52,12 +52,12 @@ export class CompanyComponent implements OnInit {
     this.routeParamSubscription.unsubscribe();
   }
 
-  onSubmit(formData: {model: Company}) {
+  onSubmit(formData: {model: Companies.Company}) {
     console.log('CompanyComponent, onSubmit, model: ', formData.model);
     this.companiesService.saveCompany(this.company);
   }
 
-  onCancel(formData: {model: Company}) {
+  onCancel(formData: {model: Companies.Company}) {
     console.log('CompanyComponent, onCancel, model: ', formData.model);
   }
 

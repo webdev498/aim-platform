@@ -2,7 +2,7 @@ import { EventEmitter, Output, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { ApiService } from '../api.service';
-import { Data, DataType, Site, Form } from 'lib/api';
+import { Data, DataType, Sites } from 'lib/api';
 import { DynamicForm } from 'lib/dynamic-forms';
 
 
@@ -10,16 +10,16 @@ import { DynamicForm } from 'lib/dynamic-forms';
 export class SitesService {
   constructor(private apiService: ApiService) { }
 
-  getSite(siteId: string): Observable<Data<Site>> {
-    return this.apiService.getByType<Data<Site>>(Data, '/data/' + siteId);
+  getSite(siteId: string): Observable<Data<Sites.Site>> {
+    return this.apiService.getByType<Data<Sites.Site>>(Data, '/data/' + siteId);
   }
 
-  saveSite(site: Data<Site>) {
+  saveSite(site: Data<Sites.Site>) {
     this.apiService.put('/data/' + site.id, site);
   }
 
-  getSites(): Observable<Data<Site>[]> {
-    return this.apiService.getArrayByType<Data<Site>>(Data, '/sites');
+  getSites(): Observable<Data<Sites.Site>[]> {
+    return this.apiService.getArrayByType<Data<Sites.Site>>(Data, '/sites');
   }
 
   getForm(model: Data<any>): Observable<DynamicForm> {

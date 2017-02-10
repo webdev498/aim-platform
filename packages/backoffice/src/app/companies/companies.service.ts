@@ -5,22 +5,22 @@ import * as _ from 'lodash';
 import { ApiService } from '../api.service';
 import { DynamicForm } from 'lib/dynamic-forms';
 
-import { Data, DataType, Form, Company } from 'lib/api';
+import { Data, DataType, Companies } from 'lib/api';
 
 @Injectable()
 export class CompaniesService {
   constructor(private apiService: ApiService) { }
 
-  getCompany(companyId: string): Observable<Data<Company>> {
-    return this.apiService.getByType<Data<Company>>(Data, '/data/' + companyId);
+  getCompany(companyId: string): Observable<Data<Companies.Company>> {
+    return this.apiService.getByType<Data<Companies.Company>>(Data, '/data/' + companyId);
   }
 
-  saveCompany(company: Data<Company>) {
+  saveCompany(company: Data<Companies.Company>) {
     this.apiService.put('/data/' + company.id, company);
   }
 
-  getCompanies(): Observable<Data<Company>[]> {
-    return this.apiService.getArrayByType<Data<Company>>(Data, '/companies');
+  getCompanies(): Observable<Data<Companies.Company>[]> {
+    return this.apiService.getArrayByType<Data<Companies.Company>>(Data, '/companies');
   }
 
   getForm(model: Data<any>): Observable<DynamicForm> {

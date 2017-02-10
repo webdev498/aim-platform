@@ -6,7 +6,7 @@ import { Message } from 'primeng/primeng';
 import { AppConfig } from 'app/app.config';
 import { SitesService } from './sites.service';
 
-import { Data, Site } from 'lib/api';
+import { Data, Sites } from 'lib/api';
 
 @Component({
   selector: 'app-site',
@@ -16,7 +16,7 @@ import { Data, Site } from 'lib/api';
 export class SitesComponent implements OnInit {
 
   @Input()
-  sites: Data<Site>[];
+  sites: Data<Sites.Site>[];
 
   columns: any[];
 
@@ -26,7 +26,7 @@ export class SitesComponent implements OnInit {
 
   constructor(private appConfig: AppConfig, public sitesService: SitesService) {
     this.messages = [];
-    let s = new Data<Site>();
+    let s = new Data<Sites.Site>();
     this.columns = [
       {
         header: 'Title',
@@ -50,7 +50,7 @@ export class SitesComponent implements OnInit {
 
   ngOnInit() {
     this.sitesService.getSites().subscribe(sites => {
-      this.sites = sites as Data<Site>[];
+      this.sites = sites as Data<Sites.Site>[];
     });
   }
 

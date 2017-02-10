@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Message } from 'primeng/primeng';
 import { AppConfig } from 'app/app.config';
 import { CompaniesService } from './companies.service';
-import { Data, Company } from 'lib/api';
+import { Data, Companies } from 'lib/api';
 
 @Component({
   selector: 'app-companies',
@@ -12,7 +12,7 @@ import { Data, Company } from 'lib/api';
 export class CompaniesComponent implements OnInit {
 
   @Input()
-  companies: Data<Company>[];
+  companies: Data<Companies.Company>[];
 
   columns: any[];
 
@@ -22,7 +22,7 @@ export class CompaniesComponent implements OnInit {
 
   constructor(private appConfig: AppConfig, public companiesService: CompaniesService) {
     this.messages = [];
-    let s = new Company();
+    let s = new Companies.Company();
     this.columns = [
       {
         header: 'Title',
@@ -42,7 +42,7 @@ export class CompaniesComponent implements OnInit {
 
   ngOnInit() {
     this.companiesService.getCompanies().subscribe(companies => {
-      this.companies = companies as Data<Company>[];
+      this.companies = companies as Data<Companies.Company>[];
       console.log('CompaniesComponent:ngOnInit, companies: ', this.companies);
     });
   }

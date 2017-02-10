@@ -9,71 +9,73 @@
       "platformId": "b2671fea-6eec-5acd-a788-326c210588f4",
       "module": "sites",
       "moduleId": "e2448470-8fb7-5f14-8f2b-2ffd8c57ae5b",
-      "type": "site",
-      "formId": "DAF02ED4-22DA-4225-A9E2-1881D03DC98D",
+      "dataType": "site",
       "createdAt": 1481407969,
       "createdById": "33fdf8da-3e40-5ad0-ae24-20e96b392231",
       "modifiedAt": 1483144666,
       "modifiedById": "4eb0cbde-6aef-5fac-9089-1cfc58dcad1f",
       "content": {
-        "$schema": "http://json-schema.org/draft-04/schema#",
-        "id": "http://platform.aimmedia.com/sites/#Site",
-        "type": "object",
-        "properties": {
-          "title": {
-            "type": ["string","null"]
-          },
-          "description": {
-            "type": ["string","null"]
-          },
-          "domain": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": ["string","null"]
-              },
-              "fqdn": {
-                "type": ["string","null"]
-              }
-            }
-          },
-          "routing": {
-            "type": "array",
-            "items": {
+        "formId": "DAF02ED4-22DA-4225-A9E2-1881D03DC98D",
+        "schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "id": "http://platform.aimmedia.com/sites/#Site",
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": ["string","null"]
+            },
+            "description": {
+              "type": ["string","null"]
+            },
+            "domain": {
               "type": "object",
               "properties": {
-                "pattern": {
-                  "type": "string"
+                "id": {
+                  "type": ["string","null"]
+                },
+                "fqdn": {
+                  "type": ["string","null"]
                 }
               }
-            }
-          },
-          "routingCache": {
-            "type": "object",
-            "properties": {
-              "forwardRoutes": {
-                "description": "Used for the compiled regex of the pattern for the routes, speed things up a little",
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "regex": {
-                      "type": "string"
-                    }
+            },
+            "routing": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "pattern": {
+                    "type": "string"
                   }
                 }
-              },
-              "reverseRoutes": {
-                "description": "Used for the creating forward routing urls",
-                "type": "object"
-              },
-              "checkSum": {
-                "description": "Used to store the checkSum of the routing array, check to see if we need to rebuild cache",
-                "type": "string"
-              },
-              "forwardRoutesCompiled": {
-                "description": "Will be used to store the regex compiled list of available routes",
-                "type": "string"
+              }
+            },
+            "routingCache": {
+              "type": "object",
+              "properties": {
+                "forwardRoutes": {
+                  "description": "Used for the compiled regex of the pattern for the routes, speed things up a little",
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "regex": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "reverseRoutes": {
+                  "description": "Used for the creating forward routing urls",
+                  "type": "object"
+                },
+                "checkSum": {
+                  "description": "Used to store the checkSum of the routing array, check to see if we need to rebuild cache",
+                  "type": "string"
+                },
+                "forwardRoutesCompiled": {
+                  "description": "Will be used to store the regex compiled list of available routes",
+                  "type": "string"
+                }
               }
             }
           }
@@ -91,85 +93,87 @@
       "platformId": "b2671fea-6eec-5acd-a788-326c210588f4",
       "module": "companies",
       "moduleId": "df094166-ac2b-5109-9f2e-3646412a2c21",
-      "type": "company",
-      "formId": "2320c28b-4ed9-48f1-9b62-56458922fc04",
+      "dataType": "company",
       "createdAt": 1481407969,
       "createdById": "33fdf8da-3e40-5ad0-ae24-20e96b392231",
       "modifiedAt": 1483144666,
       "modifiedById": "4eb0cbde-6aef-5fac-9089-1cfc58dcad1f",
       "content": {
-        "$schema": "http://json-schema.org/draft-04/schema#",
-        "id": "http://platform.aimmedia.com/companies/#Company",
-        "type": "object",
-        "x-mock": {
-          "count": 20
-        },
-        "properties": {
-          "status": {
-            "$ref": "http://platform.aimmedia.com/#Status"
+        "formId": "2320c28b-4ed9-48f1-9b62-56458922fc04",
+        "schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "id": "http://platform.aimmedia.com/companies/#Company",
+          "type": "object",
+          "x-mock": {
+            "count": 20
           },
-          "title": {
-            "type": "string",
-            "x-faker": "company.companyName"
-          },
-          "primaryContact": {
-            "type": "object",
-            "x-chance": "platform.newContact"
-          },
-          "primaryOffice": {
-            "$ref": "#Office",
-            "x-chance": "platform.officeId"
-          },
-          "contacts": {
-            "type": "array",
-            "items": {
+          "properties": {
+            "status": {
+              "$ref": "http://platform.aimmedia.com/#Status"
+            },
+            "title": {
+              "type": "string",
+              "x-faker": "company.companyName"
+            },
+            "primaryContact": {
               "type": "object",
               "x-chance": "platform.newContact"
-            }
-          },
-          "offices": {
-            "type": "array",
-            "items": {
+            },
+            "primaryOffice": {
               "$ref": "#Office",
-              "x-chance": "platform.newOffice"
+              "x-chance": "platform.officeId"
+            },
+            "contacts": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "x-chance": "platform.newContact"
+              }
+            },
+            "offices": {
+              "type": "array",
+              "items": {
+                "$ref": "#Office",
+                "x-chance": "platform.newOffice"
+              }
+            },
+            "channels": {
+              "$ref": "http://platform.aimmedia.com/#KeyValueList",
+              "description": "KeyValueList<type, value> where type is 'phone', 'mobile', 'fax', email', etc - no restrictions are placed on the key",
+              "x-chance": "platform.channels"
             }
           },
-          "channels": {
-            "$ref": "http://platform.aimmedia.com/#KeyValueList",
-            "description": "KeyValueList<type, value> where type is 'phone', 'mobile', 'fax', email', etc - no restrictions are placed on the key",
-            "x-chance": "platform.channels"
-          }
-        },
-        "required": ["status", "title"],
-        "definitions": {
-          "Office": {
-            "id": "#Office",
-            "type": "object",
-            "x-chance": "platform.newOffice",
-            "properties": {
-              "title": {
-                "type": "string",
-                "x-chance": "platform.officeName"
-              },
-              "primaryContact": {
-                "type": "string",
-                "x-chance": "platform.newContact"
-              },
-              "contacts": {
-                "type": "array",
-                "items": {
+          "required": ["status", "title"],
+          "definitions": {
+            "Office": {
+              "id": "#Office",
+              "type": "object",
+              "x-chance": "platform.newOffice",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "x-chance": "platform.officeName"
+                },
+                "primaryContact": {
                   "type": "string",
                   "x-chance": "platform.newContact"
+                },
+                "contacts": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "x-chance": "platform.newContact"
+                  }
+                },
+                "address": {
+                  "$ref": "http://platform.aimmedia.com/#Address",
+                  "x-chance": "platform.address"
+                },
+                "channels": {
+                  "$ref": "http://platform.aimmedia.com/#KeyValueList",
+                  "description": "KeyValueList<type, value> where type is 'phone', 'mobile', 'fax', email', etc - no restrictions are placed on the key",
+                  "x-chance": "platform.channels"
                 }
-              },
-              "address": {
-                "$ref": "http://platform.aimmedia.com/#Address",
-                "x-chance": "platform.address"
-              },
-              "channels": {
-                "$ref": "http://platform.aimmedia.com/#KeyValueList",
-                "description": "KeyValueList<type, value> where type is 'phone', 'mobile', 'fax', email', etc - no restrictions are placed on the key",
-                "x-chance": "platform.channels"
               }
             }
           }
