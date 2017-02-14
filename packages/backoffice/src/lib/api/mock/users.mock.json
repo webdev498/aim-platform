@@ -1,0 +1,86 @@
+{
+  "generic": {
+    "statusCode": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "id": "generic",
+      "title": "Generic",
+      "description": "Generic User With No Data",
+      "createAt": 1482185419,
+      "createdById": null,
+      "modifiedAt": 1482185419,
+      "modifiedById": "dhiggins",
+      "deletedAt": null,
+      "deletedBy": null,
+      "content": {
+        "firstName": "Generic",
+        "lastName": "User",
+        "defaults": {
+          "platform": "b2671fea-6eec-5acd-a788-326c210588f4"
+        },
+        "notifications": [{
+          "icon": "glyphicon glyphicon-download fa-lg",
+          "created": "2017-01-21",
+          "message": "1 new user just signed up! Check out<a href=\"#\">Monica Smith</a>'s account."
+        }, {
+          "icon": "glyphicon glyphicon-upload fa-lg",
+          "created": "2017-01-19",
+          "message": "2.1.0-pre-alpha just released."
+        }],
+        "platforms": {
+          "b2671fea-6eec-5acd-a788-326c210588f4": {
+            "id": "b2671fea-6eec-5acd-a788-326c210588f4",
+            "title": "Show Management",
+            "defaults": {
+              "module": "sites"
+            }
+          }
+        }
+      }
+    }
+  },
+  "dhiggins": {
+    "statusCode": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "id": "dhiggins",
+      "title": "David",
+      "description": "Senior Engineer",
+      "createAt": 1482185419,
+      "createdById": null,
+      "modifiedAt": 1482185419,
+      "modifiedById": "dhiggins",
+      "deletedAt": null,
+      "deletedBy": null,
+      "content": {
+        "firstName": "David",
+        "lastName": "Higgins",
+        "defaults": {
+          "platform": "b2671fea-6eec-5acd-a788-326c210588f4"
+        },
+        "notifications": [{
+          "icon": "glyphicon glyphicon-download fa-lg",
+          "created": "2017-01-21",
+          "message": "1 new user just signed up! Check out<a href=\"#\">Monica Smith</a>'s account."
+        }, {
+          "icon": "glyphicon glyphicon-upload fa-lg",
+          "created": "2017-01-19",
+          "message": "2.1.0-pre-alpha just released."
+        }],
+        "platforms": {
+          "b2671fea-6eec-5acd-a788-326c210588f4": {
+            "id": "b2671fea-6eec-5acd-a788-326c210588f4",
+            "title": "Show Management",
+            "defaults": {
+              "module": "sites"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,5 +1,6 @@
-import { MOCK_SITES } from './data/sites.mock';
-import { MOCK_FORMS } from './data/forms.mock';
+export const MOCK_SITES = require('./data/sites.mock.json');
+export const MOCK_COMPANIES = require('./data/companies.mock.json');
+export const MOCK_FORMS  = require('./data/forms.mock.json');
 import * as _ from 'lodash';
 
 let DATA = {
@@ -31,11 +32,15 @@ let DATA = {
   }
 }
 
-_.map(MOCK_SITES, (value, key, collection) => {
+_.map(MOCK_SITES, (value, key) => {
   DATA[key] = value;
 });
 
-_.map(MOCK_FORMS, (value, key, collection) => {
+_.each(MOCK_COMPANIES, (value, key) => {
+  DATA[key] = value;
+});
+
+_.map(MOCK_FORMS, (value, key) => {
   DATA[key] = value;
 });
 

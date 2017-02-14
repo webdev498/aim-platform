@@ -1,13 +1,14 @@
-import { MOCK_AUTH } from './auth.mock';
-import { MOCK_USERS } from './users.mock';
-import { MOCK_PLATFORMS }  from './platforms.mock';
-import { MOCK_DATA_TYPES } from './data-types';
+export const MOCK_AUTH = require('./auth.mock.json');
+export const MOCK_USERS = require('./users.mock.json');
+export const MOCK_PLATFORMS = require('./platforms.mock.json');
+export const MOCK_DATA_TYPES =  require('./data-types.json');
 import { MOCK_DATA } from './data.mock';
 
 import * as _ from 'lodash';
 
-import { MOCK_SITES } from './data/sites.mock';
-import { MOCK_FORMS } from './data/forms.mock';
+import { MOCK_SITES } from './data.mock';
+import { MOCK_COMPANIES } from './data.mock';
+import { MOCK_FORMS } from './data.mock';
 
 export const MOCK_API_DATA = {
   auth: MOCK_AUTH,
@@ -24,6 +25,11 @@ export const MOCK_API_DATA = {
 MOCK_API_DATA['sites'] = {};
 _.map(MOCK_SITES, (value, key, collection) => {
   MOCK_API_DATA['sites'][key] = _.set(value, '____root', 'sites');
+});
+
+MOCK_API_DATA['companies'] = {};
+_.map(MOCK_COMPANIES, (value, key, collection) => {
+  MOCK_API_DATA['companies'][key] = _.set(value, '____root', 'companies');
 });
 
 MOCK_API_DATA['forms'] = {};

@@ -1,0 +1,55 @@
+<h1 class="page-title">Companies</h1>
+<p-messages [value]="messages"></p-messages>
+<div class="row">
+  <div class="col-md-12">
+    <section class="widget">
+      <header>
+        <h5>List of companies</h5>
+      </header>
+      <div class="widget-body">
+
+        <button (click)="postMessage('error')">Post Error</button>
+        <button (click)="postMessage('warn')">Post Warning</button>
+        <button (click)="postMessage('info')">Post Info</button>
+        <button (click)="postMessage('success')">Post Success</button>
+
+        <h3>PrimeNg Basic</h3>
+        <p-dataTable [value]="companies">
+          <p-column field="company.content.status" header="Status">
+            <template let-col let-company="rowData" let-ri="rowIndex" pTemplate="body">
+              {{ company.content.status }}
+            </template>
+          </p-column>
+          <p-column field="company.content.title" header="Title">
+            <template let-col let-company="rowData" let-ri="rowIndex" pTemplate="body">
+              <a [routerLink]="[company.id]">{{company.content.title}}</a>
+            </template>
+          </p-column>
+          <p-column field="company.content.title" header="Created">
+            <template let-col let-company="rowData" let-ri="rowIndex" pTemplate="body">
+              <a *ngIf="company.createdBy" [routerLink]="['/users/' + company.createdById ]">{{ company.createdBy.content.username }}</a> 
+              {{ company.createdAt | timeAgo }}
+            </template>
+          </p-column>
+          <p-column field="company.content.title" header="Modified">
+            <template let-col let-company="rowData" let-ri="rowIndex" pTemplate="body">
+              <a *ngIf="company.modifiedBy" [routerLink]="['/users/' + company.modifiedById ]">{{ company.modifiedBy.content.username }}</a> 
+              {{ company.modifiedAt | timeAgo }}
+            </template>
+          </p-column>
+          <p-column field="company.content.offices" header="Offices">
+            <template let-col let-company="rowData" let-ri="rowIndex" pTemplate="body">
+              <a [routerLink]="[company.id]">{{company.content.offices?.length}}</a>
+            </template>
+          </p-column>
+          <p-column field="company.content.contacts" header="Contacts">
+            <template let-col let-company="rowData" let-ri="rowIndex" pTemplate="body">
+              <a [routerLink]="[company.id]">{{company.content.contacts?.length}}</a>
+            </template>
+          </p-column>
+        </p-dataTable>
+
+      </div>
+    </section>
+  </div>
+</div>

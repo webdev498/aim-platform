@@ -1,16 +1,16 @@
-export const MOCK_PLATFORMS = {
-  '91da1820-e335-11e6-98d0-818de223eef9': {
+{
+  "b2671fea-6eec-5acd-a788-326c210588f4": {
     "statusCode": 200,
     "headers": {
       "Content-Type": "application/json"
     },
     "body": {
-      "id": "91da1820-e335-11e6-98d0-818de223eef9",
+      "id": "b2671fea-6eec-5acd-a788-326c210588f4",
       "versionId": null,
       "createdAt": 1485372993835,
-      "createBy": null,
+      "createdById": null,
       "modifiedAt": 1485372993835,
-      "modifiedBy": null,
+      "modifiedById": null,
       "deletedAt": null,
       "deletedBy": null,
       "title": "Show Management",
@@ -126,7 +126,7 @@ export const MOCK_PLATFORMS = {
       }
     }
   },
-  'af818b70-c8db-11e6-9d9d-cec0c932ce03': {
+  "af818b70-c8db-11e6-9d9d-cec0c932ce03": {
     "statusCode": 200,
     "headers": {
       "Content-Type": "application/json"
@@ -168,7 +168,7 @@ export const MOCK_PLATFORMS = {
       }
     }
   },
-  'af818b70-c8db-11e6-9d9d-cec0c932ce02': {
+  "af818b70-c8db-11e6-9d9d-cec0c932ce02": {
     "statusCode": 200,
     "headers": {
       "Content-Type": "application/json"
@@ -210,4 +210,4 @@ export const MOCK_PLATFORMS = {
       }
     }
   }
-};
+}

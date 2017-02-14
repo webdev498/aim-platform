@@ -12,10 +12,12 @@ import { AuthConfig } from 'lib/api';
 
 import { Config as SitesConfig } from 'app/sites/config';
 import { Config as DashboardConfig } from 'app/dashboard/config';
+import { Config as CompaniesConfig } from 'app/companies/config';
 
 export const MODULE_CONFIGS = {
   'sites': SitesConfig,
   'dashboard': DashboardConfig,
+  'companies': CompaniesConfig
 }
 
 @Injectable()

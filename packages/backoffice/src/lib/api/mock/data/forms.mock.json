@@ -1,0 +1,340 @@
+{
+  "DAF02ED4-22DA-4225-A9E2-1881D03DC98D": {
+    "statusCode": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "id": "DAF02ED4-22DA-4225-A9E2-1881D03DC98D",
+      "platformId": "af818b70-c8db-11e6-9d9d-cec0c932ce01",
+      "type": "site",
+      "content": {
+        "schema": {
+          "dataType": "site",
+          "properties": {
+            "url": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "aliases": {
+              "type": "array"
+            }
+          },
+          "required": ["url"]
+        },
+        "fieldDisplay": {
+          "type": "panel",
+          "options": {
+            "columns": 3
+          }
+        },
+        "fieldGroups": [{
+          "id": "fieldGroup-1",
+          "title": "Site Details",
+          "options": {
+            "columns": 3,
+            "layout": "vertical"
+          },
+          "actions": {
+            "save": true,
+            "cancel": true
+          },
+          "description": "Configure your site",
+          "fields": [{
+            "id": "fieldset-1",
+            "type": "fieldset",
+            "options": {
+              "columns": 1,
+              "fields": [{
+                "id": "title",
+                "type": "text",
+                "required": false,
+                "title": "Site Title"
+              }, {
+                "id": "content.url",
+                "type": "text",
+                "required": false,
+                "title": "URL",
+                "hint": "The fully qualifed URL, http://www.example.com",
+                "attributes": {},
+                "options": {
+                  "placeholder": "http://www.example.com"
+                }
+              }, {
+                "id": "content.description",
+                "type": "text",
+                "title": "Site Description",
+                "attributes": {},
+                "options": {
+                  "placeholder": "Site Description"
+                }
+              }]
+            }
+          }]
+        }]
+      }
+    }
+  },
+  "2320c28b-4ed9-48f1-9b62-56458922fc04": {
+    "statusCode": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "id": "2320c28b-4ed9-48f1-9b62-56458922fc04",
+      "platformId": "af818b70-c8db-11e6-9d9d-cec0c932ce01",
+      "dataType": "company",
+      "content": {
+        "schema": {
+          "type": "company",
+          "properties": {
+            "name": {
+              "type": "string"
+
+            },
+            "description": {
+              "type": "string"
+
+            },
+            "url": {
+              "type": "string"
+            },
+            "address": {
+              "type": "string"
+            },
+            "city": {
+              "type": "string"
+            },
+            "state": {
+              "type": "string",
+              "maximum": 2
+
+            },
+            "country": {
+              "type": "string"
+            },
+            "postalCode": {
+              "type": "string",
+              "maximum": 10
+            },
+            "phone": {
+              "type": "string"
+
+            },
+            "fax": {
+              "type": "string"
+            },
+            "twitterURL": {
+              "type": "string"
+            },
+            "facebookURL": {
+              "type": "string"
+            },
+            "linkedInURL": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "url"
+          ]
+        },
+        "fieldDisplay": {
+          "type": "panel",
+          "options": {
+            "columns": 3
+          }
+        },
+        "fieldGroups": [{
+            "id": "fieldGroup-1",
+            "title": "CompanyDetails",
+            "options": {
+              "columns": 3,
+              "layout": "vertical"
+            },
+            "actions": {
+              "save": true,
+              "cancel": true
+            },
+            "description": "Configure your company",
+            "fields": [{
+                "id": "fieldset-1",
+                "type": "fieldset",
+                "options": {
+                  "columns": 1,
+                  "fields": [{
+                      "id": "content.title",
+                      "type": "text",
+                      "required": false,
+                      "title": "Name"
+
+                    }, {
+                      "id": "content.status",
+                      "type": "radio",
+                      "required": false,
+                      "title": "Status",
+                      "options": {
+                        "values": [
+                          {
+                            "value": "pending",
+                            "title": "Pending"
+                          }, {
+                            "value": "active",
+                            "title": "Active"
+                          }, {
+                            "value": "inactive",
+                            "title": "Inactive"
+                          }, {
+                            "value": "unknown",
+                            "title": "Unknown"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "id": "fieldgroup-primaryContact",
+            "title": "Primary Contact",
+            "fields": [
+              {
+                "id": "fieldset-primaryContact",
+                "type": "fieldset",
+                "options": {
+                  "columns": 3,
+                  "fields": [
+                    {
+                      "id": "content.primaryContact.status",
+                      "type": "radio",
+                      "required": false,
+                      "title": "Status",
+                      "options": {
+                        "values": [
+                          {
+                            "value": "pending",
+                            "title": "Pending"
+                          }, {
+                            "value": "active",
+                            "title": "Active"
+                          }, {
+                            "value": "inactive",
+                            "title": "Inactive"
+                          }, {
+                            "value": "unknown",
+                            "title": "Unknown"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "id": "content.primaryContact.displayName",
+                      "type": "text",
+                      "required": false,
+                      "title": "Display Name"
+                    },
+                    {
+                      "id": "content.primaryContact.firstName",
+                      "type": "text",
+                      "required": false,
+                      "title": "First Name"
+                    },
+                    {
+                      "id": "content.primaryContact.lastName",
+                      "type": "text",
+                      "required": false,
+                      "title": "Last Name"
+                    },
+                    {
+                      "id": "content.primaryContact.prefix",
+                      "type": "text",
+                      "required": false,
+                      "title": "Prefix"
+                    },
+                    {
+                      "id": "content.primaryContact.suffix",
+                      "type": "text",
+                      "required": false,
+                      "title": "Suffix"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "id": "fieldgroup-contacts",
+            "title": "Additional Contacts",
+            "fields": [
+              {
+                "id": "content.contacts",
+                "type": "fieldsetarray",
+                "options": {
+                  "columns": 3,
+                  "fields": [
+                    {
+                      "id": "status",
+                      "type": "radio",
+                      "required": false,
+                      "title": "Status",
+                      "options": {
+                        "values": [
+                          {
+                            "value": "pending",
+                            "title": "Pending"
+                          }, {
+                            "value": "active",
+                            "title": "Active"
+                          }, {
+                            "value": "inactive",
+                            "title": "Inactive"
+                          }, {
+                            "value": "unknown",
+                            "title": "Unknown"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "id": "displayName",
+                      "type": "text",
+                      "required": false,
+                      "title": "Display Name"
+                    },
+                    {
+                      "id": "firstName",
+                      "type": "text",
+                      "required": false,
+                      "title": "First Name"
+                    },
+                    {
+                      "id": "lastName",
+                      "type": "text",
+                      "required": false,
+                      "title": "Last Name"
+                    },
+                    {
+                      "id": "prefix",
+                      "type": "text",
+                      "required": false,
+                      "title": "Prefix"
+                    },
+                    {
+                      "id": "suffix",
+                      "type": "text",
+                      "required": false,
+                      "title": "Suffix"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

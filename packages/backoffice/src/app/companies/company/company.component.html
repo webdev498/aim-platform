@@ -1,0 +1,6 @@
+<div *ngIf="initialized">
+  <h1 class="page-title">{{ company.title }}</h1>
+  <dynamic-form [form]="form" [model]="company" (submit)="onSubmit($event)" (cancel)="onCancel($event)"></dynamic-form>
+
+  <pre>{{ company | json }}</pre>
+</div>

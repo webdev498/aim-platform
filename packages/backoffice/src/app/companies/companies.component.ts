@@ -1,22 +1,18 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
-
 import { Message } from 'primeng/primeng';
-
 import { AppConfig } from 'app/app.config';
-import { SitesService } from './sites.service';
-
-import { Data, Sites } from 'lib/api';
+import { CompaniesService } from './companies.service';
+import { Data, Companies } from 'lib/api';
 
 @Component({
-  selector: 'app-site',
-  templateUrl: './sites.component.html',
-  //styleUrls: ['site.component.scss']
+  selector: 'app-companies',
+  templateUrl: './companies.component.html',
+  //styleUrls: ['./companies.component.css']
 })
-export class SitesComponent implements OnInit {
+export class CompaniesComponent implements OnInit {
 
   @Input()
-  sites: Data<Sites.Site>[];
+  companies: Data<Companies.Company>[];
 
   columns: any[];
 
@@ -24,17 +20,13 @@ export class SitesComponent implements OnInit {
 
   messages: Message[];
 
-  constructor(private appConfig: AppConfig, public sitesService: SitesService) {
+  constructor(private appConfig: AppConfig, public companiesService: CompaniesService) {
     this.messages = [];
-    let s = new Data<Sites.Site>();
+    let s = new Companies.Company();
     this.columns = [
       {
         header: 'Title',
         field: 'title',
-      },
-      {
-        header: 'URL',
-        field: 'content.url',
       }
     ];
 
@@ -49,8 +41,9 @@ export class SitesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.sitesService.getSites().subscribe(sites => {
-      this.sites = sites as Data<Sites.Site>[];
+    this.companiesService.getCompanies().subscribe(companies => {
+      this.companies = companies as Data<Companies.Company>[];
+      console.log('CompaniesComponent:ngOnInit, companies: ', this.companies);
     });
   }
 

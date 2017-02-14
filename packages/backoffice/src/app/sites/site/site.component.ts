@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
 
-import { DynamicFormComponent, Form } from 'lib/dynamic-forms';
+import { DynamicFormComponent, DynamicForm } from 'lib/dynamic-forms';
 
-import { SitesService, Site } from '../sites.service';
+import { SitesService } from '../sites.service';
 
-import { DataTypeItem } from 'lib/api';
+import { Data, DataType, Sites } from 'lib/api';
 
 @Component({
   selector: 'app-site',
@@ -14,9 +14,9 @@ import { DataTypeItem } from 'lib/api';
 })
 export class SiteComponent implements OnInit, OnDestroy {
 
-  site: Site;
-  dataType: DataTypeItem;
-  form: Form;
+  site: Data<Sites.Site>;
+  dataType: Data<DataType>;
+  form: DynamicForm;
 
   initialized: boolean = false;
 
@@ -31,37 +31,19 @@ export class SiteComponent implements OnInit, OnDestroy {
         console.log('SiteComponent:ngOnInit, siteId: ', siteId);
         this.sitesService.getSite(siteId).subscribe(site => {
           console.log('SiteComponent:ngOnInit, site: ', site);
-          if(site.typeId) {
-            this.sitesService.getDataType(site).subscribe(dataType => {
-              console.log('SiteComponent:ngOnInit, dataType: ', dataType);
-              if(dataType['form']) {
-                this.form = dataType['form'];
-              }
-              this.dataType = dataType;
-              this.site = site;
-              //this.form.model = this.site;
-              this.initialized = true;
-            },
-            (err) => {
-              // TODO: Display an error to the user
-              console.warn(err);
-            });
-          }
+          this.sitesService.getForm(site).subscribe(form => {
+            this.site = site;
+            this.form = form;
+            this.initialized = true;
+          });
         });
       } else {
-        // create new site
-        let site = new Site();
-        this.dataType = this.sitesService.getDataType(site).subscribe(dataType => {
-          if(dataType['form']) {
-            this.form = dataType['form'];
-          }
-          this.dataType = dataType;
+        // create new company
+        let site = new Data<Sites.Site>();
+        this.sitesService.getForm(site).subscribe(form => {
           this.site = site;
+          this.form = form;
           this.initialized = true;
-        },
-        (err) => {
-          // TODO: Display an error to the user
-          console.warn(err);
         });
       }
     });
@@ -71,12 +53,12 @@ export class SiteComponent implements OnInit, OnDestroy {
     this.routeParamSubscription.unsubscribe();
   }
 
-  onSubmit(formData: {model: Site}) {
+  onSubmit(formData: {model: Data<Sites.Site>}) {
     console.log('SiteComponent, onSubmit, model: ', formData.model);
     this.sitesService.saveSite(this.site);
   }
 
-  onCancel(formData: {model: Site}) {
+  onCancel(formData: {model: Data<Sites.Site>}) {
     console.log('SiteComponent, onCancel, model: ', formData.model);
   }
 

@@ -18,7 +18,7 @@ export class CognitoService extends AuthService {
   private cognitoUtil: CognitoUtil;
   constructor(configResolver: any) {
     super(configResolver);
-    
+
     let self = this;
 
     let configLoader = (authConfig: any) => {
@@ -140,7 +140,6 @@ export class CognitoService extends AuthService {
           observer.complete();
         },
         newPasswordRequired: function (userAttr:any, requiredAttr:any) {
-          debugger;
           observer.error({
             type: 'newPassword',
             userAttr: userAttr,

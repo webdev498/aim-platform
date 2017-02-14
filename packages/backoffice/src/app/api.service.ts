@@ -3,15 +3,35 @@ import { Http, BaseRequestOptions, Response, ResponseOptions, Headers, RequestMe
 import { MockBackend } from '@angular/http/testing';
 import { Observable } from "rxjs";
 import { environment } from "../environments/environment";
+import * as _ from 'lodash';
 
 import { AppConfig } from './app.config';
 import { DefaultApi } from 'lib/api';
+import { Data, DataType, Forms } from 'lib/api';
+import { DynamicForm } from 'lib/dynamic-forms';
 
 @Injectable()
 export class ApiService {
   headers: Headers = new Headers();
 
   constructor(private appConfig: AppConfig, private apiGateway: DefaultApi, protected http: Http) {
+  }
+
+  private _autoload(model: any): any {
+    if(model instanceof Data) {
+      if(!_.isEmpty(model.autoloaded)) {
+        _.each(model.autoloaded, function(loader, key) {
+          if(!_.isEmpty(loader.paths)) {
+            _.each(loader['paths'], function(path) {
+              console.warn('ApiService, autoload key:', key, 'path: ', path);
+              _.set(model, _.replace(path, 'Id', ''), loader.value);
+            });
+          } 
+        });
+        console.warn('ApiService, autoload model:', model);
+      }
+    }
+    return model;
   }
 
   request(method, params): Observable<any> {
@@ -27,21 +47,21 @@ export class ApiService {
     return this.request('get', params).map( response => {
       let o = Object.assign({}, response.json());
       console.log('ApiService:getByType, o: ', o);
-      return o;
+      return this._autoload(o);
     });
   }
 
   getArray(...params): Observable<any[]> {
     console.log('ApiService:getArray, params: ', params);
     return this.request('get', params).map( (response):any[] => {
-      console.log('ApiService:getArray, response: ', response);
       let arr = response.json();
       let ret = [];
       for(var i = 0; i < arr.length; i++) {
         let o = {};
-        console.log('ApiService.getArray, o:', o);
-        ret.push(Object.assign(o, arr[i]));
+        Object.assign(o, arr[i])
+        ret.push(this._autoload(o));
       }
+      console.log('ApiService:getArray, return: ', ret);
       return ret;
     });
   }
@@ -50,32 +70,73 @@ export class ApiService {
     console.log('ApiService:getByType, params: ', objectType, params);
     return this.request('get', params).map( response => {
       let o = (undefined !== objectType) ? new objectType() : {};
+      o = Object.assign(o, response.json());
       console.log('ApiService:getByType, o: ', o);
-      return Object.assign(o, response.json()) as T;
+      return this._autoload(o as T);
     });
   }
 
   getArrayByType<T>(objectType: { new(): T }, ...params): Observable<T[]> {
     console.log('ApiService:getArrayByType, params: ', objectType, params);
     return this.request('get', params).map( (response):T[] => {
-      console.log('ApiService:getArrayByType, response: ', response);
       let arr = response.json();
       let ret: Array<T> = [];
       for(var i = 0; i < arr.length; i++) {
         let o = (undefined !== objectType) ? new objectType() : {};
-        console.log('ApiService:getArrayByType, o: ' , o);
-        ret.push(Object.assign(o, arr[i]) as T);
+        Object.assign(o, arr[i]);
+        ret.push(this._autoload(o as T));
       }
+      console.log('ApiService:getArrayByType, return: ', ret);
       return ret;
+    });
+  }
+
+  getDataType(model: Data<any>): Observable<DataType> {
+    return new Observable<DataType>(observer => {
+      if(!_.isEmpty(model.dataTypeId)) {
+        this.getByType<DataType>(DataType, '/dataTypes/' + model.dataTypeId).subscribe(dataType => {
+          if(dataType) {
+            observer.next(dataType);
+            observer.complete();
+          } else {
+            observer.error('DataType not found');
+          }
+        });
+      } else {
+        observer.error('Object does not have a dataTypeId');
+      }
+    });
+  }
+
+  getForm(model: Data<any>): Observable<DynamicForm> {
+    return new Observable<DynamicForm>(observer => {
+      if(!_.isEmpty(model.dataTypeId)) {
+        this.getDataType(model).subscribe(dataType => {
+          if(!_.isEmpty(dataType.content.formId)) {
+            this.getByType<Data<Forms.Form>>(Data, '/data/' + dataType.content.formId).subscribe(form => {
+              let f = new DynamicForm();
+              Object.assign(f, form);
+              observer.next(f);
+              observer.complete();
+            });
+          } else {
+            observer.error('No form associated with this DataType');
+          }
+        });
+      } else {
+        observer.error('Model does not have a dataTypeId');
+      }
     });
   }
 
   post(...params): Observable<any> {
     return this.request('post', params);
   }
+
   put(...params): Observable<any> {
     return this.request('put', params);
   }
+
   delete(...params): Observable<any> {
     return this.http.delete('delete', params);
   }

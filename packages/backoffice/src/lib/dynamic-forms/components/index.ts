@@ -6,6 +6,7 @@ import { RadioComponent } from './radio.component';
 import { CheckboxComponent } from './checkbox.component';
 import { FieldGroupComponent } from './field-group.component';
 import { FieldSetComponent } from './field-set.component';
+import { FieldSetArrayComponent } from "./field-set-array.component";
 
 export * from './base.component';
 export * from './dynamic.component';
@@ -16,6 +17,7 @@ export * from './radio.component';
 export * from './textarea.component';
 export * from './field-group.component';
 export * from './field-set.component';
+export * from './field-set-array.component';
 
 /* ALIAS EXPORTS */
 export { TextComponent as text } from './text.component';
@@ -25,6 +27,7 @@ export { RadioComponent as radio } from './radio.component';
 export { CheckboxComponent as checkbox } from './checkbox.component';
 export { FieldGroupComponent as fieldgroup } from './field-group.component';
 export { FieldSetComponent as fieldset } from './field-set.component';
+export { FieldSetArrayComponent as fieldsetarray } from './field-set-array.component';
 
 // declare each component
 export const DECLARATIONS = [
@@ -36,6 +39,7 @@ export const DECLARATIONS = [
   TextAreaComponent,
   FieldGroupComponent,
   FieldSetComponent,
+  FieldSetArrayComponent
 ]
 
 // this is usually just a repeat of the above declarations,

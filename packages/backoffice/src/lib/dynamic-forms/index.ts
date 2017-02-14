@@ -4,7 +4,8 @@ export * from './forms.service';
 export * from './form/form.component';
 
 import { NgModule } from '@angular/core';
-import { FormsModule } from "@angular/forms";
+//import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DynamicFormComponent } from './form/form.component';
 import { DynamicFormValidator } from './models';
@@ -40,6 +41,7 @@ import { UiModule } from 'lib/ui';
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     UiModule,
   ],
   declarations: [

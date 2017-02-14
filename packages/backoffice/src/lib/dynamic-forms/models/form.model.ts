@@ -54,7 +54,7 @@ export class FormBase {
   }
 }
 
-export class Form extends FormBase {
+export class DynamicForm extends FormBase {
   load(obj: Object, fields?: DynamicComponentDef[]) {
     if(!fields) {
       for(var i = 0; i < this.content.fieldGroups.length; i++) {
