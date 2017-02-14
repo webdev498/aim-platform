@@ -34,12 +34,23 @@ git config user.email "email@example.com"  #Replace with your email address
 git checkout -b develop
 npm install
 ```
-##### Postinstallation
-Testing Back Office
+
+## Package installations
+Replace PACKAGE with the specific package, for example "backoffice"
 ```
-cd packages/backoffice
+cd packages/PACKAGE
+npm install
+```
+
+##### Running Packages
+Replace PACKAGE with the specific package, for example "backoffice"
+```
+cd packages/PACKAGE
 ng serve
 ```
+
+###### Troubleshooting
+If you receive an error about "node-sass" then delete the node_modules folder and run `npm install`
 
 Testing Client Portal
 ```
