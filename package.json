@@ -2,7 +2,6 @@
   "name": "@ap-ui/root",
   "version": "0.1.0",
   "description": "AIM Platform - User Interfaces",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,6 +17,10 @@
     {
       "name": "Michael Stutz",
       "email": "mstutz@aimmedia.com"
+    },
+    {
+      "name": "David Higgins",
+      "email": "dhiggins@aimmedia.com"
     }
   ],
   "license": "UNLICENSED",
