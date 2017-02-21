@@ -344,10 +344,28 @@ export namespace Pages {
     export class Page {
     }
 }
+
 export namespace Products {
-    export class Product {
-    }
+  export class Product {
+    name: string;
+    description: string;
+    category: Category;
+    image?: Image;
+    location: string;
+  }
+  export class Image {
+    name: string;
+    thumbURL: string;
+    photoURL: string;
+  }
+
+  export class Category {
+    name: string;
+    index : number;
+  }
 }
+
+
 export namespace Services {
     export class Service {
     }

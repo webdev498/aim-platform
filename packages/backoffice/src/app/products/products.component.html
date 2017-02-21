@@ -1,0 +1,53 @@
+<h1 class="page-title">Products</h1>
+<p-messages [value]="messages"></p-messages>
+<div class="row">
+  <div class="col-md-12">
+    <section class="widget">
+      <header>
+        <h5>List of products</h5>
+      </header>
+      <div class="widget-body">
+
+        <button (click)="postMessage('error')">Post Error</button>
+        <button (click)="postMessage('warn')">Post Warning</button>
+        <button (click)="postMessage('info')">Post Info</button>
+        <button (click)="postMessage('success')">Post Success</button>
+
+        <h3>PrimeNg Basic</h3>
+        <p-dataTable [value]="products">
+          <p-column field="product.content.status" header="Status">
+            <template let-col let-product="rowData" let-ri="rowIndex" pTemplate="body">
+              {{ product.content.status }}
+            </template>
+          </p-column>
+
+          <p-column field="product.content.description" header="Description">
+            <template let-col let-product="rowData" let-ri="rowIndex" pTemplate="body">
+              <a [routerLink]="[product.id]">{{product.content.description}}</a>
+            </template>
+          </p-column>
+
+          <p-column field="product.content.category" header="Category">
+            <template let-col let-product="rowData" let-ri="rowIndex" pTemplate="body">
+              <a [routerLink]="[product.id]">{{product.content.category.name}}</a>
+            </template>
+          </p-column>
+
+          <p-column field="product.content.image" header="Image">
+            <template let-col let-product="rowData" let-ri="rowIndex" pTemplate="body">
+              <a [routerLink]="[product.id]">{{product.content.image.name}}</a>
+            </template>
+          </p-column>
+
+          <p-column field="product.content.location" header="Location">
+            <template let-col let-product="rowData" let-ri="rowIndex" pTemplate="body">
+              <a [routerLink]="[product.id]">{{product.content.location}}</a>
+            </template>
+          </p-column>
+
+        </p-dataTable>
+
+      </div>
+    </section>
+  </div>
+</div>
